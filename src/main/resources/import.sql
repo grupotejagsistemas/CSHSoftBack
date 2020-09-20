@@ -8,3 +8,5 @@ INSERT INTO voluntarios (direccion, nombre_completo,presencial,telefono,transito
 INSERT INTO voluntarios (direccion, nombre_completo,presencial,telefono,transito,traslado,zona) VALUES ('Calle falsa 127', 'Victoria Díaz', 'n','123456779','n','s','Lugano');
 INSERT INTO voluntarios (direccion, nombre_completo,presencial,telefono,transito,traslado,zona) VALUES ('Calle falsa 128', 'Manuel Lepo', 'n','123888496','n','s','Lugano');
 INSERT INTO voluntarios (direccion, nombre_completo,presencial,telefono,transito,traslado,zona) VALUES ('Calle falsa 129', 'Pepe Pompin', 'n','31178546','n','s','Lugano');
+INSERT INTO estado_mascota (descripcion) VALUES ('Adoptado');
+INSERT INTO estado_mascota (descripcion) VALUES ('No Adoptado');

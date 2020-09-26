@@ -1,16 +1,12 @@
 package com.tejag.cshsoftware.apirest.models.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,8 +22,8 @@ public class MascotaEstado implements Serializable {
 	@Column(nullable = false, length = 15)
 	private String descripcion;
 
-	@OneToMany(mappedBy = "estado_mascota", cascade = CascadeType.ALL)
-	private List<Mascota> mascotas = new ArrayList<>();
+//	@OneToMany(mappedBy = "estado_mascota", cascade = CascadeType.ALL)
+//	private List<Mascota> mascotas = new ArrayList<>();
 
 	public MascotaEstado() {
 
@@ -49,12 +45,12 @@ public class MascotaEstado implements Serializable {
 		this.id = id;
 	}
 
-	public List<Mascota> getMascotas() {
-		return mascotas;
-	}
-
-	public void setMascotas(List<Mascota> mascotas) {
-		this.mascotas = mascotas;
-	}
+//	public List<Mascota> getMascotas() {
+//		return mascotas;
+//	}
+//
+//	public void setMascotas(List<Mascota> mascotas) {
+//		this.mascotas = mascotas;
+//	}
 
 }

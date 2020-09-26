@@ -34,7 +34,7 @@ public class Mascota implements Serializable {
 
 	@Column(name = "fecha_nacimiento", nullable = false)
 	@Temporal(TemporalType.DATE)
-	private Date fechaNacimieto;
+	private Date fechaNacimiento;
 
 	@Column(name = "particularidad_fisica", nullable = false, length = 255)
 	private String particularidadesFisica;
@@ -91,11 +91,11 @@ public class Mascota implements Serializable {
 	}
 
 	public Date getFechaNacimieto() {
-		return fechaNacimieto;
+		return fechaNacimiento;
 	}
 
 	public void setFechaNacimieto(Date fechaNacimieto) {
-		this.fechaNacimieto = fechaNacimieto;
+		this.fechaNacimiento = fechaNacimieto;
 	}
 
 	public String getParticularidadesFisica() {

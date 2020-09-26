@@ -2,30 +2,21 @@ package com.tejag.cshsoftware.apirest.models.dto;
 
 import java.util.Date;
 
-public class MascotaDTO {
+public class MascotaPostDTO {
 
-	private Long id;
 	private String nombre;
 	private Date fechaNacimiento;
-	private String particularidadesFisica;
+	private String particularidadesFisicas;
 	private String sexo;
 	private String fotoMascota;
 	private Date fechaRescate;
 	private String lugarRescate;
 	private String descripcionRescate;
 	private String especie;
-	private MascotaEstadoDTO estado;
+	private MascotaEstadoDTO estadoMascota;
 
-	public MascotaDTO() {
+	public MascotaPostDTO() {
 
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getNombre() {
@@ -44,12 +35,12 @@ public class MascotaDTO {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	public String getParticularidadesFisica() {
-		return particularidadesFisica;
+	public String getParticularidadesFisicas() {
+		return particularidadesFisicas;
 	}
 
-	public void setParticularidadesFisica(String particularidadesFisica) {
-		this.particularidadesFisica = particularidadesFisica;
+	public void setParticularidadesFisicas(String particularidadesFisicas) {
+		this.particularidadesFisicas = particularidadesFisicas;
 	}
 
 	public String getSexo() {
@@ -100,12 +91,12 @@ public class MascotaDTO {
 		this.especie = especie;
 	}
 
-	public MascotaEstadoDTO getEstado() {
-		return estado;
+	public MascotaEstadoDTO getEstadoMascota() {
+		return estadoMascota;
 	}
 
-	public void setEstado(MascotaEstadoDTO estado) {
-		this.estado = estado;
+	public void setEstadoMascota(MascotaEstadoDTO estadoMascota) {
+		this.estadoMascota = estadoMascota;
 	}
 
 }

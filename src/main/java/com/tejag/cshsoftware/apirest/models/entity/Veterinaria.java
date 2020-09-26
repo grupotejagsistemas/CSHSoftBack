@@ -41,8 +41,8 @@ public class Veterinaria implements Serializable {
 	@OneToMany(mappedBy = "veterinarias", cascade = CascadeType.ALL)
 	private List<FichaMedica> fichas_medicas = new ArrayList<>();
 
-	@OneToMany(mappedBy = "veterinaria_cercana", cascade = CascadeType.ALL)
-	private List<VeterinariaCercana> veterinarias_cercanas = new ArrayList<>();
+//	@OneToMany(mappedBy = "veterinaria_cercana", cascade = CascadeType.ALL)
+//	private List<VeterinariaCercana> veterinarias_cercanas = new ArrayList<>();
 
 	public Veterinaria() {
 
@@ -104,12 +104,12 @@ public class Veterinaria implements Serializable {
 		this.fichas_medicas = fichas_medicas;
 	}
 
-	public List<VeterinariaCercana> getVeterinarias_cercanas() {
-		return veterinarias_cercanas;
-	}
-
-	public void setVeterinarias_cercanas(List<VeterinariaCercana> veterinarias_cercanas) {
-		this.veterinarias_cercanas = veterinarias_cercanas;
-	}
+//	public List<VeterinariaCercana> getVeterinarias_cercanas() {
+//		return veterinarias_cercanas;
+//	}
+//
+//	public void setVeterinarias_cercanas(List<VeterinariaCercana> veterinarias_cercanas) {
+//		this.veterinarias_cercanas = veterinarias_cercanas;
+//	}
 
 }

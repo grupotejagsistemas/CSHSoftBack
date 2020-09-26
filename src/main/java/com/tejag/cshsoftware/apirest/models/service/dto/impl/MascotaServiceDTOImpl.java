@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.tejag.cshsoftware.apirest.models.dto.MascotaDTO;
 import com.tejag.cshsoftware.apirest.models.dto.MascotaEstadoDTO;
+import com.tejag.cshsoftware.apirest.models.dto.MascotaPostDTO;
 import com.tejag.cshsoftware.apirest.models.entity.Mascota;
 import com.tejag.cshsoftware.apirest.models.entity.MascotaEstado;
 import com.tejag.cshsoftware.apirest.models.service.MascotaService;
@@ -29,7 +30,7 @@ public class MascotaServiceDTOImpl implements MascotaServiceDTO {
 		if (entity != null) {
 			mascotaDto.setId(entity.getId());
 			mascotaDto.setNombre(entity.getNombre());
-			mascotaDto.setFechaNacimieto(entity.getFechaNacimieto());
+			mascotaDto.setFechaNacimiento(entity.getFechaNacimieto());
 			mascotaDto.setParticularidadesFisica(entity.getParticularidadesFisica());
 			mascotaDto.setSexo(entity.getSexo());
 			mascotaDto.setFotoMascota(entity.getFotoMascota());
@@ -57,6 +58,64 @@ public class MascotaServiceDTOImpl implements MascotaServiceDTO {
 			estadoDto.setDescrpcion(entity.getDescripcion());
 		}
 		return estadoDto;
+	}
+
+	@Override
+	public MascotaDTO findById(Long id) {
+		return this.getMascotaDto(service.findById(id));
+	}
+
+	@Override
+	public void save(MascotaPostDTO mascota) {
+		Mascota newMascota = new Mascota();
+
+		newMascota.setNombre(mascota.getNombre());
+		newMascota.setFechaNacimieto(mascota.getFechaNacimiento());
+		newMascota.setParticularidadesFisica(mascota.getParticularidadesFisicas());
+		newMascota.setSexo(mascota.getSexo());
+		newMascota.setFotoMascota(mascota.getFotoMascota());
+		newMascota.setFechaRescate(mascota.getFechaRescate());
+		newMascota.setLugarRescate(mascota.getLugarRescate());
+		newMascota.setDescripcionRescate(mascota.getDescripcionRescate());
+		newMascota.setEspecie(mascota.getEspecie());
+		newMascota.setEstado_mascota(this.getEstadoDTO(mascota.getEstadoMascota()));
+
+		service.save(newMascota);
+
+	}
+
+	public MascotaEstado getEstadoDTO(MascotaEstadoDTO newEstado) {
+		MascotaEstado estado = new MascotaEstado();
+		if (newEstado != null) {
+			estado.setId(newEstado.getId());
+			estado.setDescripcion(newEstado.getDescrpcion());
+		}
+		return estado;
+	}
+	
+	@Override
+	public void update(Long id, MascotaPostDTO mascota) {
+		Mascota newMascota = new Mascota();
+		
+		newMascota.setId(id);
+		newMascota.setNombre(mascota.getNombre());
+		newMascota.setFechaNacimieto(mascota.getFechaNacimiento());
+		newMascota.setParticularidadesFisica(mascota.getParticularidadesFisicas());
+		newMascota.setSexo(mascota.getSexo());
+		newMascota.setFotoMascota(mascota.getFotoMascota());
+		newMascota.setFechaRescate(mascota.getFechaRescate());
+		newMascota.setLugarRescate(mascota.getLugarRescate());
+		newMascota.setDescripcionRescate(mascota.getDescripcionRescate());
+		newMascota.setEspecie(mascota.getEspecie());
+		newMascota.setEstado_mascota(this.getEstadoDTO(mascota.getEstadoMascota()));
+
+		service.update(newMascota);
+
+	}
+
+	@Override
+	public void deleteById(Long id) {
+		service.deleteById(id);
 	}
 
 }

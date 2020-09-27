@@ -16,6 +16,7 @@ public class MascotaServiceImpl implements MascotaService {
 	@Autowired
 	private MascotaDAO mascotaDao;
 
+
 	@Override
 	@Transactional(readOnly = true)
 	public List<Mascota> getMascotas() {
@@ -57,6 +58,16 @@ public class MascotaServiceImpl implements MascotaService {
 	@Override
 	public void deleteById(Long id) {
 		mascotaDao.deleteById(id);
+	}
+
+	@Override
+	public List<Mascota> findByNombre(String nombre) {
+		return mascotaDao.findByNombre(nombre);
+	}
+
+	@Override
+	public List<Mascota> findBySexo(String sexo) {
+		return mascotaDao.findBySexo(sexo);
 	}
 
 }

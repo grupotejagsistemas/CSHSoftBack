@@ -39,4 +39,16 @@ public interface MascotaServiceDTO {
 	 */
 	public void deleteById(Long id);
 	
+	/** Filtrar mascotas por nombre
+	 * @param nombre
+	 * @return mascotas
+	 */
+	public List<MascotaDTO> findByNombre(String nombre);
+	
+	/** Filtrar mascotas por sexo
+	 * @param nombre
+	 * @return mascotas
+	 */
+	public List<MascotaDTO> findBySexo(String sexo);
+	
 }

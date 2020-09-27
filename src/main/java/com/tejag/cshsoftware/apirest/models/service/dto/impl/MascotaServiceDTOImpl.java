@@ -118,4 +118,14 @@ public class MascotaServiceDTOImpl implements MascotaServiceDTO {
 		service.deleteById(id);
 	}
 
+	@Override
+	public List<MascotaDTO> findByNombre(String nombre) {
+		return this.getListaMascotaDTO(service.findByNombre(nombre));
+	}
+
+	@Override
+	public List<MascotaDTO> findBySexo(String sexo) {
+		return this.getListaMascotaDTO(service.findBySexo(sexo));
+	}
+
 }

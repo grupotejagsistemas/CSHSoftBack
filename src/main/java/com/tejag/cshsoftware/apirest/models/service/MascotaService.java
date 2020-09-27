@@ -39,4 +39,16 @@ public interface MascotaService {
 	 */
 	public void deleteById(Long id);
 	
+	/** Filtrar mascotas por nombre
+	 * @param nombre
+	 * @return mascotas
+	 */
+	public List<Mascota> findByNombre(String nombre);
+	
+	/** Filtrar mascotas por nombre
+	 * @param nombre
+	 * @return mascotas
+	 */
+	public List<Mascota> findBySexo(String sexo);
+	
 }

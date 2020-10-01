@@ -13,9 +13,8 @@ public interface MascotaService {
 	public List<Mascota> getMascotas();
 	
 	/**
-	 * Persiste el cliente en la base de datos
+	 * Persiste la mascota en la base de datos
 	 * @param cliente
-	 * @return cliente
 	 */
 	public Mascota save(Mascota mascota);
 	

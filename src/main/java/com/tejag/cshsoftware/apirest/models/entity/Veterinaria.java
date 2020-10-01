@@ -1,16 +1,12 @@
 package com.tejag.cshsoftware.apirest.models.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -38,8 +34,8 @@ public class Veterinaria implements Serializable {
 	@Column(nullable = true, length = 50)
 	private String observaciones;
 
-	@OneToMany(mappedBy = "veterinarias", cascade = CascadeType.ALL)
-	private List<FichaMedica> fichas_medicas = new ArrayList<>();
+//	@OneToMany(mappedBy = "veterinarias", cascade = CascadeType.ALL)
+//	private List<FichaMedica> fichas_medicas = new ArrayList<>();
 
 //	@OneToMany(mappedBy = "veterinaria_cercana", cascade = CascadeType.ALL)
 //	private List<VeterinariaCercana> veterinarias_cercanas = new ArrayList<>();
@@ -96,13 +92,13 @@ public class Veterinaria implements Serializable {
 		this.observaciones = observaciones;
 	}
 
-	public List<FichaMedica> getFichas_medicas() {
-		return fichas_medicas;
-	}
-
-	public void setFichas_medicas(List<FichaMedica> fichas_medicas) {
-		this.fichas_medicas = fichas_medicas;
-	}
+//	public List<FichaMedica> getFichas_medicas() {
+//		return fichas_medicas;
+//	}
+//
+//	public void setFichas_medicas(List<FichaMedica> fichas_medicas) {
+//		this.fichas_medicas = fichas_medicas;
+//	}
 
 //	public List<VeterinariaCercana> getVeterinarias_cercanas() {
 //		return veterinarias_cercanas;

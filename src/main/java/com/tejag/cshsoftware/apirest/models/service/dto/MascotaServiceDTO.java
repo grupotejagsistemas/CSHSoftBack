@@ -14,9 +14,8 @@ public interface MascotaServiceDTO {
 	public List<MascotaDTO> getMascotas();
 	
 	/**
-	 * Persiste el cliente en la base de datos
-	 * @param cliente
-	 * @return mascotaDto
+	 * Persiste la mascota en la base de datos
+	 * @param mascota
 	 */
 	public void save(MascotaPostDTO mascota);
 	

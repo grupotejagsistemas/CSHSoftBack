@@ -3,7 +3,7 @@ package com.tejag.cshsoftware.apirest.models.dto;
 public class MascotaEstadoDTO {
 
 	private Long id;
-	private String descrpcion;
+	private String descripcion;
 
 	public MascotaEstadoDTO() {
 
@@ -17,12 +17,12 @@ public class MascotaEstadoDTO {
 		this.id = id;
 	}
 
-	public String getDescrpcion() {
-		return descrpcion;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setDescrpcion(String descrpcion) {
-		this.descrpcion = descrpcion;
+	public void setDescripcion(String descrpcion) {
+		this.descripcion = descrpcion;
 	}
 
 }

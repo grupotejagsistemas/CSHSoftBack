@@ -6,8 +6,6 @@ import com.tejag.cshsoftware.apirest.models.entity.Voluntario;
 
 public interface VoluntarioService {
 
-	public List<Voluntario> findAll();
-
 	public List<Voluntario> getVoluntarios();
 
 	public Voluntario findById(Long idvoluntario);
@@ -20,9 +18,6 @@ public interface VoluntarioService {
 
 	public List<Voluntario> findByNombre(String nombrecompleto);
 	
-	
-	
-
-	List<Voluntario> findByVoluntarioppt(String filtrovoluntarioptt);
+	public List<Voluntario> findByVoluntarioppt(String filtrovoluntarioptt);
 	
 }

@@ -58,24 +58,16 @@ import com.tejag.cshsoftware.apirest.models.service.VoluntarioService;
 
 			@Override
 			public List<Voluntario> findByNombre(String nombre) {
-				return voluntarioDao.findByNombre(nombre);
+				return voluntarioDao.findByNombreCompleto(nombre);
 			}
 
-			@Override
-			public List<Voluntario> findAll() {
-				// TODO Auto-generated method stub
-				return null;
-			}
 
 			@Override
 			public List<Voluntario> findByVoluntarioppt(String filtrovoluntarioptt) {
-				return voluntarioDao.findByVoluntarioppt(filtrovoluntarioptt);
-				
+				return voluntarioDao.filtrarTransito();
+				//if(filtrovoluntarioptt == "Transito" || filtrovoluntarioptt=="transito"){
+				//return voluntarioDao.filtrarTransito();
+				//}
 			}
-
-			//@Override
-			//public List<Voluntario> findBySexo(String sexo) {
-				//return mascotaDao.findBySexo(sexo);
-			//}
 
 		}

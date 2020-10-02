@@ -1,37 +1,28 @@
 package com.tejag.cshsoftware.apirest.models.dto;
 
+import java.util.List;
 
 public class VoluntarioPostDTO {
 
-	private Long id;
-	private String nombrecompleto;
+	private String nombreCompleto;
 	private String telefono;
 	private String direccion;
-	private Long veterinariacercana;
+	private List<Integer> veterinariaCercana;
 	private String localidad;
 	private String transito;
 	private String traslado;
-	private String Presencial;
-	//private MascotaEstadoDTO estado;
+	private String presencial;
 
 	public VoluntarioPostDTO() {
 
 	}
 
-	public Long getId() {
-		return id;
+	public String getNombreCompleto() {
+		return nombreCompleto;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNombrecompleto() {
-		return nombrecompleto;
-	}
-
-	public void setNombre(String nombrecompleto) {
-		this.nombrecompleto = nombrecompleto;
+	public void setNombreCompleto(String nombreCompleto) {
+		this.nombreCompleto = nombreCompleto;
 	}
 
 	public String getTelefono() {
@@ -50,16 +41,17 @@ public class VoluntarioPostDTO {
 		this.direccion = direccion;
 	}
 
-	public Long getVeterinariacercana() {
-		return veterinariacercana;
+
+	public List<Integer> getVeterinariaCercana() {
+		return veterinariaCercana;
 	}
 
-	public void setveterinariacercana(Long veterinariacercana) {
-		this.veterinariacercana = veterinariacercana;
+	public void setVeterinariaCercana(List<Integer> veterinariaCercana) {
+		this.veterinariaCercana = veterinariaCercana;
 	}
 
 	public String getLocalidad() {
-	return localidad;
+		return localidad;
 	}
 
 	public void setLocalidad(String localidad) {
@@ -74,31 +66,20 @@ public class VoluntarioPostDTO {
 		this.transito = transito;
 	}
 
-	public String getPresencial() {
-		return Presencial;
-	}
-
-	public void setPresencial(String presencial) {
-		Presencial = presencial;
-	}
-
-	public void setVeterinariacercana(Long veterinariacercana) {
-		this.veterinariacercana = veterinariacercana;
+	public String getTraslado() {
+		return traslado;
 	}
 
 	public void setTraslado(String traslado) {
 		this.traslado = traslado;
 	}
 
-	public String getTraslado() {
-		return traslado;
+	public String getPresencial() {
+		return presencial;
 	}
 
-	public void setTranslado(String traslado) {
-		this.traslado = traslado;
+	public void setPresencial(String presencial) {
+		this.presencial = presencial;
 	}
-
-
-	
 
 }

@@ -49,15 +49,6 @@ public class VoluntarioServiceDTOImpl implements VoluntarioServiceDTO {
 		return listaVoluntarioDto;
 	}
 
-	//public MascotaEstadoDTO getEstadoMascotaDTO(MascotaEstado entity) {
-		//MascotaEstadoDTO estadoDto = new MascotaEstadoDTO();
-		//if (entity != null) {
-			//estadoDto.setId(entity.getId());
-			//estadoDto.setDescrpcion(entity.getDescripcion());
-		//}
-		//return estadoDto;
-	//}
-
 	@Override
 	public VoluntarioDTO findById(Long idvoluntario) {
 		return this.getVoluntarioDto(service.findById(idvoluntario));
@@ -67,10 +58,11 @@ public class VoluntarioServiceDTOImpl implements VoluntarioServiceDTO {
 	public void save(VoluntarioPostDTO voluntario) {
 		Voluntario newVoluntario = new Voluntario();
 
-		newVoluntario.setNombreCompleto(voluntario.getNombrecompleto());
+		newVoluntario.setNombreCompleto(voluntario.getNombreCompleto());
 		newVoluntario.setTelefono(voluntario.getTelefono());
 		newVoluntario.setDireccion(voluntario.getDireccion());
 		newVoluntario.setLocalidad(voluntario.getLocalidad());
+//		newVoluntario.setVeterinarias_cercanas([]);
 		newVoluntario.setTransito(voluntario.getTransito());
 		newVoluntario.setTraslado(voluntario.getTraslado());
 		newVoluntario.setPresencial(voluntario.getPresencial());
@@ -80,20 +72,11 @@ public class VoluntarioServiceDTOImpl implements VoluntarioServiceDTO {
 
 	}
 
-	//public MascotaEstado getEstadoDTO(MascotaEstadoDTO newEstado) {
-		//MascotaEstado estado = new MascotaEstado();
-		//if (newEstado != null) {
-			//estado.setId(newEstado.getId());
-			//estado.setDescripcion(newEstado.getDescrpcion());
-		//}
-		//return estado;
-	//}
-	
 	@Override
 	public void update(Long idVoluntario, VoluntarioPostDTO voluntario) {
 		Voluntario newVoluntario = new Voluntario();
 		
-		newVoluntario.setNombreCompleto(voluntario.getNombrecompleto());
+		newVoluntario.setNombreCompleto(voluntario.getNombreCompleto());
 		newVoluntario.setTelefono(voluntario.getTelefono());
 		newVoluntario.setDireccion(voluntario.getDireccion());
 		newVoluntario.setLocalidad(voluntario.getLocalidad());

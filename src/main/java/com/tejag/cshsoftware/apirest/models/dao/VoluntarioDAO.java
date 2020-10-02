@@ -9,12 +9,9 @@ import com.tejag.cshsoftware.apirest.models.entity.Voluntario;
 
 public interface VoluntarioDAO extends CrudRepository<Voluntario, Long> {
 
-	@Query("from Voluntario v where v.nombre like %:nombre%")
-	public List<Voluntario> findByNombre(String nombre);
+	public List<Voluntario> findByNombreCompleto(String nombre);
 	
-//	@Query("from Mascota m where m.nombre like %:nombre%")
-	public List<Voluntario> findByTransitoOrPresencialOrTraslado(String filtro);
-
-	public List<Voluntario> findByVoluntarioppt(String filtrovoluntarioptt);
+	@Query("from Voluntario v where v.transito=s")
+	public List<Voluntario> filtrarTransito(); //filtro = Transito - Presencial - Traslado
 	
 }

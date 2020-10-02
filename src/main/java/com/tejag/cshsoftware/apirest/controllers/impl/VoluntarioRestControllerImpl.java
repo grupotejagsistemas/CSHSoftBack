@@ -21,7 +21,7 @@ import com.tejag.cshsoftware.apirest.models.service.dto.VoluntarioServiceDTO;
 @RestController
 public class VoluntarioRestControllerImpl implements VoluntarioRestController {
 
-	@Autowired 
+	@Autowired
 	private VoluntarioServiceDTO serviceDto;
 
 	@Override
@@ -59,10 +59,7 @@ public class VoluntarioRestControllerImpl implements VoluntarioRestController {
 
 	@Override
 	public List<VoluntarioDTO> findByVoluntarioppt(FiltroVoluntarioPTT filtrovoluntarioptt) {
-		 return null;
+		return null;
 	}
-		
-	
 
-	}
-	
+}

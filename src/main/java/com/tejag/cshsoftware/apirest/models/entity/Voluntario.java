@@ -36,7 +36,7 @@ public class Voluntario implements Serializable {
 	private List<VeterinariaCercana> veterinarias_cercanas = new ArrayList<>();
 
 	@Column(nullable = false, length = 50)
-	private String zona;
+	private String localidad;
 
 	@Column(nullable = false, length = 1)
 	private String transito;
@@ -94,13 +94,16 @@ public class Voluntario implements Serializable {
 		this.veterinarias_cercanas = veterinarias_cercanas;
 	}
 
-	public String getZona() {
-		return zona;
+	
+	public String getLocalidad() {
+		return localidad;
 	}
 
-	public void setZona(String zona) {
-		this.zona = zona;
+	public void setLocalidad(String localidad) {
+		this.localidad = localidad;
 	}
+
+	
 
 	public String getTransito() {
 		return transito;

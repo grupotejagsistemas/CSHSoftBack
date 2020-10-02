@@ -55,7 +55,7 @@ public class MascotaServiceDTOImpl implements MascotaServiceDTO {
 		MascotaEstadoDTO estadoDto = new MascotaEstadoDTO();
 		if (entity != null) {
 			estadoDto.setId(entity.getId());
-			estadoDto.setDescrpcion(entity.getDescripcion());
+			estadoDto.setDescripcion(entity.getDescripcion());
 		}
 		return estadoDto;
 	}
@@ -88,7 +88,7 @@ public class MascotaServiceDTOImpl implements MascotaServiceDTO {
 		MascotaEstado estado = new MascotaEstado();
 		if (newEstado != null) {
 			estado.setId(newEstado.getId());
-			estado.setDescripcion(newEstado.getDescrpcion());
+			estado.setDescripcion(newEstado.getDescripcion());
 		}
 		return estado;
 	}

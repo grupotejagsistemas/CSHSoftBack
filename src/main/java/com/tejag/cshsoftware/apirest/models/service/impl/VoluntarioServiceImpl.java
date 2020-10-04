@@ -58,7 +58,7 @@ import com.tejag.cshsoftware.apirest.models.service.VoluntarioService;
 
 			@Override
 			public List<Voluntario> findByNombre(String nombre) {
-				return voluntarioDao.findByNombreCompleto(nombre);
+				return voluntarioDao.findByNombreCompletoIgnoreCaseLike("%" + nombre + "%");
 			}
 
 

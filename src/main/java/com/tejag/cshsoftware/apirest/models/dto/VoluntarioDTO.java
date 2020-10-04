@@ -1,6 +1,6 @@
 package com.tejag.cshsoftware.apirest.models.dto;
 
-
+import java.util.List;
 
 public class VoluntarioDTO {
 
@@ -8,12 +8,12 @@ public class VoluntarioDTO {
 	private String nombrecompleto;
 	private String telefono;
 	private String direccion;
-	private Long veterinariacercana;
+	private List<VeterinariaDTO> veterinariaCercana;
 	private String localidad;
 	private String transito;
 	private String traslado;
 	private String presencial;
-	//private MascotaEstadoDTO estado;
+	// private MascotaEstadoDTO estado;
 
 	public VoluntarioDTO() {
 
@@ -51,16 +51,24 @@ public class VoluntarioDTO {
 		this.direccion = direccion;
 	}
 
-	public Long getVeterinariacercana() {
-		return veterinariacercana;
+	public List<VeterinariaDTO> getVeterinariaCercana() {
+		return veterinariaCercana;
 	}
 
-	public void setveterinariacercana(Long veterinariacercana) {
-		this.veterinariacercana = veterinariacercana;
+	public void setVeterinariaCercana(List<VeterinariaDTO> veterinariaCercana) {
+		this.veterinariaCercana = veterinariaCercana;
+	}
+
+	public void setNombrecompleto(String nombrecompleto) {
+		this.nombrecompleto = nombrecompleto;
+	}
+
+	public void setTraslado(String traslado) {
+		this.traslado = traslado;
 	}
 
 	public String getLocalidad() {
-	return localidad;
+		return localidad;
 	}
 
 	public void setLocalidad(String localidad) {
@@ -91,7 +99,4 @@ public class VoluntarioDTO {
 		this.presencial = presencial;
 	}
 
-	
-
 }
-

@@ -7,7 +7,7 @@ public class VoluntarioPostDTO {
 	private String nombreCompleto;
 	private String telefono;
 	private String direccion;
-	private List<Integer> veterinariaCercana;
+	private List<Long> idveterinarias;
 	private String localidad;
 	private String transito;
 	private String traslado;
@@ -41,13 +41,12 @@ public class VoluntarioPostDTO {
 		this.direccion = direccion;
 	}
 
-
-	public List<Integer> getVeterinariaCercana() {
-		return veterinariaCercana;
+	public List<Long> getIdveterinarias() {
+		return idveterinarias;
 	}
 
-	public void setVeterinariaCercana(List<Integer> veterinariaCercana) {
-		this.veterinariaCercana = veterinariaCercana;
+	public void setIdveterinarias(List<Long> idveterinarias) {
+		this.idveterinarias = idveterinarias;
 	}
 
 	public String getLocalidad() {

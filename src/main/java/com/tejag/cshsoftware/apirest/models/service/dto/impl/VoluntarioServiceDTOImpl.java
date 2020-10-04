@@ -6,12 +6,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tejag.cshsoftware.apirest.models.dto.VeterinariaCercanaDTO;
+import com.tejag.cshsoftware.apirest.models.dto.VeterinariaDTO;
 import com.tejag.cshsoftware.apirest.models.dto.VoluntarioDTO;
 //import com.tejag.cshsoftware.apirest.models.dto.MascotaEstadoDTO;
 import com.tejag.cshsoftware.apirest.models.dto.VoluntarioPostDTO;
+import com.tejag.cshsoftware.apirest.models.entity.Veterinaria;
+import com.tejag.cshsoftware.apirest.models.entity.VeterinariaCercana;
 import com.tejag.cshsoftware.apirest.models.entity.Voluntario;
 //import com.tejag.cshsoftware.apirest.models.entity.MascotaEstado;
 import com.tejag.cshsoftware.apirest.models.service.VoluntarioService;
+import com.tejag.cshsoftware.apirest.models.service.dto.VeterinariaCercanaDTOService;
 import com.tejag.cshsoftware.apirest.models.service.dto.VoluntarioServiceDTO;
 
 @Service
@@ -19,6 +24,9 @@ public class VoluntarioServiceDTOImpl implements VoluntarioServiceDTO {
 
 	@Autowired
 	private VoluntarioService service;
+
+	@Autowired
+	private VeterinariaCercanaDTOService serviceVet;
 
 	@Override
 	public List<VoluntarioDTO> getVoluntario() {
@@ -36,17 +44,48 @@ public class VoluntarioServiceDTOImpl implements VoluntarioServiceDTO {
 			voluntarioDto.setTransito(entity.getTransito());
 			voluntarioDto.setTranslado(entity.getTraslado());
 			voluntarioDto.setPresencial(entity.getPresencial());
-			
+
+			List<VeterinariaCercana> listaVet = entity.getVeterinarias_cercanas();
+			if (listaVet != null) {
+				List<VeterinariaDTO> listaVeterinarias = new ArrayList<VeterinariaDTO>();
+				for (VeterinariaCercana veterinariaCerca : listaVet) {
+					Veterinaria veterinaria = veterinariaCerca.getVeterinaria_cercana();
+					listaVeterinarias.add(this.getVeterinariaDTO(veterinaria));
+				}
+				voluntarioDto.setVeterinariaCercana(listaVeterinarias);
+			}
+
 		}
-		return 			voluntarioDto;
+		return voluntarioDto;
 	}
 
 	public List<VoluntarioDTO> getListaVoluntarioDTO(List<Voluntario> listaVoluntario) {
 		List<VoluntarioDTO> listaVoluntarioDto = new ArrayList<VoluntarioDTO>();
-		for (Voluntario voluntario : listaVoluntario) {
-			listaVoluntarioDto.add(this.getVoluntarioDto(voluntario));
+		if (listaVoluntario != null) {
+			for (Voluntario voluntario : listaVoluntario) {
+				listaVoluntarioDto.add(this.getVoluntarioDto(voluntario));
+			}
 		}
 		return listaVoluntarioDto;
+	}
+
+	public VeterinariaDTO getVeterinariaDTO(Veterinaria entity) {
+		VeterinariaDTO vete = new VeterinariaDTO();
+		if (entity != null) {
+			vete.setRazonSocial(entity.getRazonSocial());
+		}
+		return vete;
+	}
+
+	public List<VeterinariaDTO> getVeterinariaDTOLista(List<Veterinaria> listaVeterinaria) {
+		List<VeterinariaDTO> listaDto = new ArrayList<VeterinariaDTO>();
+		if (listaVeterinaria != null) {
+			for (Veterinaria veterinaria : listaVeterinaria) {
+				listaDto.add(this.getVeterinariaDTO(veterinaria));
+			}
+		}
+
+		return listaDto;
 	}
 
 	@Override
@@ -62,20 +101,30 @@ public class VoluntarioServiceDTOImpl implements VoluntarioServiceDTO {
 		newVoluntario.setTelefono(voluntario.getTelefono());
 		newVoluntario.setDireccion(voluntario.getDireccion());
 		newVoluntario.setLocalidad(voluntario.getLocalidad());
-//		newVoluntario.setVeterinarias_cercanas([]);
 		newVoluntario.setTransito(voluntario.getTransito());
 		newVoluntario.setTraslado(voluntario.getTraslado());
 		newVoluntario.setPresencial(voluntario.getPresencial());
-		
 
-		service.save(newVoluntario);
+		Voluntario voluntarioCreado = service.save(newVoluntario);
+
+		List<Long> lista = voluntario.getIdveterinarias();
+
+		if (voluntario.getIdveterinarias().isEmpty() || voluntario.getIdveterinarias() != null) {
+			for (Long num : lista) {
+				VeterinariaCercanaDTO vetCercana = new VeterinariaCercanaDTO();
+				vetCercana.setIdVeterinaria(num);
+				vetCercana.setIdVoluntario(voluntarioCreado.getIdVoluntario());
+				serviceVet.create(vetCercana);
+			}
+		}
 
 	}
 
 	@Override
 	public void update(Long idVoluntario, VoluntarioPostDTO voluntario) {
 		Voluntario newVoluntario = new Voluntario();
-		
+
+		newVoluntario.setIdVoluntario(idVoluntario);
 		newVoluntario.setNombreCompleto(voluntario.getNombreCompleto());
 		newVoluntario.setTelefono(voluntario.getTelefono());
 		newVoluntario.setDireccion(voluntario.getDireccion());
@@ -83,9 +132,21 @@ public class VoluntarioServiceDTOImpl implements VoluntarioServiceDTO {
 		newVoluntario.setTransito(voluntario.getTransito());
 		newVoluntario.setTraslado(voluntario.getTraslado());
 		newVoluntario.setPresencial(voluntario.getPresencial());
-		
 
 		service.update(newVoluntario);
+
+		serviceVet.deleteByIdVoluntario(idVoluntario);
+
+		List<Long> lista = voluntario.getIdveterinarias();
+
+		if (voluntario.getIdveterinarias().isEmpty() || voluntario.getIdveterinarias() != null) {
+			for (Long num : lista) {
+				VeterinariaCercanaDTO vetCercana = new VeterinariaCercanaDTO();
+				vetCercana.setIdVeterinaria(num);
+				vetCercana.setIdVoluntario(idVoluntario);
+				serviceVet.create(vetCercana);
+			}
+		}
 
 	}
 
@@ -100,10 +161,8 @@ public class VoluntarioServiceDTOImpl implements VoluntarioServiceDTO {
 	}
 
 	@Override
-	public List<VoluntarioDTO> findByVoluntarioppt (String filtrovoluntarioptt) {
+	public List<VoluntarioDTO> findByVoluntarioppt(String filtrovoluntarioptt) {
 		return this.getListaVoluntarioDTO(service.findByVoluntarioppt(filtrovoluntarioptt));
 	}
-
-	
 
 }

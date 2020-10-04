@@ -53,8 +53,8 @@ public class VoluntarioRestControllerImpl implements VoluntarioRestController {
 	}
 
 	@Override
-	public List<VoluntarioDTO> findByNombre(FiltroNombreDTO filtroNombre) {
-		return serviceDto.findByNombre(filtroNombre.getNombre());
+	public List<VoluntarioDTO> findByNombre(String nombre) {
+		return serviceDto.findByNombre(nombre);
 	}
 
 	@Override

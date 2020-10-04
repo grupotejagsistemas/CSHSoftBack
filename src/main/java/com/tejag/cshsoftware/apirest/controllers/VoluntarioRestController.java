@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tejag.cshsoftware.apirest.models.dto.FiltroNombreDTO;
 import com.tejag.cshsoftware.apirest.models.dto.FiltroVoluntarioPTT;
@@ -39,7 +40,8 @@ public interface VoluntarioRestController {
 	public void delete(@PathVariable Long id);
 	
 	@GetMapping("/voluntario/filtrar")
-	public List<VoluntarioDTO> findByNombre(@RequestBody FiltroNombreDTO filtroNombre);
+	public List<VoluntarioDTO> findByNombre(@RequestParam("nombre") String nombre);
+//	public List<VoluntarioDTO> findByNombre(@RequestBody FiltroNombreDTO filtroNombre);
 	
 	@GetMapping("/Voluntario/filtrarvoluntarioptt")
 	public List<VoluntarioDTO> findByVoluntarioppt(@RequestBody FiltroVoluntarioPTT filtrovoluntarioptt);

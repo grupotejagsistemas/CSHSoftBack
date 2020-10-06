@@ -57,8 +57,18 @@ public class VoluntarioRestControllerImpl implements VoluntarioRestController {
 	}
 
 	@Override
+	public List<VoluntarioDTO> findByVoluntarioppt(String filtrovoluntarioptt) {
+		return serviceDto.findByVoluntarioppt(filtrovoluntarioptt);
+	}
+
+	@Override
 	public List<VoluntarioDTO> findByVoluntarioppt(FiltroVoluntarioPTT filtrovoluntarioptt) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
-}
+
+	
+	}
+
+

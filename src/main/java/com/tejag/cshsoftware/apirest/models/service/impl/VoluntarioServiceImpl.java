@@ -64,10 +64,14 @@ import com.tejag.cshsoftware.apirest.models.service.VoluntarioService;
 
 			@Override
 			public List<Voluntario> findByVoluntarioppt(String filtrovoluntarioptt) {
-				return voluntarioDao.filtrarTransito();
-				//if(filtrovoluntarioptt == "Transito" || filtrovoluntarioptt=="transito"){
 				//return voluntarioDao.filtrarTransito();
-				//}
+				if(filtrovoluntarioptt == "Transito" || filtrovoluntarioptt=="transito"){
+				return voluntarioDao.filtrarTransito();}
+				else if(filtrovoluntarioptt == "Traslado" || filtrovoluntarioptt=="traslado"){
+					return voluntarioDao.filtrarTraslado();}
+				else if (filtrovoluntarioptt == "Presencial" || filtrovoluntarioptt=="presencial") {
+					return voluntarioDao.filtrarPresencial();}
+				return null;
 			}
 
 		}

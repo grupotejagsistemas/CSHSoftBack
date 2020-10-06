@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.tejag.cshsoftware.apirest.models.dto.FiltroNombreDTO;
+
 import com.tejag.cshsoftware.apirest.models.dto.FiltroVoluntarioPTT;
 //import com.tejag.cshsoftware.apirest.models.dto.FiltroNombreDTO;
 //import com.tejag.cshsoftware.apirest.models.dto.FiltroSexoDTO;
@@ -45,6 +45,8 @@ public interface VoluntarioRestController {
 	
 	@GetMapping("/Voluntario/filtrarvoluntarioptt")
 	public List<VoluntarioDTO> findByVoluntarioppt(@RequestBody FiltroVoluntarioPTT filtrovoluntarioptt);
+
+	List<VoluntarioDTO> findByVoluntarioppt(String filtrovoluntarioptt);
 
 }
 

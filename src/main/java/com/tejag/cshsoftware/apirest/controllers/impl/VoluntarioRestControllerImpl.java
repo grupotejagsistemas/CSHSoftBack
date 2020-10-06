@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tejag.cshsoftware.apirest.controllers.VoluntarioRestController;
-import com.tejag.cshsoftware.apirest.models.dto.FiltroNombreDTO;
 import com.tejag.cshsoftware.apirest.models.dto.FiltroVoluntarioPTT;
 //import com.tejag.cshsoftware.apirest.models.dto.FiltroNombreDTO;
 //import com.tejag.cshsoftware.apirest.models.dto.FiltroSexoDTO;

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tejag.cshsoftware.apirest.controllers.MascotaRestController;
-import com.tejag.cshsoftware.apirest.models.dto.FiltroNombreDTO;
 import com.tejag.cshsoftware.apirest.models.dto.FiltroSexoDTO;
 import com.tejag.cshsoftware.apirest.models.dto.MascotaDTO;
 import com.tejag.cshsoftware.apirest.models.dto.MascotaPostDTO;
@@ -50,9 +49,10 @@ public class MascotaRestControllerImpl implements MascotaRestController {
 		serviceDto.deleteById(id);
 	}
 
+
 	@Override
-	public List<MascotaDTO> findByNombre(FiltroNombreDTO filtroNombre) {
-		return serviceDto.findByNombre(filtroNombre.getNombre());
+	public List<MascotaDTO> findByNombre(String nombre ){
+		return serviceDto.findByNombre(nombre);
 	}
 
 	@Override

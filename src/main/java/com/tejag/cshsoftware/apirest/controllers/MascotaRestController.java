@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.tejag.cshsoftware.apirest.models.dto.FiltroNombreDTO;
+import org.springframework.web.bind.annotation.RequestParam;
 import com.tejag.cshsoftware.apirest.models.dto.FiltroSexoDTO;
 import com.tejag.cshsoftware.apirest.models.dto.MascotaDTO;
 import com.tejag.cshsoftware.apirest.models.dto.MascotaPostDTO;
@@ -34,7 +33,8 @@ public interface MascotaRestController {
 	public void delete(@PathVariable Long id);
 	
 	@GetMapping("/mascotas/filtrar")
-	public List<MascotaDTO> findByNombre(@RequestBody FiltroNombreDTO nombre);
+	public List<MascotaDTO> findByNombre(@RequestParam("nombre") String nombre);
+	
 	
 	@GetMapping("/mascotas/filtrarSexo")
 	public List<MascotaDTO> findBySexo(@RequestBody FiltroSexoDTO sexo);

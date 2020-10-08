@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tejag.cshsoftware.apirest.controllers.VeterinariaRestController;
-import com.tejag.cshsoftware.apirest.models.dto.FiltroInternacionDTO;
 import com.tejag.cshsoftware.apirest.models.dto.VeterinariaDTO;
 import com.tejag.cshsoftware.apirest.models.dto.VeterinariaPostDTO;
 import com.tejag.cshsoftware.apirest.models.service.dto.VeterinariaServiceDTO;
@@ -18,17 +17,12 @@ import com.tejag.cshsoftware.apirest.models.service.dto.VeterinariaServiceDTO;
 @RestController
 public class VeterinariaRestControllerImpl implements VeterinariaRestController {
 
-	@Autowired 
+	@Autowired
 	private VeterinariaServiceDTO serviceDto;
 
 	@Override
 	public List<VeterinariaDTO> getVeterinarias() {
 		return serviceDto.getVeterinarias();
-	}
-
-	@Override
-	public VeterinariaDTO show(Long id) {
-		return serviceDto.findById(id);
 	}
 
 	@Override
@@ -53,18 +47,15 @@ public class VeterinariaRestControllerImpl implements VeterinariaRestController 
 	public List<VeterinariaDTO> findByRazonSocial(String razonSocial) {
 		return serviceDto.findByRazonSocial(razonSocial);
 	}
+
 	@Override
-	public List<VeterinariaDTO> findByInternacion(FiltroInternacionDTO filtrointernacion) {
-		return serviceDto.findByInternacion(filtrointernacion.getInternacion());
+	public List<VeterinariaDTO> findByInternacion(String internacion) {
+		return serviceDto.findByInternacion(internacion);
 	}
 
 	@Override
 	public VeterinariaDTO findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return serviceDto.findById((long) id);
 	}
 
-
-	}
-	
-
+}

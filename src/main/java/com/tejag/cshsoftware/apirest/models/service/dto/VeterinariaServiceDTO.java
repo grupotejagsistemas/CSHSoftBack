@@ -4,12 +4,10 @@ import java.util.List;
 
 import com.tejag.cshsoftware.apirest.models.dto.VeterinariaDTO;
 import com.tejag.cshsoftware.apirest.models.dto.VeterinariaPostDTO;
-import com.tejag.cshsoftware.apirest.models.entity.Veterinaria;
 
 
 public interface VeterinariaServiceDTO {
 
-	public VeterinariaDTO findById(int id);
 	/**
 	 * Obtener listado de veterinarias
 	 * @return
@@ -46,8 +44,7 @@ public interface VeterinariaServiceDTO {
 	 * @return veterinarias
 	 */
 	public List<VeterinariaDTO> findByRazonSocial(String razonsocial);
-	VeterinariaDTO getListaVeterinariaDTO(Veterinaria veterinaria2);
-	List<VeterinariaDTO> getListaVeterinariaDTO(List<Veterinaria> listaVeterinarias);
+
 	public List<VeterinariaDTO> findByInternacion(String internacion);
 	
 	

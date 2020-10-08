@@ -2,8 +2,6 @@ package com.tejag.cshsoftware.apirest.controllers;
 
 import java.util.List;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.tejag.cshsoftware.apirest.models.dto.FiltroInternacionDTO;
 import com.tejag.cshsoftware.apirest.models.dto.VeterinariaDTO;
 import com.tejag.cshsoftware.apirest.models.dto.VeterinariaPostDTO;
 
@@ -22,7 +19,8 @@ import com.tejag.cshsoftware.apirest.models.dto.VeterinariaPostDTO;
 public interface VeterinariaRestController {
 
 	@GetMapping("/veterinaria/{id}")
-	public VeterinariaDTO findById(@PathParam("id") int id);
+	public VeterinariaDTO findById(@PathVariable("id") int id);
+	
 	@GetMapping("/veterinaria")
 	public List<VeterinariaDTO> getVeterinarias();
 	
@@ -37,8 +35,7 @@ public interface VeterinariaRestController {
 	
 	@GetMapping("/veterinaria/filtrar")
 	public List<VeterinariaDTO> findByRazonSocial(@RequestParam("razonSocial") String razonSocial);
-	VeterinariaDTO show(Long id);
 
 	@GetMapping("/veterinaria/filtrarInternacion")
-	public List<VeterinariaDTO> findByInternacion(@RequestBody FiltroInternacionDTO internacion);
+	public List<VeterinariaDTO> findByInternacion(@RequestParam("internacion") String internacion);
 }

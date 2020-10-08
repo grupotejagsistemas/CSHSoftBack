@@ -19,8 +19,8 @@ public class VeterinariaServiceDTOImpl implements VeterinariaServiceDTO {
 	private VeterinariaService veterinariaService;
 
 	@Override
-	public VeterinariaDTO findById(int id) {
-		return this.getVeterinariaDTO(veterinariaService.findById((long) id));
+	public VeterinariaDTO findById(Long id) {
+		return this.getVeterinariaDTO(veterinariaService.findById(id));
 	}
 
 	public VeterinariaDTO getVeterinariaDTO(Veterinaria entity) {
@@ -37,11 +37,10 @@ public class VeterinariaServiceDTOImpl implements VeterinariaServiceDTO {
 		return newveterinaria;
 	}
 
-	@Override
 	public List<VeterinariaDTO> getListaVeterinariaDTO(List<Veterinaria> listaVeterinarias) {
 		List<VeterinariaDTO> listaVeterinariasDto = new ArrayList<VeterinariaDTO>();
 		for (Veterinaria veterinaria : listaVeterinarias) {
-			listaVeterinariasDto.add(this.getListaVeterinariaDTO(veterinaria));
+			listaVeterinariasDto.add(this.getVeterinariaDTO(veterinaria));
 		}
 		return listaVeterinariasDto;
 	}
@@ -61,11 +60,6 @@ public class VeterinariaServiceDTOImpl implements VeterinariaServiceDTO {
 	}
 
 	@Override
-	public VeterinariaDTO findById(Long id) {
-		return this.getListaVeterinariaDTO(veterinariaService.findById(id));
-	}
-
-	@Override
 	public void update(Long id, VeterinariaPostDTO veterinaria) {
 		Veterinaria newVeterinaria = new Veterinaria();
 
@@ -81,7 +75,6 @@ public class VeterinariaServiceDTOImpl implements VeterinariaServiceDTO {
 	}
 
 	@Override
-
 	public void deleteById(Long id) {
 		veterinariaService.deleteById(id);
 
@@ -94,19 +87,12 @@ public class VeterinariaServiceDTOImpl implements VeterinariaServiceDTO {
 
 	@Override
 	public List<VeterinariaDTO> getVeterinarias() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.getListaVeterinariaDTO(veterinariaService.getVeterinarias());
 	}
 
 	@Override
 	public List<VeterinariaDTO> findByRazonSocial(String razonsocial) {
 		return this.getListaVeterinariaDTO(veterinariaService.findByRazonSocial(razonsocial));
-	}
-
-	@Override
-	public VeterinariaDTO getListaVeterinariaDTO(Veterinaria veterinaria2) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

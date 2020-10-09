@@ -11,6 +11,7 @@ import com.tejag.cshsoftware.apirest.models.dto.MascotaEstadoDTO;
 import com.tejag.cshsoftware.apirest.models.dto.MascotaPostDTO;
 import com.tejag.cshsoftware.apirest.models.entity.Mascota;
 import com.tejag.cshsoftware.apirest.models.entity.MascotaEstado;
+import com.tejag.cshsoftware.apirest.models.service.EstadoMascotaService;
 import com.tejag.cshsoftware.apirest.models.service.MascotaService;
 import com.tejag.cshsoftware.apirest.models.service.dto.MascotaServiceDTO;
 
@@ -19,6 +20,9 @@ public class MascotaServiceDTOImpl implements MascotaServiceDTO {
 
 	@Autowired
 	private MascotaService service;
+	
+	@Autowired
+	private EstadoMascotaService estadoService;
 
 	@Override
 	public List<MascotaDTO> getMascotas() {
@@ -78,8 +82,11 @@ public class MascotaServiceDTOImpl implements MascotaServiceDTO {
 		newMascota.setLugarRescate(mascota.getLugarRescate());
 		newMascota.setDescripcionRescate(mascota.getDescripcionRescate());
 		newMascota.setEspecie(mascota.getEspecie());
-		newMascota.setEstado_mascota(this.getEstadoDTO(mascota.getEstadoMascota()));
-
+		
+		MascotaEstado estado = new MascotaEstado();
+		estado = estadoService.findById((long) mascota.getEstado());
+		
+		newMascota.setEstado_mascota(estado);
 		service.save(newMascota);
 
 	}
@@ -107,7 +114,10 @@ public class MascotaServiceDTOImpl implements MascotaServiceDTO {
 		newMascota.setLugarRescate(mascota.getLugarRescate());
 		newMascota.setDescripcionRescate(mascota.getDescripcionRescate());
 		newMascota.setEspecie(mascota.getEspecie());
-		newMascota.setEstado_mascota(this.getEstadoDTO(mascota.getEstadoMascota()));
+		MascotaEstado estado = new MascotaEstado();
+		estado = estadoService.findById((long) mascota.getEstado());
+		
+		newMascota.setEstado_mascota(estado);
 
 		service.update(newMascota);
 

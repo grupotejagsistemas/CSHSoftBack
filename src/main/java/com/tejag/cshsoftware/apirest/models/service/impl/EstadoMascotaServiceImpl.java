@@ -25,4 +25,11 @@ public class EstadoMascotaServiceImpl implements EstadoMascotaService {
 		return (List<MascotaEstado>) estadoMascotaDao.findAll();
 	}
 
+	@Override
+	@Transactional
+	public MascotaEstado findById(Long id) {
+		// TODO Auto-generated method stub
+		return estadoMascotaDao.findById(id).orElseThrow();
+	}
+
 }

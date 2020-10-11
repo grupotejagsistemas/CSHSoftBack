@@ -2,6 +2,18 @@ package com.tejag.cshsoftware.apirest.models.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "entrevista_adoptantes")
 public class EntrevistaAdoptante implements Serializable {
 
 	/**
@@ -9,29 +21,78 @@ public class EntrevistaAdoptante implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_entrevista_adoptante;
-	private Long id_adoptante;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "adoptantes_id")
+	private Adoptante adoptantes;
+
+	@Column(nullable = false, length = 255)
 	private String respuesta1;
+
+	@Column(nullable = false, length = 255)
 	private String respuesta2;
+
+	@Column(nullable = false, length = 255)
 	private String respuesta3;
+
+	@Column(nullable = false, length = 255)
 	private String respuesta4;
+
+	@Column(nullable = false, length = 255)
 	private String respuesta5;
+
+	@Column(nullable = false, length = 255)
 	private String respuesta6;
+
+	@Column(nullable = false, length = 255)
 	private String respuesta7;
+
+	@Column(nullable = false, length = 255)
 	private String respuesta8;
+
+	@Column(nullable = false, length = 255)
 	private String respuesta9;
+
+	@Column(nullable = false, length = 255)
 	private String respuesta10;
+
+	@Column(nullable = false, length = 255)
 	private String respuesta11;
+
+	@Column(nullable = false, length = 255)
 	private String respuesta12;
+
+	@Column(nullable = false, length = 255)
 	private String respuesta13;
+
+	@Column(nullable = false, length = 255)
 	private String respuesta14;
+
+	@Column(nullable = false, length = 255)
 	private String respuesta15;
+
+	@Column(nullable = false, length = 255)
 	private String respuesta16;
+
+	@Column(nullable = false, length = 255)
 	private String respuesta17;
+
+	@Column(nullable = false, length = 255)
 	private String respuesta18;
+
+	@Column(nullable = false, length = 255)
 	private String respuesta19;
+
+	@Column(nullable = false, length = 255)
 	private String respuesta20;
+
+	@Column(nullable = false, length = 255)
 	private String respuesta21;
+
+	@Column(nullable = false, length = 255)
 	private String respuesta22;
 
 	public EntrevistaAdoptante() {
@@ -46,12 +107,12 @@ public class EntrevistaAdoptante implements Serializable {
 		this.id_entrevista_adoptante = id_entrevista_adoptante;
 	}
 
-	public Long getId_adoptante() {
-		return id_adoptante;
+	public Adoptante getAdoptantes() {
+		return adoptantes;
 	}
 
-	public void setId_adoptante(Long id_adoptante) {
-		this.id_adoptante = id_adoptante;
+	public void setAdoptantes(Adoptante adoptantes) {
+		this.adoptantes = adoptantes;
 	}
 
 	public String getRespuesta1() {

@@ -10,8 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "estado_adoptantes")
-public class EstadoAdoptante implements Serializable {
+@Table(name = "tipo_movimientos")
+public class TipoMovimiento implements Serializable {
 
 	/**
 	 * 
@@ -20,21 +20,21 @@ public class EstadoAdoptante implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_estado_adoptante;
+	private Long id_tipo_movimiento;
 	
-	@Column(nullable = false, length = 50)
+	@Column(name = "descripcion", nullable = false)
 	private String descripcion;
-	
-	public EstadoAdoptante() {
-		
+
+	public TipoMovimiento() {
+
 	}
 
-	public Long getId_estado_adoptante() {
-		return id_estado_adoptante;
+	public Long getId_tipo_movimiento() {
+		return id_tipo_movimiento;
 	}
 
-	public void setId_estado_adoptante(Long id_estado_adoptante) {
-		this.id_estado_adoptante = id_estado_adoptante;
+	public void setId_tipo_movimiento(Long id_tipo_movimiento) {
+		this.id_tipo_movimiento = id_tipo_movimiento;
 	}
 
 	public String getDescripcion() {
@@ -44,6 +44,5 @@ public class EstadoAdoptante implements Serializable {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
-	
+
 }

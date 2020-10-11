@@ -3,6 +3,19 @@ package com.tejag.cshsoftware.apirest.models.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name = "adoptantes")
 public class Adoptante implements Serializable {
 
 	/**
@@ -10,20 +23,51 @@ public class Adoptante implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_adoptante;
-	private Long id_mascota;
+
+	@ManyToOne
+	@JoinColumn(name = "mascotas_id")
+	private Mascota mascotas;
+
+	@Column(name = "numero_formulario", nullable = false)
 	private Long numeroFormulario;
+
+	@Column(nullable = false, length = 50)
 	private String nombre_completo;
+
+	@Column(name = "fecha_nacimiento", nullable = false)
+	@Temporal(TemporalType.DATE)
 	private Date fecha_nacimiento;
+
+	@Column(nullable = false, length = 50)
 	private String domicilio;
+
+	@Column(nullable = false, length = 50)
 	private String barrio;
+
+	@Column(nullable = false, length = 50)
 	private String telefono;
+
+	@Column(nullable = false, length = 50)
 	private String email;
+
+	@Column(nullable = false, length = 50)
 	private String facebook;
+
+	@Column(nullable = false, length = 50)
 	private String instagram;
+
+	@Column(nullable = false, length = 100)
 	private String situacionLaboral;
+
+	@Column(nullable = false, length = 100)
 	private String observaciones;
-	private Long id_estado_adoptante;
+
+	@ManyToOne
+	@JoinColumn(name = "estado_adoptantes_id")
+	private EstadoAdoptante estado_adoptantes;
 
 	public Adoptante() {
 
@@ -37,12 +81,20 @@ public class Adoptante implements Serializable {
 		this.id_adoptante = id_adoptante;
 	}
 
-	public Long getId_mascota() {
-		return id_mascota;
+	public Mascota getMascotas() {
+		return mascotas;
 	}
 
-	public void setId_mascota(Long id_mascota) {
-		this.id_mascota = id_mascota;
+	public void setMascotas(Mascota mascotas) {
+		this.mascotas = mascotas;
+	}
+
+	public EstadoAdoptante getEstado_adoptantes() {
+		return estado_adoptantes;
+	}
+
+	public void setEstado_adoptantes(EstadoAdoptante estado_adoptantes) {
+		this.estado_adoptantes = estado_adoptantes;
 	}
 
 	public Long getNumeroFormulario() {
@@ -131,14 +183,6 @@ public class Adoptante implements Serializable {
 
 	public void setObservaciones(String observaciones) {
 		this.observaciones = observaciones;
-	}
-
-	public Long getId_estado_adoptante() {
-		return id_estado_adoptante;
-	}
-
-	public void setId_estado_adoptante(Long id_estado_adoptante) {
-		this.id_estado_adoptante = id_estado_adoptante;
 	}
 
 }

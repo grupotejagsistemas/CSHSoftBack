@@ -6,4 +6,6 @@ public interface VeterinariaCercanaAdoptanteService {
 
 	public void create(VeterinariaCercanaAdoptante vetCercAdop);
 	
+	public void deleteByIdAdoptante(Long id);
+	
 }

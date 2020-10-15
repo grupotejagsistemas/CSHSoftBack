@@ -32,8 +32,14 @@ public class VeterinariaCercanaAdoptanteDTOServiceImpl implements VeterinariaCer
 		veterinaria.setVeterinaria_cercana_adoptante(vete);
 		Adoptante adop = adoptanteService.getById(vetCerca.getIdAdoptante());
 		veterinaria.setAdoptantes(adop);
-		
+
 		vetService.create(veterinaria);
+
+	}
+
+	@Override
+	public void deleteByIdAdoptante(Long id) {
+		vetService.deleteByIdAdoptante(id);
 
 	}
 

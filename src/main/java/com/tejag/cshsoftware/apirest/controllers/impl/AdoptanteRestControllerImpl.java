@@ -38,4 +38,15 @@ public class AdoptanteRestControllerImpl implements AdoptanteRestController {
 		return adoptanteDtoService.getByNombre(nombreCompleto);
 	}
 
+	@Override
+	public List<AdoptanteDTO> getByEstado(String estado) {
+		return adoptanteDtoService.getByEstado(estado);
+	}
+
+	@Override
+	public void update(Long id, AdoptantePostDTO adoptante) {
+		adoptanteDtoService.update(id, adoptante);
+		
+	}
+
 }

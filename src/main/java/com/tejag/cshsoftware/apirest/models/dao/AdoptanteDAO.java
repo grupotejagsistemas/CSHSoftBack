@@ -12,4 +12,8 @@ public interface AdoptanteDAO extends CrudRepository<Adoptante, Long>{
 	@Query("from Adoptante a where a.nombre_completo like %:nombreCompleto%")
 	public List<Adoptante> findByNombreCompleto(String nombreCompleto);
 	
+
+	@Query("from Adoptante a where a.estado_adoptantes.id=:idEstado")
+	public List<Adoptante> findByEstado(Long idEstado);
+	
 }

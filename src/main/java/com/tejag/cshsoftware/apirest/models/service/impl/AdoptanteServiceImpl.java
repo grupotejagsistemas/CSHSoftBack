@@ -40,4 +40,42 @@ public class AdoptanteServiceImpl implements AdoptanteService {
 		return adoptanteDao.findByNombreCompleto(nombreCompleto);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public List<Adoptante> findByEstado(String estado) {
+		int idEstado = 0;
+		
+		if(estado.contains("No")) {
+			idEstado = 2;
+		}else {
+			idEstado = 1;
+		}
+		return adoptanteDao.findByEstado((long)idEstado);
+	}
+
+	@Override
+	@Transactional
+	public Adoptante update(Adoptante adoptante) {
+		Adoptante adoptanteActual = new Adoptante();
+
+		adoptanteActual = adoptanteDao.findById(adoptante.getId_adoptante()).get();
+		if (adoptanteActual != null) {
+			adoptanteActual.setNumeroFormulario(adoptante.getNumeroFormulario());
+			adoptanteActual.setNombre_completo(adoptante.getNombre_completo());
+			adoptanteActual.setFecha_nacimiento(adoptante.getFecha_nacimiento());
+			adoptanteActual.setDomicilio(adoptante.getDomicilio());
+			adoptanteActual.setBarrio(adoptante.getBarrio());
+			adoptanteActual.setTelefono(adoptante.getTelefono());
+			adoptanteActual.setEmail(adoptante.getEmail());
+			adoptanteActual.setFacebook(adoptante.getFacebook());
+			adoptanteActual.setInstagram(adoptante.getInstagram());
+			adoptanteActual.setSituacionLaboral(adoptante.getSituacionLaboral());
+			adoptanteActual.setObservaciones(adoptante.getObservaciones());
+			adoptanteActual.setEstado_adoptantes(adoptante.getEstado_adoptantes());
+		}
+		
+		return adoptanteDao.save(adoptanteActual);
+
+	}
+
 }

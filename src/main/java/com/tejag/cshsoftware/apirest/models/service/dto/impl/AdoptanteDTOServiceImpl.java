@@ -80,6 +80,51 @@ public class AdoptanteDTOServiceImpl implements AdoptanteDTOService {
 		return this.getListaAdoptanteDTO(adoptanteService.findByNombreCompleto(nombreCompleto));
 	}
 	
+	@Override
+	public List<AdoptanteDTO> getByEstado(String estado) {
+		return this.getListaAdoptanteDTO(adoptanteService.findByEstado(estado));
+	}
+	
+	@Override
+	public void update(Long id, AdoptantePostDTO adoptante) {
+		
+		Adoptante newAdoptante = new Adoptante();
+		
+		newAdoptante.setId_adoptante(id);
+		newAdoptante.setNumeroFormulario(adoptante.getNumeroFormulario());
+		newAdoptante.setNombre_completo(adoptante.getNombreCompleto());
+		newAdoptante.setFecha_nacimiento(adoptante.getFechaNacimiento());
+		newAdoptante.setDomicilio(adoptante.getDomicilio());
+		newAdoptante.setBarrio(adoptante.getBarrio());
+		newAdoptante.setTelefono(adoptante.getCelular());
+		newAdoptante.setEmail(adoptante.getEmail());
+		newAdoptante.setFacebook(adoptante.getFacebook());
+		newAdoptante.setInstagram(adoptante.getInstagram());
+		newAdoptante.setSituacionLaboral(adoptante.getSituacionLaboral());
+		newAdoptante.setObservaciones(adoptante.getObservaciones());
+		EstadoAdoptante estado = new EstadoAdoptante();
+		estado = estadoAdoptanteService.getEstadoAdoptanteById((long) adoptante.getIdEstadoAdoptante());
+		newAdoptante.setEstado_adoptantes(estado);
+
+		Adoptante adoptanteModificado = new Adoptante();
+		adoptanteModificado = adoptanteService.update(newAdoptante);
+		if(adoptanteModificado.getId_adoptante() != null) {
+			
+			serviceVet.deleteByIdAdoptante(id);			
+			
+			List<Long> lista = adoptante.getIdVeterinaria();
+
+			if (lista.isEmpty() == false || lista != null) {
+				for (Long num : lista) {
+					VeterinariaCercanaAdoptanteDTO vetCercana = new VeterinariaCercanaAdoptanteDTO();
+					vetCercana.setIdVeterinaria(num);
+					vetCercana.setIdAdoptante(id);
+					serviceVet.create(vetCercana);
+				}
+			}
+		}
+		
+	}
 
 	// *************************************************************************************
 	// ************** Transformación DTO a Entity
@@ -143,6 +188,5 @@ public class AdoptanteDTOServiceImpl implements AdoptanteDTOService {
 		}
 		return listaAdoptanteDto;
 	}
-
 
 }

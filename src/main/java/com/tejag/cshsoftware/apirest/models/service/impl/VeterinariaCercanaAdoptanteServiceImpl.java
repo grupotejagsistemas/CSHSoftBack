@@ -21,4 +21,11 @@ public class VeterinariaCercanaAdoptanteServiceImpl implements VeterinariaCercan
 
 	}
 
+	@Override
+	@Transactional
+	public void deleteByIdAdoptante(Long id) {
+		daoInstance.deleteByIdAdoptante(id);
+
+	}
+
 }

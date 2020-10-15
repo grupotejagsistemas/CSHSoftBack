@@ -13,4 +13,9 @@ public interface AdoptanteService {
 	public List<Adoptante> getAll();
 	
 	public List<Adoptante> findByNombreCompleto(String nombreCompleto);
+	
+	public List<Adoptante> findByEstado(String estado);
+	
+	public Adoptante update(Adoptante adoptante);
+	
 }

@@ -14,4 +14,9 @@ public interface AdoptanteDTOService {
 	public List<AdoptanteDTO> getAll();
 	
 	public List<AdoptanteDTO> getByNombre(String nombreCompleto);
+	
+	public List<AdoptanteDTO> getByEstado(String estado);
+	
+	public void update(Long id, AdoptantePostDTO adoptante);
+	
 }

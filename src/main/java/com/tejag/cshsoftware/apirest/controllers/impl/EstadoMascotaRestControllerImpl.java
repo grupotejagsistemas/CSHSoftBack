@@ -11,7 +11,6 @@ import com.tejag.cshsoftware.apirest.models.service.dto.EstadoMascotaDTOService;
 
 @CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
-
 public class EstadoMascotaRestControllerImpl implements EstadoMascotaRestController {
 	
 	@Autowired

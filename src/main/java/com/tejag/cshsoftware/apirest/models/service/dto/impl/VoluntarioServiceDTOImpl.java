@@ -109,7 +109,7 @@ public class VoluntarioServiceDTOImpl implements VoluntarioServiceDTO {
 
 		List<Long> lista = voluntario.getIdveterinarias();
 
-		if (voluntario.getIdveterinarias().isEmpty() || voluntario.getIdveterinarias() != null) {
+		if (voluntario.getIdveterinarias().isEmpty() == false || voluntario.getIdveterinarias() != null) {
 			for (Long num : lista) {
 				VeterinariaCercanaDTO vetCercana = new VeterinariaCercanaDTO();
 				vetCercana.setIdVeterinaria(num);

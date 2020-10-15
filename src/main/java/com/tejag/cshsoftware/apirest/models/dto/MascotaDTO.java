@@ -7,7 +7,7 @@ public class MascotaDTO {
 	private Long id;
 	private String nombre;
 	private Date fechaNacimiento;
-	private String particularidadesFisica;
+	private String particularidadesFisicas;
 	private String sexo;
 	private String fotoMascota;
 	private Date fechaRescate;
@@ -44,12 +44,12 @@ public class MascotaDTO {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	public String getParticularidadesFisica() {
-		return particularidadesFisica;
+	public String getParticularidadesFisicas() {
+		return particularidadesFisicas;
 	}
 
-	public void setParticularidadesFisica(String particularidadesFisica) {
-		this.particularidadesFisica = particularidadesFisica;
+	public void setParticularidadesFisicas(String particularidadesFisicas) {
+		this.particularidadesFisicas = particularidadesFisicas;
 	}
 
 	public String getSexo() {

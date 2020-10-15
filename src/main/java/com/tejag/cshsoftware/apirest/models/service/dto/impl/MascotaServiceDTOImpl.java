@@ -35,7 +35,7 @@ public class MascotaServiceDTOImpl implements MascotaServiceDTO {
 			mascotaDto.setId(entity.getId());
 			mascotaDto.setNombre(entity.getNombre());
 			mascotaDto.setFechaNacimiento(entity.getFechaNacimieto());
-			mascotaDto.setParticularidadesFisica(entity.getParticularidadesFisica());
+			mascotaDto.setParticularidadesFisicas(entity.getParticularidadesFisica());
 			mascotaDto.setSexo(entity.getSexo());
 			mascotaDto.setFotoMascota(entity.getFotoMascota());
 			mascotaDto.setFechaRescate(entity.getFechaRescate());

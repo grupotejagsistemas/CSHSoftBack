@@ -53,7 +53,7 @@ public class VeterinariaServiceDTOImpl implements VeterinariaServiceDTO {
 		newveterinaria.setHorarioAtencion(veterinaria.getHorarioAtencion());
 		newveterinaria.setDireccion(veterinaria.getDireccion());
 		newveterinaria.setInternacion(veterinaria.getInternacion());
-		newveterinaria.setObservaciones(veterinaria.getObservaciones());
+		newveterinaria.setObservaciones(veterinaria.getObservacion());
 
 		veterinariaService.save(newveterinaria);
 
@@ -68,7 +68,7 @@ public class VeterinariaServiceDTOImpl implements VeterinariaServiceDTO {
 		newVeterinaria.setHorarioAtencion(veterinaria.getHorarioAtencion());
 		newVeterinaria.setDireccion(veterinaria.getDireccion());
 		newVeterinaria.setInternacion(veterinaria.getInternacion());
-		newVeterinaria.setObservaciones(veterinaria.getObservaciones());
+		newVeterinaria.setObservaciones(veterinaria.getObservacion());
 
 		veterinariaService.update(newVeterinaria);
 

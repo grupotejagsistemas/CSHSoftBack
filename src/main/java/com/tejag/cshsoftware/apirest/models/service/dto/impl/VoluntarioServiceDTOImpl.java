@@ -109,7 +109,7 @@ public class VoluntarioServiceDTOImpl implements VoluntarioServiceDTO {
 
 		List<Long> lista = voluntario.getIdveterinarias();
 
-		if (voluntario.getIdveterinarias().isEmpty() || voluntario.getIdveterinarias() != null) {
+		if (voluntario.getIdveterinarias().isEmpty() == false || voluntario.getIdveterinarias() != null) {
 			for (Long num : lista) {
 				VeterinariaCercanaDTO vetCercana = new VeterinariaCercanaDTO();
 				vetCercana.setIdVeterinaria(num);
@@ -133,18 +133,21 @@ public class VoluntarioServiceDTOImpl implements VoluntarioServiceDTO {
 		newVoluntario.setTraslado(voluntario.getTraslado());
 		newVoluntario.setPresencial(voluntario.getPresencial());
 
-		service.update(newVoluntario);
+		Voluntario vol = new Voluntario();
+		vol = service.update(newVoluntario);
+		if (vol.getIdVoluntario() != null) {
 
-		serviceVet.deleteByIdVoluntario(idVoluntario);
+			serviceVet.deleteByIdVoluntario(idVoluntario);
 
-		List<Long> lista = voluntario.getIdveterinarias();
+			List<Long> lista = voluntario.getIdveterinarias();
 
-		if (voluntario.getIdveterinarias().isEmpty() || voluntario.getIdveterinarias() != null) {
-			for (Long num : lista) {
-				VeterinariaCercanaDTO vetCercana = new VeterinariaCercanaDTO();
-				vetCercana.setIdVeterinaria(num);
-				vetCercana.setIdVoluntario(idVoluntario);
-				serviceVet.create(vetCercana);
+			if (voluntario.getIdveterinarias().isEmpty() || voluntario.getIdveterinarias() != null) {
+				for (Long num : lista) {
+					VeterinariaCercanaDTO vetCercana = new VeterinariaCercanaDTO();
+					vetCercana.setIdVeterinaria(num);
+					vetCercana.setIdVoluntario(idVoluntario);
+					serviceVet.create(vetCercana);
+				}
 			}
 		}
 

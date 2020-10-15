@@ -19,7 +19,7 @@ public class MascotaEstado implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(nullable = false, length = 15)
+	@Column(nullable = false, length = 22)
 	private String descripcion;
 
 //	@OneToMany(mappedBy = "estado_mascota", cascade = CascadeType.ALL)

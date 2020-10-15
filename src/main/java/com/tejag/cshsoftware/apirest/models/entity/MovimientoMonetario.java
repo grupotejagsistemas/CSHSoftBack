@@ -97,4 +97,7 @@ public class MovimientoMonetario implements Serializable {
 		this.autor = autor;
 	}
 
+	
+	
+
 }

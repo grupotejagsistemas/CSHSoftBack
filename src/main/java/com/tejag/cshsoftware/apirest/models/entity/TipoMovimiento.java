@@ -45,4 +45,6 @@ public class TipoMovimiento implements Serializable {
 		this.descripcion = descripcion;
 	}
 
+	
+
 }

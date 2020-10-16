@@ -15,16 +15,12 @@ import com.tejag.cshsoftware.apirest.models.dto.MovimientoMonetarioPostDTO;
 
 import com.tejag.cshsoftware.apirest.models.service.dto.MovimientoMonetarioDTOService;
 
-
 @CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
-public class MovimientoMonetarioRestControllerImpl implements MovimientoMonetarioRestController{
-	
+public class MovimientoMonetarioRestControllerImpl implements MovimientoMonetarioRestController {
+
 	@Autowired
 	private MovimientoMonetarioDTOService movimientomonetarioServiceDto;
-
-	
-
 
 	@Override
 	public List<MovimientoMonetarioDTO> getMovimientoMonetarios() {
@@ -42,12 +38,4 @@ public class MovimientoMonetarioRestControllerImpl implements MovimientoMonetari
 		movimientomonetarioServiceDto.save(movimientomonetarioPost);
 	}
 
-
-
-	
 }
-
-	
-
-	
-	

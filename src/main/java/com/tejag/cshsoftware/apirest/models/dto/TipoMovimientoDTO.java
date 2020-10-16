@@ -1,18 +1,19 @@
 package com.tejag.cshsoftware.apirest.models.dto;
 
 public class TipoMovimientoDTO {
-	
-	private Long Id;
+
+	private Long id;
 	private String descripcion;
-	
-	public TipoMovimientoDTO() {}
+
+	public TipoMovimientoDTO() {
+	}
 
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getDescripcion() {

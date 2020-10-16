@@ -6,8 +6,8 @@ import com.tejag.cshsoftware.apirest.models.entity.TipoMovimiento;
 
 public interface TipoMovimientoService {
 
-	List<TipoMovimiento> getTipoMovimientos();
+	public List<TipoMovimiento> getTipoMovimientos();
 
-	TipoMovimiento findById(Long id);
+	public TipoMovimiento findById(Long id);
 
 }

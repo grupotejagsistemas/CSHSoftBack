@@ -3,13 +3,14 @@ package com.tejag.cshsoftware.apirest.models.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tejag.cshsoftware.apirest.models.dao.MovimientoMonetarioDAO;
 import com.tejag.cshsoftware.apirest.models.entity.MovimientoMonetario;
 import com.tejag.cshsoftware.apirest.models.service.MovimientoMonetarioService;
 
-
+@Service
 public class MovimientoMonetarioServiceimpl implements MovimientoMonetarioService {
 	@Autowired
 	private MovimientoMonetarioDAO movimientomonetarioDao;

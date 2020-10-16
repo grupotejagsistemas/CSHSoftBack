@@ -5,6 +5,7 @@ import java.util.List;
 import com.tejag.cshsoftware.apirest.models.entity.MovimientoMonetario;
 
 public interface MovimientoMonetarioService {
+	
 	public MovimientoMonetario save(MovimientoMonetario movimientomonetario);
 
 	public List<MovimientoMonetario> getMovimientoMonetarios();

@@ -4,13 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.tejag.cshsoftware.apirest.models.dto.TipoMovimientoDTO;
 import com.tejag.cshsoftware.apirest.models.entity.TipoMovimiento;
 import com.tejag.cshsoftware.apirest.models.service.TipoMovimientoService;
 import com.tejag.cshsoftware.apirest.models.service.dto.TipoMovimientoDTOService;
 
+@Service
 public class TipoMovimientoDTOServiceImpl implements TipoMovimientoDTOService{
+	
 	@Autowired
 	private TipoMovimientoService TipoMovimientoService;
 

@@ -3,12 +3,15 @@ package com.tejag.cshsoftware.apirest.models.dto;
 import java.util.Date;
 
 public class MovimientoRecursoPostDTO {
-	private Date fecha;
-	private String donante;
+
 	private String descripcion;
+	private String donante;
 	private String cantidad;
-	
-	public MovimientoRecursoPostDTO() {}
+	private Long idTipoMovimiento;
+	private Date fecha;
+
+	public MovimientoRecursoPostDTO() {
+	}
 
 	public Date getFecha() {
 		return fecha;
@@ -42,5 +45,12 @@ public class MovimientoRecursoPostDTO {
 		this.cantidad = cantidad;
 	}
 
+	public Long getIdTipoMovimiento() {
+		return idTipoMovimiento;
+	}
+
+	public void setIdTipoMovimiento(Long idTipoMovimiento) {
+		this.idTipoMovimiento = idTipoMovimiento;
+	}
 
 }

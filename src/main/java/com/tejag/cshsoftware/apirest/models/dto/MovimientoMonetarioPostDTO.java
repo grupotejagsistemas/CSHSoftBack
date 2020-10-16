@@ -3,22 +3,23 @@ package com.tejag.cshsoftware.apirest.models.dto;
 import java.util.Date;
 
 public class MovimientoMonetarioPostDTO {
-	private String tipoMovimiento;
+	
+	private Long idTipoMovimiento;
 	private Double monto;
 	private String medio;
 	private String autor;
 	private Date fecha;
-	
+
 	public MovimientoMonetarioPostDTO() {
 
 	}
 
-	public String getTipoMovimiento() {
-		return tipoMovimiento;
+	public Long getIdTipoMovimiento() {
+		return idTipoMovimiento;
 	}
 
-	public void setTipoMovimiento(String tipoMovimiento) {
-		this.tipoMovimiento = tipoMovimiento;
+	public void setIdTipoMovimiento(Long idTipoMovimiento) {
+		this.idTipoMovimiento = idTipoMovimiento;
 	}
 
 	public Double getMonto() {

@@ -4,7 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 public class AdoptanteDTO {
-
+	
+	private Long id;
 	private Long numeroFormulario;
 	private String nombreCompleto;
 	private Date fechaNacimiento;
@@ -21,6 +22,14 @@ public class AdoptanteDTO {
 
 	public AdoptanteDTO() {
 
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Long getNumeroFormulario() {

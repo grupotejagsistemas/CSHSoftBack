@@ -56,8 +56,8 @@ public class MascotaRestControllerImpl implements MascotaRestController {
 	}
 
 	@Override
-	public List<MascotaDTO> findBySexo(FiltroSexoDTO sexo) {
-		return serviceDto.findBySexo(sexo.getSexo());
+	public List<MascotaDTO> findBySexo(String sexo) {
+		return serviceDto.findBySexo(sexo);
 	}
 	
 }

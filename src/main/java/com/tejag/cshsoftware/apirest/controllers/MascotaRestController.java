@@ -37,6 +37,6 @@ public interface MascotaRestController {
 	
 	
 	@GetMapping("/mascotas/filtrarSexo")
-	public List<MascotaDTO> findBySexo(@RequestBody FiltroSexoDTO sexo);
+	public List<MascotaDTO> findBySexo(@RequestParam("sexo") String sexo);
 
 }

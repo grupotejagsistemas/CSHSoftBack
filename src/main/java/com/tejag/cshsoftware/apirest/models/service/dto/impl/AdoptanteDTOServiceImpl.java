@@ -147,6 +147,7 @@ public class AdoptanteDTOServiceImpl implements AdoptanteDTOService {
 	public AdoptanteDTO getAdoptanteDTO(Adoptante entity) {
 		AdoptanteDTO adoptante = new AdoptanteDTO();
 		if (entity != null) {
+			adoptante.setId(entity.getId_adoptante());
 			adoptante.setNumeroFormulario(entity.getNumeroFormulario());
 			adoptante.setNombreCompleto(entity.getNombre_completo());
 			adoptante.setFechaNacimiento(entity.getFecha_nacimiento());

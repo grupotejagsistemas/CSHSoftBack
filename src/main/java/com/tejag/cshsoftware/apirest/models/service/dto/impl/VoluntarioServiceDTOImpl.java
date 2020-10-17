@@ -164,8 +164,8 @@ public class VoluntarioServiceDTOImpl implements VoluntarioServiceDTO {
 	}
 
 	@Override
-	public List<VoluntarioDTO> findByVoluntarioppt(String filtrovoluntarioptt) {
-		return this.getListaVoluntarioDTO(service.findByVoluntarioppt(filtrovoluntarioptt));
+	public List<VoluntarioDTO> findByVoluntarioppt(String filtro) {
+		return this.getListaVoluntarioDTO(service.findByVoluntarioppt(filtro));
 	}
 
 }

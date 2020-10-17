@@ -9,14 +9,17 @@ import org.springframework.stereotype.Service;
 import com.tejag.cshsoftware.apirest.models.dto.AdoptanteDTO;
 import com.tejag.cshsoftware.apirest.models.dto.AdoptantePostDTO;
 import com.tejag.cshsoftware.apirest.models.dto.EstadoAdoptanteDTO;
+import com.tejag.cshsoftware.apirest.models.dto.MascotaDTO;
 import com.tejag.cshsoftware.apirest.models.dto.VeterinariaCercanaAdoptanteDTO;
 import com.tejag.cshsoftware.apirest.models.dto.VeterinariaDTO;
 import com.tejag.cshsoftware.apirest.models.entity.Adoptante;
 import com.tejag.cshsoftware.apirest.models.entity.EstadoAdoptante;
+import com.tejag.cshsoftware.apirest.models.entity.Mascota;
 import com.tejag.cshsoftware.apirest.models.entity.Veterinaria;
 import com.tejag.cshsoftware.apirest.models.entity.VeterinariaCercanaAdoptante;
 import com.tejag.cshsoftware.apirest.models.service.AdoptanteService;
 import com.tejag.cshsoftware.apirest.models.service.EstadoAdoptanteService;
+import com.tejag.cshsoftware.apirest.models.service.MascotaService;
 import com.tejag.cshsoftware.apirest.models.service.dto.AdoptanteDTOService;
 import com.tejag.cshsoftware.apirest.models.service.dto.VeterinariaCercanaAdoptanteDTOService;
 
@@ -32,6 +35,9 @@ public class AdoptanteDTOServiceImpl implements AdoptanteDTOService {
 	@Autowired
 	private VeterinariaCercanaAdoptanteDTOService serviceVet;
 
+	@Autowired
+	private MascotaService mascotaService;
+
 	@Override
 	public void create(AdoptantePostDTO adoptante) {
 		Adoptante newAdoptante = new Adoptante();
@@ -46,6 +52,9 @@ public class AdoptanteDTOServiceImpl implements AdoptanteDTOService {
 		newAdoptante.setInstagram(adoptante.getInstagram());
 		newAdoptante.setSituacionLaboral(adoptante.getSituacionLaboral());
 		newAdoptante.setObservaciones(adoptante.getObservaciones());
+		Mascota mascota = new Mascota();
+		mascota = mascotaService.findById(adoptante.getIdMascota());
+		newAdoptante.setMascotas(mascota);
 		EstadoAdoptante estado = new EstadoAdoptante();
 		estado = estadoAdoptanteService.getEstadoAdoptanteById((long) adoptante.getIdEstadoAdoptante());
 		newAdoptante.setEstado_adoptantes(estado);
@@ -64,7 +73,7 @@ public class AdoptanteDTOServiceImpl implements AdoptanteDTOService {
 		}
 
 	}
-	
+
 	@Override
 	public List<AdoptanteDTO> getAll() {
 		return this.getListaAdoptanteDTO(adoptanteService.getAll());
@@ -74,22 +83,22 @@ public class AdoptanteDTOServiceImpl implements AdoptanteDTOService {
 	public AdoptanteDTO getById(Long id) {
 		return this.getAdoptanteDTO(adoptanteService.getById(id));
 	}
-	
+
 	@Override
 	public List<AdoptanteDTO> getByNombre(String nombreCompleto) {
 		return this.getListaAdoptanteDTO(adoptanteService.findByNombreCompleto(nombreCompleto));
 	}
-	
+
 	@Override
 	public List<AdoptanteDTO> getByEstado(String estado) {
 		return this.getListaAdoptanteDTO(adoptanteService.findByEstado(estado));
 	}
-	
+
 	@Override
 	public void update(Long id, AdoptantePostDTO adoptante) {
-		
+
 		Adoptante newAdoptante = new Adoptante();
-		
+
 		newAdoptante.setId_adoptante(id);
 		newAdoptante.setNumeroFormulario(adoptante.getNumeroFormulario());
 		newAdoptante.setNombre_completo(adoptante.getNombreCompleto());
@@ -102,16 +111,20 @@ public class AdoptanteDTOServiceImpl implements AdoptanteDTOService {
 		newAdoptante.setInstagram(adoptante.getInstagram());
 		newAdoptante.setSituacionLaboral(adoptante.getSituacionLaboral());
 		newAdoptante.setObservaciones(adoptante.getObservaciones());
+		Mascota mascota = new Mascota();
+		mascota = mascotaService.findById(adoptante.getIdMascota());
+		newAdoptante.setMascotas(mascota);
+
 		EstadoAdoptante estado = new EstadoAdoptante();
 		estado = estadoAdoptanteService.getEstadoAdoptanteById((long) adoptante.getIdEstadoAdoptante());
 		newAdoptante.setEstado_adoptantes(estado);
 
 		Adoptante adoptanteModificado = new Adoptante();
 		adoptanteModificado = adoptanteService.update(newAdoptante);
-		if(adoptanteModificado.getId_adoptante() != null) {
-			
-			serviceVet.deleteByIdAdoptante(id);			
-			
+		if (adoptanteModificado.getId_adoptante() != null) {
+
+			serviceVet.deleteByIdAdoptante(id);
+
 			List<Long> lista = adoptante.getIdVeterinaria();
 
 			if (lista.isEmpty() == false || lista != null) {
@@ -123,7 +136,7 @@ public class AdoptanteDTOServiceImpl implements AdoptanteDTOService {
 				}
 			}
 		}
-		
+
 	}
 
 	// *************************************************************************************
@@ -144,6 +157,8 @@ public class AdoptanteDTOServiceImpl implements AdoptanteDTOService {
 			adoptante.setFacebook(entity.getFacebook());
 			adoptante.setInstagram(entity.getInstagram());
 			adoptante.setSituacionLaboral(entity.getSituacionLaboral());
+			adoptante.setMascotaInteresada(entity.getMascotas().getNombre());
+			adoptante.setEstado_adoptante(entity.getEstado_adoptantes().getDescripcion());
 
 			List<VeterinariaCercanaAdoptante> listaVet = entity.getVeterinarias_cercanas_adoptantes();
 			if (listaVet != null) {
@@ -156,10 +171,18 @@ public class AdoptanteDTOServiceImpl implements AdoptanteDTOService {
 			}
 
 			adoptante.setObservaciones(entity.getObservaciones());
-			adoptante.setEstado_adoptante(this.getEstadoAdoptanteDTO(entity.getEstado_adoptantes()));
+			adoptante.setEstado_adoptante(entity.getEstado_adoptantes().getDescripcion());
 		}
 
 		return adoptante;
+	}
+
+	public MascotaDTO getMascotaDto(Mascota entity) {
+		MascotaDTO mascotaDto = new MascotaDTO();
+		if (entity != null) {
+			mascotaDto.setNombre(entity.getNombre());
+		}
+		return mascotaDto;
 	}
 
 	public VeterinariaDTO getVeterinariaDTO(Veterinaria entity) {
@@ -178,7 +201,7 @@ public class AdoptanteDTOServiceImpl implements AdoptanteDTOService {
 		}
 		return estadoDto;
 	}
-	
+
 	public List<AdoptanteDTO> getListaAdoptanteDTO(List<Adoptante> listaAdoptantes) {
 		List<AdoptanteDTO> listaAdoptanteDto = new ArrayList<AdoptanteDTO>();
 		if (listaAdoptantes != null) {

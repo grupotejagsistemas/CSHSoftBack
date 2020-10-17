@@ -17,11 +17,22 @@ public class AdoptanteDTO {
 	private String situacionLaboral;
 	private List<VeterinariaDTO> veterinaria_cercana;
 	private String observaciones;
-	private EstadoAdoptanteDTO estado_adoptante;
+//	private EstadoAdoptanteDTO estado_adoptante;
+//	private MascotaDTO mascotaInteresada;
+	private String estado_adoptante;
+	private String mascotaInteresada;
 
 	public AdoptanteDTO() {
 
 	}
+
+//	public MascotaDTO getMascotaInteresada() {
+//		return mascotaInteresada;
+//	}
+//
+//	public void setMascotaInteresada(MascotaDTO mascotaInteresada) {
+//		this.mascotaInteresada = mascotaInteresada;
+//	}
 
 	public Long getNumeroFormulario() {
 		return numeroFormulario;
@@ -119,12 +130,28 @@ public class AdoptanteDTO {
 		this.observaciones = observaciones;
 	}
 
-	public EstadoAdoptanteDTO getEstado_adoptante() {
+	public String getEstado_adoptante() {
 		return estado_adoptante;
 	}
 
-	public void setEstado_adoptante(EstadoAdoptanteDTO estado_adoptante) {
+	public void setEstado_adoptante(String estado_adoptante) {
 		this.estado_adoptante = estado_adoptante;
 	}
+
+	public String getMascotaInteresada() {
+		return mascotaInteresada;
+	}
+
+	public void setMascotaInteresada(String mascotaInteresada) {
+		this.mascotaInteresada = mascotaInteresada;
+	}
+
+//	public EstadoAdoptanteDTO getEstado_adoptante() {
+//		return estado_adoptante;
+//	}
+//
+//	public void setEstado_adoptante(EstadoAdoptanteDTO estado_adoptante) {
+//		this.estado_adoptante = estado_adoptante;
+//	}
 
 }

@@ -51,7 +51,7 @@ public interface VoluntarioServiceDTO {
 	 * @param transito
 	 * @return voluntario
 	 */
-	public List<VoluntarioDTO> findByVoluntarioppt(String filtrovoluntarioptt);
+	public List<VoluntarioDTO> findByVoluntarioppt(String filtro);
 	
 }
 

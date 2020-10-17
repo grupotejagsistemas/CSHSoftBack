@@ -1,17 +1,12 @@
 package com.tejag.cshsoftware.apirest.controllers.impl;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.tejag.cshsoftware.apirest.controllers.VoluntarioRestController;
-import com.tejag.cshsoftware.apirest.models.dto.FiltroVoluntarioPTT;
-//import com.tejag.cshsoftware.apirest.models.dto.FiltroNombreDTO;
-//import com.tejag.cshsoftware.apirest.models.dto.FiltroSexoDTO;
 import com.tejag.cshsoftware.apirest.models.dto.VoluntarioDTO;
 import com.tejag.cshsoftware.apirest.models.dto.VoluntarioPostDTO;
 import com.tejag.cshsoftware.apirest.models.service.dto.VoluntarioServiceDTO;
@@ -57,18 +52,8 @@ public class VoluntarioRestControllerImpl implements VoluntarioRestController {
 	}
 
 	@Override
-	public List<VoluntarioDTO> findByVoluntarioppt(String filtrovoluntarioptt) {
-		return serviceDto.findByVoluntarioppt(filtrovoluntarioptt);
+	public List<VoluntarioDTO> findByVoluntarioppt(String filtro) {
+		return serviceDto.findByVoluntarioppt(filtro);
 	}
 
-	@Override
-	public List<VoluntarioDTO> findByVoluntarioppt(FiltroVoluntarioPTT filtrovoluntarioptt) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	
-	}
-
-
+}

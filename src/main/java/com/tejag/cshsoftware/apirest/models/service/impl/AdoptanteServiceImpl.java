@@ -72,6 +72,7 @@ public class AdoptanteServiceImpl implements AdoptanteService {
 			adoptanteActual.setSituacionLaboral(adoptante.getSituacionLaboral());
 			adoptanteActual.setObservaciones(adoptante.getObservaciones());
 			adoptanteActual.setEstado_adoptantes(adoptante.getEstado_adoptantes());
+			adoptanteActual.setMascotas(adoptante.getMascotas());
 		}
 		
 		return adoptanteDao.save(adoptanteActual);

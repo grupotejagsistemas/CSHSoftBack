@@ -5,6 +5,7 @@ import java.util.List;
 
 public class AdoptantePostDTO {
 
+	private Long idMascota;
 	private Long numeroFormulario;
 	private String nombreCompleto;
 	private Date fechaNacimiento;
@@ -21,6 +22,14 @@ public class AdoptantePostDTO {
 
 	public AdoptantePostDTO() {
 
+	}
+
+	public Long getIdMascota() {
+		return idMascota;
+	}
+
+	public void setIdMascota(Long idMascota) {
+		this.idMascota = idMascota;
 	}
 
 	public Long getNumeroFormulario() {

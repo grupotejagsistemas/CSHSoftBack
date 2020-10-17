@@ -11,11 +11,13 @@ public interface VoluntarioDAO extends CrudRepository<Voluntario, Long> {
 
 	public List<Voluntario> findByNombreCompletoIgnoreCaseLike(String nombre);
 	
-	@Query("from Voluntario v where v.transito=s")
-	public List<Voluntario> filtrarTransito(); //filtro = Transito - Presencial - Traslado
-	@Query("from Voluntario v where v.presencial=s")
-	public List<Voluntario> filtrarPresencial();
-	@Query("from Voluntario v where v.traslado=s")
-	public List<Voluntario> filtrarTraslado();
+	@Query("from Voluntario v where v.transito=:s")
+	public List<Voluntario> filtrarTransito(String s);
+	
+	@Query("from Voluntario v where v.presencial=:s")
+	public List<Voluntario> filtrarPresencial(String s);
+	
+	@Query("from Voluntario v where v.traslado=:s")
+	public List<Voluntario> filtrarTraslado(String s);
 	
 }

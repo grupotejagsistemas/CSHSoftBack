@@ -29,7 +29,7 @@ public class VoluntarioServiceImpl implements VoluntarioService {
 	@Override
 	@Transactional(readOnly = true)
 	public Voluntario findById(Long idvoluntario) {
-		return voluntarioDao.findById(idvoluntario).orElse(null);
+		return voluntarioDao.findById(idvoluntario).orElseThrow();
 	}
 
 	@Override

@@ -36,7 +36,7 @@ public class VoluntarioMascotaServiceImpl implements VoluntarioMascotaService {
 	@Override
 	@Transactional(readOnly = true)
 	public VoluntarioMascota getById(Long id) {
-		return voluntarioMascotaDao.findById(id).orElse(null);
+		return voluntarioMascotaDao.findById(id).orElseThrow();
 	}
 
 	@Override

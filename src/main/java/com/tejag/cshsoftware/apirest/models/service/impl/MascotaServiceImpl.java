@@ -32,7 +32,7 @@ public class MascotaServiceImpl implements MascotaService {
 	@Override
 	@Transactional(readOnly = true)
 	public Mascota findById(Long id) {
-		return mascotaDao.findById(id).orElse(null);
+		return mascotaDao.findById(id).orElseThrow();
 	}
 
 	@Override

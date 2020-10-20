@@ -25,7 +25,7 @@ public class AdoptanteServiceImpl implements AdoptanteService {
 	@Override
 	@Transactional(readOnly = true)
 	public Adoptante getById(Long id) {
-		return adoptanteDao.findById(id).orElse(null);
+		return adoptanteDao.findById(id).orElseThrow();
 	}
 
 	@Override

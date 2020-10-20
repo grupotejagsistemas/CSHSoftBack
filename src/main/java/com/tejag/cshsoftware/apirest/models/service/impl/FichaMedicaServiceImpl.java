@@ -31,7 +31,7 @@ public class FichaMedicaServiceImpl implements FichaMedicaService {
 	@Override
 	@Transactional(readOnly = true)
 	public FichaMedica findById(long id) {
-		return fichaMedicaDao.findById(id).orElse(null);
+		return fichaMedicaDao.findById(id).orElseThrow();
 	}
 
 	@Override

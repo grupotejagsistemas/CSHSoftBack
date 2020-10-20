@@ -15,8 +15,9 @@ public interface MascotaService {
 	/**
 	 * Persiste la mascota en la base de datos
 	 * @param cliente
+	 * @throws Exception 
 	 */
-	public Mascota save(Mascota mascota);
+	public Mascota save(Mascota mascota) throws Exception;
 	
 	/**
 	 * Obtener mascota por Id
@@ -50,4 +51,5 @@ public interface MascotaService {
 	 */
 	public List<Mascota> findBySexo(String sexo);
 	
+	public Mascota updatePath(Long id, String nuevaRuta);
 }

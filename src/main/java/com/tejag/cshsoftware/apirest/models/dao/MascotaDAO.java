@@ -11,8 +11,7 @@ public interface MascotaDAO extends CrudRepository<Mascota, Long> {
 
 	@Query("from Mascota m where m.nombre like %:nombre%")
 	public List<Mascota> findByNombre(String nombre);
-	
-//	@Query("from Mascota m where m.nombre like %:nombre%")
+
 	public List<Mascota> findBySexo(String sexo);
-	
+
 }

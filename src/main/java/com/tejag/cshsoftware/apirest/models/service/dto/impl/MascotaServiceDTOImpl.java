@@ -1,10 +1,16 @@
 package com.tejag.cshsoftware.apirest.models.service.dto.impl;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.tejag.cshsoftware.apirest.models.dto.MascotaDTO;
 import com.tejag.cshsoftware.apirest.models.dto.MascotaEstadoDTO;
@@ -20,7 +26,7 @@ public class MascotaServiceDTOImpl implements MascotaServiceDTO {
 
 	@Autowired
 	private MascotaService service;
-	
+
 	@Autowired
 	private EstadoMascotaService estadoService;
 
@@ -47,30 +53,13 @@ public class MascotaServiceDTOImpl implements MascotaServiceDTO {
 		return mascotaDto;
 	}
 
-	public List<MascotaDTO> getListaMascotaDTO(List<Mascota> listaMascotas) {
-		List<MascotaDTO> listaMascotasDto = new ArrayList<MascotaDTO>();
-		for (Mascota mascota : listaMascotas) {
-			listaMascotasDto.add(this.getMascotaDto(mascota));
-		}
-		return listaMascotasDto;
-	}
-
-	public MascotaEstadoDTO getEstadoMascotaDTO(MascotaEstado entity) {
-		MascotaEstadoDTO estadoDto = new MascotaEstadoDTO();
-		if (entity != null) {
-			estadoDto.setId(entity.getId());
-			estadoDto.setDescripcion(entity.getDescripcion());
-		}
-		return estadoDto;
-	}
-
 	@Override
 	public MascotaDTO findById(Long id) {
 		return this.getMascotaDto(service.findById(id));
 	}
 
 	@Override
-	public void save(MascotaPostDTO mascota) {
+	public MascotaDTO save(MascotaPostDTO mascota) throws Exception {
 		Mascota newMascota = new Mascota();
 
 		newMascota.setNombre(mascota.getNombre());
@@ -82,28 +71,49 @@ public class MascotaServiceDTOImpl implements MascotaServiceDTO {
 		newMascota.setLugarRescate(mascota.getLugarRescate());
 		newMascota.setDescripcionRescate(mascota.getDescripcionRescate());
 		newMascota.setEspecie(mascota.getEspecie());
-		
+
 		MascotaEstado estado = new MascotaEstado();
 		estado = estadoService.findById((long) mascota.getEstado());
-		
+
 		newMascota.setEstado_mascota(estado);
-		service.save(newMascota);
+		return this.getMascotaDto(service.save(newMascota));
 
 	}
 
-	public MascotaEstado getEstadoDTO(MascotaEstadoDTO newEstado) {
-		MascotaEstado estado = new MascotaEstado();
-		if (newEstado != null) {
-			estado.setId(newEstado.getId());
-			estado.setDescripcion(newEstado.getDescripcion());
+	@Override
+	public MascotaDTO insertarImagen(MultipartFile archivo, String id) throws Exception {
+		this.validarTipo(archivo);
+		if (!archivo.isEmpty()) {
+			String nombreArchivo = UUID.randomUUID().toString() + "_" + archivo.getOriginalFilename().replace(" ", "");
+			Path rutaArchivo = Paths.get("C:\\Users\\Usuario\\Documents\\ImageSpring").resolve(nombreArchivo)
+					.toAbsolutePath();
+			Files.copy(archivo.getInputStream(), rutaArchivo);
+			Long idMascota = Long.parseLong(id);
+			return this.getMascotaDto(service.updatePath(idMascota, nombreArchivo));
+		} else {
+			throw new Exception("Error al guardar la imagen");
 		}
-		return estado;
 	}
-	
+
+	public void validarTipo(MultipartFile archivo) throws Exception {
+		// Validacion
+		try {
+			String tipodeArchivo;
+			tipodeArchivo = archivo.getContentType();
+			String[] tipos = { "image/png", "image/jpg", "image/jpeg" };
+			if (!tipodeArchivo.toString().equals(tipos[0]) && !tipodeArchivo.toString().equals(tipos[1])
+					&& !tipodeArchivo.toString().equals(tipos[2])) {
+				throw new Exception("Formato de archivo no valido solo se acepta PNG, JPG y JPEG");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	@Override
 	public void update(Long id, MascotaPostDTO mascota) {
 		Mascota newMascota = new Mascota();
-		
+
 		newMascota.setId(id);
 		newMascota.setNombre(mascota.getNombre());
 		newMascota.setFechaNacimieto(mascota.getFechaNacimiento());
@@ -116,7 +126,7 @@ public class MascotaServiceDTOImpl implements MascotaServiceDTO {
 		newMascota.setEspecie(mascota.getEspecie());
 		MascotaEstado estado = new MascotaEstado();
 		estado = estadoService.findById((long) mascota.getEstado());
-		
+
 		newMascota.setEstado_mascota(estado);
 
 		service.update(newMascota);
@@ -138,4 +148,34 @@ public class MascotaServiceDTOImpl implements MascotaServiceDTO {
 		return this.getListaMascotaDTO(service.findBySexo(sexo));
 	}
 
+	// *******************************************************************************
+	// ***************** Transfomración Entity a DTO
+	// *********************************
+	// *******************************************************************************
+
+	public MascotaEstado getEstadoDTO(MascotaEstadoDTO newEstado) {
+		MascotaEstado estado = new MascotaEstado();
+		if (newEstado != null) {
+			estado.setId(newEstado.getId());
+			estado.setDescripcion(newEstado.getDescripcion());
+		}
+		return estado;
+	}
+
+	public List<MascotaDTO> getListaMascotaDTO(List<Mascota> listaMascotas) {
+		List<MascotaDTO> listaMascotasDto = new ArrayList<MascotaDTO>();
+		for (Mascota mascota : listaMascotas) {
+			listaMascotasDto.add(this.getMascotaDto(mascota));
+		}
+		return listaMascotasDto;
+	}
+
+	public MascotaEstadoDTO getEstadoMascotaDTO(MascotaEstado entity) {
+		MascotaEstadoDTO estadoDto = new MascotaEstadoDTO();
+		if (entity != null) {
+			estadoDto.setId(entity.getId());
+			estadoDto.setDescripcion(entity.getDescripcion());
+		}
+		return estadoDto;
+	}
 }

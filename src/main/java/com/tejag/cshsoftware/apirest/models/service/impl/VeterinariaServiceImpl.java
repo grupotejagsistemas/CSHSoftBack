@@ -32,7 +32,7 @@ public class VeterinariaServiceImpl implements VeterinariaService {
 	@Override
 	@Transactional(readOnly = true)
 	public Veterinaria findById(Long id) {
-		return veterinariaDao.findById(id).orElse(null);
+		return veterinariaDao.findById(id).orElseThrow();
 	}
 
 	@Override

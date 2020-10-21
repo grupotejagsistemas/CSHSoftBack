@@ -31,7 +31,7 @@ public class MovimientoMonetarioServiceimpl implements MovimientoMonetarioServic
 	@Override
 	@Transactional(readOnly = true)
 	public MovimientoMonetario findById(long idmovimientomonetario) {
-		return movimientomonetarioDao.findById(idmovimientomonetario).orElse(null);
+		return movimientomonetarioDao.findById(idmovimientomonetario).orElseThrow();
 	}
 
 }

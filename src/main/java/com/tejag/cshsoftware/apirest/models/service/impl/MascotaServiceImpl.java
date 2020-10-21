@@ -1,5 +1,8 @@
 package com.tejag.cshsoftware.apirest.models.service.impl;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +19,6 @@ public class MascotaServiceImpl implements MascotaService {
 	@Autowired
 	private MascotaDAO mascotaDao;
 
-
 	@Override
 	@Transactional(readOnly = true)
 	public List<Mascota> getMascotas() {
@@ -25,14 +27,14 @@ public class MascotaServiceImpl implements MascotaService {
 
 	@Override
 	@Transactional
-	public Mascota save(Mascota mascota) {
+	public Mascota save(Mascota mascota) throws Exception {
 		return mascotaDao.save(mascota);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public Mascota findById(Long id) {
-		return mascotaDao.findById(id).orElse(null);
+		return mascotaDao.findById(id).orElseThrow();
 	}
 
 	@Override
@@ -57,6 +59,18 @@ public class MascotaServiceImpl implements MascotaService {
 
 	@Override
 	public void deleteById(Long id) {
+		Mascota mascotaActual = new Mascota();
+
+		mascotaActual = mascotaDao.findById(id).orElseThrow();
+		String fotoAnterior = mascotaActual.getFotoMascota();
+		if (fotoAnterior != null && fotoAnterior.length() > 0) {
+			Path rutaFotoAnterior = Paths.get("C:\\Users\\Usuario\\Documents\\ImageSpring").resolve(fotoAnterior)
+					.toAbsolutePath();
+			File archivoFotoAnterior = rutaFotoAnterior.toFile();
+			if (archivoFotoAnterior.exists() && archivoFotoAnterior.canRead()) {
+				archivoFotoAnterior.delete();
+			}
+		}
 		mascotaDao.deleteById(id);
 	}
 
@@ -68,6 +82,26 @@ public class MascotaServiceImpl implements MascotaService {
 	@Override
 	public List<Mascota> findBySexo(String sexo) {
 		return mascotaDao.findBySexo(sexo);
+	}
+
+	@Override
+	public Mascota updatePath(Long id, String nuevaRuta) {
+		Mascota mascotaActual = new Mascota();
+
+		mascotaActual = mascotaDao.findById(id).orElseThrow();
+		String fotoAnterior = mascotaActual.getFotoMascota();
+		if (fotoAnterior != null && fotoAnterior.length() > 0) {
+			Path rutaFotoAnterior = Paths.get("C:\\Users\\Usuario\\Documents\\ImageSpring").resolve(fotoAnterior)
+					.toAbsolutePath();
+			File archivoFotoAnterior = rutaFotoAnterior.toFile();
+			if (archivoFotoAnterior.exists() && archivoFotoAnterior.canRead()) {
+				archivoFotoAnterior.delete();
+			}
+		}
+		mascotaActual.setFotoMascota(nuevaRuta);
+
+		return mascotaDao.save(mascotaActual);
+
 	}
 
 }

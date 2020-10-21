@@ -67,8 +67,8 @@ public class Mascota implements Serializable {
 	@OneToMany(mappedBy = "mascotas", cascade = CascadeType.ALL)
 	private List<FichaMedica> fichas_medicas = new ArrayList<>();
 
-	@OneToMany(mappedBy = "mascotas", cascade = CascadeType.ALL)
-	private List<VoluntarioMascota> voluntarios_mascotas = new ArrayList<>();
+//	@OneToMany(mappedBy = "mascotas", cascade = CascadeType.ALL)
+//	private List<VoluntarioMascota> voluntarios_mascotas = new ArrayList<>();
 
 	public Mascota() {
 
@@ -170,12 +170,12 @@ public class Mascota implements Serializable {
 		this.fichas_medicas = fichas_medicas;
 	}
 
-	public List<VoluntarioMascota> getVoluntarios_mascotas() {
-		return voluntarios_mascotas;
-	}
-
-	public void setVoluntarios_mascotas(List<VoluntarioMascota> voluntarios_mascotas) {
-		this.voluntarios_mascotas = voluntarios_mascotas;
-	}
+//	public List<VoluntarioMascota> getVoluntarios_mascotas() {
+//		return voluntarios_mascotas;
+//	}
+//
+//	public void setVoluntarios_mascotas(List<VoluntarioMascota> voluntarios_mascotas) {
+//		this.voluntarios_mascotas = voluntarios_mascotas;
+//	}
 
 }

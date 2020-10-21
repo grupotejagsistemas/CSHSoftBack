@@ -1,6 +1,9 @@
 package com.tejag.cshsoftware.apirest.models.service.dto;
 
+import java.io.IOException;
 import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.tejag.cshsoftware.apirest.models.dto.MascotaDTO;
 import com.tejag.cshsoftware.apirest.models.dto.MascotaPostDTO;
@@ -16,8 +19,9 @@ public interface MascotaServiceDTO {
 	/**
 	 * Persiste la mascota en la base de datos
 	 * @param mascota
+	 * @throws Exception 
 	 */
-	public void save(MascotaPostDTO mascota);
+	public MascotaDTO save(MascotaPostDTO mascota) throws Exception;
 	
 	/**
 	 * Obtener mascota por Id
@@ -49,5 +53,11 @@ public interface MascotaServiceDTO {
 	 * @return mascotas
 	 */
 	public List<MascotaDTO> findBySexo(String sexo);
+	
+	/**
+	 * Insertar imagen de mascota
+	 * @throws Exception 
+	 */
+	public MascotaDTO insertarImagen(MultipartFile file, String id) throws IOException, Exception;
 	
 }

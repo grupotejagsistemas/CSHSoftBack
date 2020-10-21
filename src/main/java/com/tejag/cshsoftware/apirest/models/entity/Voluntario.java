@@ -47,8 +47,8 @@ public class Voluntario implements Serializable {
 	@Column(nullable = false, length = 1)
 	private String presencial;
 
-	@OneToMany(mappedBy = "voluntarios", cascade = CascadeType.ALL)
-	private List<VoluntarioMascota> voluntarios_mascotas = new ArrayList<>();
+//	@OneToMany(mappedBy = "voluntarios", cascade = CascadeType.ALL)
+//	private List<VoluntarioMascota> voluntarios_mascotas = new ArrayList<>();
 
 	public Voluntario() {
 
@@ -129,12 +129,12 @@ public class Voluntario implements Serializable {
 		this.presencial = presencial;
 	}
 
-	public List<VoluntarioMascota> getVoluntarios_mascotas() {
-		return voluntarios_mascotas;
-	}
-
-	public void setVoluntarios_mascotas(List<VoluntarioMascota> voluntarios_mascotas) {
-		this.voluntarios_mascotas = voluntarios_mascotas;
-	}
+//	public List<VoluntarioMascota> getVoluntarios_mascotas() {
+//		return voluntarios_mascotas;
+//	}
+//
+//	public void setVoluntarios_mascotas(List<VoluntarioMascota> voluntarios_mascotas) {
+//		this.voluntarios_mascotas = voluntarios_mascotas;
+//	}
 
 }

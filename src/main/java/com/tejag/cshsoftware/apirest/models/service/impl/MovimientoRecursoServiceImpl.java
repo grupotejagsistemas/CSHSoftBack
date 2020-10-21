@@ -27,7 +27,7 @@ public class MovimientoRecursoServiceImpl implements MovimientoRecursoService {
 
 	@Override
 	public MovimientoRecurso findById(long id) {
-		return movimientorecursoDao.findById(id).orElse(null);
+		return movimientorecursoDao.findById(id).orElseThrow();
 	}
 
 }

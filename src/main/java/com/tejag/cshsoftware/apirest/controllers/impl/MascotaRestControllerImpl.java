@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tejag.cshsoftware.apirest.controllers.MascotaRestController;
-import com.tejag.cshsoftware.apirest.models.dto.FiltroSexoDTO;
 import com.tejag.cshsoftware.apirest.models.dto.MascotaDTO;
 import com.tejag.cshsoftware.apirest.models.dto.MascotaPostDTO;
 import com.tejag.cshsoftware.apirest.models.service.dto.MascotaServiceDTO;

@@ -1,8 +1,13 @@
 package com.tejag.cshsoftware.apirest.controllers.impl;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,6 +37,16 @@ public class ContratoRestControllerImpl implements ContratoRestController {
 	@Override
 	public List<ContratoDTO> getContratoByMascota(String nombre) {
 		return contratoDtoService.getByNombreMascota(nombre);
+	}
+
+	@Override
+	public ResponseEntity<InputStreamResource> exportPdf() {
+		List<ContratoDTO> listaContratoDTO = null;
+		listaContratoDTO = contratoDtoService.getContratos();
+		ByteArrayInputStream bais = contratoDtoService.productsPDFReport(listaContratoDTO);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition", "inline; filename=contrato.pdf");
+		return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(bais));
 	}
 
 }

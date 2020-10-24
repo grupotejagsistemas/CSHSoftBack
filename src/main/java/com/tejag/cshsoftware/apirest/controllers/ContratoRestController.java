@@ -2,6 +2,8 @@ package com.tejag.cshsoftware.apirest.controllers;
 
 import java.util.List;
 
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,5 +24,8 @@ public interface ContratoRestController {
 	
 	@GetMapping("/contrato/filtrar")
 	public List<ContratoDTO> getContratoByMascota(@RequestParam("nombreMascota") String nombre);
+	
+	@GetMapping("/export/pdf")
+	public ResponseEntity<InputStreamResource> exportPdf();
 	
 }

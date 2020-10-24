@@ -20,14 +20,7 @@ public interface EntrevistaAdoptanteDTOService {
 	public void update(long id, EntrevistaAdoptantePostDTO entrevistaadoptantepost);
 
 	public List<EntrevistaAdoptanteDTO> findByNombre(String nombrecompleto);
-
-
-
-
-
 	
-
-
+	public List<EntrevistaAdoptanteDTO> getEntrevistasId_NombreAdoptante();
 	
-
 }

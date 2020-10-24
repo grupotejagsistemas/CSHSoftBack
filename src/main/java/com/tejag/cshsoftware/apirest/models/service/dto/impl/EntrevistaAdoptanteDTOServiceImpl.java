@@ -8,60 +8,60 @@ import org.springframework.stereotype.Service;
 
 import com.tejag.cshsoftware.apirest.models.dto.EntrevistaAdoptanteDTO;
 import com.tejag.cshsoftware.apirest.models.dto.EntrevistaAdoptantePostDTO;
-
+import com.tejag.cshsoftware.apirest.models.entity.Adoptante;
 import com.tejag.cshsoftware.apirest.models.entity.EntrevistaAdoptante;
-
+import com.tejag.cshsoftware.apirest.models.service.AdoptanteService;
 import com.tejag.cshsoftware.apirest.models.service.EntrevistaAdoptanteService;
-
 import com.tejag.cshsoftware.apirest.models.service.dto.EntrevistaAdoptanteDTOService;
-
-
 
 @Service
 public class EntrevistaAdoptanteDTOServiceImpl implements EntrevistaAdoptanteDTOService {
-	
+
 	@Autowired
 	private EntrevistaAdoptanteService entrevistaadoptanteservice;
-	
-	
-	
-	
-	
+
+	@Autowired
+	private AdoptanteService adoptanteservice;
+
 	public EntrevistaAdoptanteDTO getEntrevistaAdoptanteDTO(EntrevistaAdoptante entity) {
 		EntrevistaAdoptanteDTO newentrevista = new EntrevistaAdoptanteDTO();
 		if (entity != null) {
+			newentrevista.setAdoptante(entity.getAdoptantes().getNombre_completo());
 			newentrevista.setId(entity.getId_entrevista_adoptante());
 			newentrevista.setRespuesta1(entity.getRespuesta1());
-			newentrevista.setRespuesta1(entity.getRespuesta2());
-			newentrevista.setRespuesta1(entity.getRespuesta3());
-			newentrevista.setRespuesta1(entity.getRespuesta4());
-			newentrevista.setRespuesta1(entity.getRespuesta5());
-			newentrevista.setRespuesta1(entity.getRespuesta6());
-			newentrevista.setRespuesta1(entity.getRespuesta7());
-			newentrevista.setRespuesta1(entity.getRespuesta8());
-			newentrevista.setRespuesta1(entity.getRespuesta9());
-			newentrevista.setRespuesta1(entity.getRespuesta10());
-			newentrevista.setRespuesta1(entity.getRespuesta11());
-			newentrevista.setRespuesta1(entity.getRespuesta12());
-			newentrevista.setRespuesta1(entity.getRespuesta13());
-			newentrevista.setRespuesta1(entity.getRespuesta14());
-			newentrevista.setRespuesta1(entity.getRespuesta15());
-			newentrevista.setRespuesta1(entity.getRespuesta16());
-			newentrevista.setRespuesta1(entity.getRespuesta17());
-			newentrevista.setRespuesta1(entity.getRespuesta18());
-			newentrevista.setRespuesta1(entity.getRespuesta19());
-			newentrevista.setRespuesta1(entity.getRespuesta20());
-			newentrevista.setRespuesta1(entity.getRespuesta21());
-			newentrevista.setRespuesta1(entity.getRespuesta22());
+			newentrevista.setRespuesta2(entity.getRespuesta2());
+			newentrevista.setRespuesta3(entity.getRespuesta3());
+			newentrevista.setRespuesta4(entity.getRespuesta4());
+			newentrevista.setRespuesta5(entity.getRespuesta5());
+			newentrevista.setRespuesta6(entity.getRespuesta6());
+			newentrevista.setRespuesta7(entity.getRespuesta7());
+			newentrevista.setRespuesta8(entity.getRespuesta8());
+			newentrevista.setRespuesta9(entity.getRespuesta9());
+			newentrevista.setRespuesta10(entity.getRespuesta10());
+			newentrevista.setRespuesta11(entity.getRespuesta11());
+			newentrevista.setRespuesta12(entity.getRespuesta12());
+			newentrevista.setRespuesta13(entity.getRespuesta13());
+			newentrevista.setRespuesta14(entity.getRespuesta14());
+			newentrevista.setRespuesta15(entity.getRespuesta15());
+			newentrevista.setRespuesta16(entity.getRespuesta16());
+			newentrevista.setRespuesta17(entity.getRespuesta17());
+			newentrevista.setRespuesta18(entity.getRespuesta18());
+			newentrevista.setRespuesta19(entity.getRespuesta19());
+			newentrevista.setRespuesta20(entity.getRespuesta20());
+			newentrevista.setRespuesta21(entity.getRespuesta21());
+			newentrevista.setRespuesta22(entity.getRespuesta22());
 		}
 		return newentrevista;
-		
-		}
+
+	}
 
 	@Override
 	public void save(EntrevistaAdoptantePostDTO entrevistaadoptante) {
 		EntrevistaAdoptante newentrevista = new EntrevistaAdoptante();
 
+		Adoptante adoptante = new Adoptante();
+		adoptante = adoptanteservice.getById(entrevistaadoptante.getIdAdoptante());
+		newentrevista.setAdoptantes(adoptante);
 		newentrevista.setRespuesta1(entrevistaadoptante.getRespuesta1());
 		newentrevista.setRespuesta2(entrevistaadoptante.getRespuesta2());
 		newentrevista.setRespuesta3(entrevistaadoptante.getRespuesta3());
@@ -84,9 +84,9 @@ public class EntrevistaAdoptanteDTOServiceImpl implements EntrevistaAdoptanteDTO
 		newentrevista.setRespuesta20(entrevistaadoptante.getRespuesta20());
 		newentrevista.setRespuesta21(entrevistaadoptante.getRespuesta21());
 		newentrevista.setRespuesta22(entrevistaadoptante.getRespuesta22());
-		
+
 		entrevistaadoptanteservice.save(newentrevista);
-		
+
 	}
 
 	@Override
@@ -94,7 +94,8 @@ public class EntrevistaAdoptanteDTOServiceImpl implements EntrevistaAdoptanteDTO
 		return this.getListaEntrevistaAdoptanteDTO(entrevistaadoptanteservice.getEntrevistaAdoptantes());
 	}
 
-	public List<EntrevistaAdoptanteDTO> getListaEntrevistaAdoptanteDTO(List<EntrevistaAdoptante> listaentrevistaAdoptantes) {
+	public List<EntrevistaAdoptanteDTO> getListaEntrevistaAdoptanteDTO(
+			List<EntrevistaAdoptante> listaentrevistaAdoptantes) {
 		List<EntrevistaAdoptanteDTO> listaEntrevistaAdoptanteDTO = new ArrayList<EntrevistaAdoptanteDTO>();
 		for (EntrevistaAdoptante entrevistaadoptante : listaentrevistaAdoptantes) {
 			listaEntrevistaAdoptanteDTO.add(this.getEntrevistaAdoptanteDTO(entrevistaadoptante));
@@ -110,14 +111,17 @@ public class EntrevistaAdoptanteDTOServiceImpl implements EntrevistaAdoptanteDTO
 	@Override
 	public void deleteById(long id) {
 		entrevistaadoptanteservice.deleteById(id);
-		
+
 	}
 
 	@Override
 	public void update(long id, EntrevistaAdoptantePostDTO entrevistaadoptantepost) {
-		EntrevistaAdoptante newentrevista = new EntrevistaAdoptante ();
-
+		EntrevistaAdoptante newentrevista = new EntrevistaAdoptante();
 		
+		newentrevista.setId_entrevista_adoptante(id);
+		Adoptante adoptante = new Adoptante();
+		adoptante = adoptanteservice.getById(entrevistaadoptantepost.getIdAdoptante());
+		newentrevista.setAdoptantes(adoptante);
 		newentrevista.setRespuesta1(entrevistaadoptantepost.getRespuesta1());
 		newentrevista.setRespuesta2(entrevistaadoptantepost.getRespuesta2());
 		newentrevista.setRespuesta3(entrevistaadoptantepost.getRespuesta3());
@@ -149,6 +153,27 @@ public class EntrevistaAdoptanteDTOServiceImpl implements EntrevistaAdoptanteDTO
 		return this.getListaEntrevistaAdoptanteDTO(entrevistaadoptanteservice.findByNombre(nombrecompleto));
 	}
 
-	
+	@Override
+	public List<EntrevistaAdoptanteDTO> getEntrevistasId_NombreAdoptante() {
+		return this.getListaEntrevistasId_NombreAdoptantesDTO(entrevistaadoptanteservice.getEntrevistaAdoptantes());
+	}
+
+	public List<EntrevistaAdoptanteDTO> getListaEntrevistasId_NombreAdoptantesDTO(
+			List<EntrevistaAdoptante> listaentrevistaAdoptantes) {
+		List<EntrevistaAdoptanteDTO> listaEntrevistaAdoptanteDTO = new ArrayList<EntrevistaAdoptanteDTO>();
+		for (EntrevistaAdoptante entrevistaadoptante : listaentrevistaAdoptantes) {
+			listaEntrevistaAdoptanteDTO.add(this.getEntrevistaId_NombreAdoptanteDTO(entrevistaadoptante));
+		}
+		return listaEntrevistaAdoptanteDTO;
+	}
+
+	public EntrevistaAdoptanteDTO getEntrevistaId_NombreAdoptanteDTO(EntrevistaAdoptante entity) {
+		EntrevistaAdoptanteDTO newentrevista = new EntrevistaAdoptanteDTO();
+		if (entity != null) {
+			newentrevista.setAdoptante(entity.getAdoptantes().getNombre_completo());
+			newentrevista.setId(entity.getId_entrevista_adoptante());
+		}
+		return newentrevista;
+	}
 
 }

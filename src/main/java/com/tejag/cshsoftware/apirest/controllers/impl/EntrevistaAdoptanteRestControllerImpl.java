@@ -13,16 +13,12 @@ import com.tejag.cshsoftware.apirest.models.dto.EntrevistaAdoptanteDTO;
 import com.tejag.cshsoftware.apirest.models.dto.EntrevistaAdoptantePostDTO;
 import com.tejag.cshsoftware.apirest.models.service.dto.EntrevistaAdoptanteDTOService;
 
-
-
-
 @CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
 public class EntrevistaAdoptanteRestControllerImpl implements EntrevistaAdoptanteRestController {
-	
-	@Autowired 
-	private EntrevistaAdoptanteDTOService entrevistaadoptanteserviceDto;
 
+	@Autowired
+	private EntrevistaAdoptanteDTOService entrevistaadoptanteserviceDto;
 
 	@Override
 	public List<EntrevistaAdoptanteDTO> getEntrevistaAdoptantes() {
@@ -38,26 +34,31 @@ public class EntrevistaAdoptanteRestControllerImpl implements EntrevistaAdoptant
 	@ResponseStatus(HttpStatus.CREATED)
 	public void create(EntrevistaAdoptantePostDTO entrevistaadoptantePost) {
 		entrevistaadoptanteserviceDto.save(entrevistaadoptantePost);
-		
+
 	}
 
 	@Override
 	@ResponseStatus(HttpStatus.CREATED)
 	public void update(Long id, EntrevistaAdoptantePostDTO entrevistaadoptantePut) {
-		entrevistaadoptanteserviceDto.update(id,entrevistaadoptantePut );
-		
+		entrevistaadoptanteserviceDto.update(id, entrevistaadoptantePut);
+
 	}
 
 	@Override
 	@ResponseStatus(HttpStatus.OK)
 	public void delete(Long id) {
 		entrevistaadoptanteserviceDto.deleteById(id);
-		
+
 	}
 
 	@Override
 	public List<EntrevistaAdoptanteDTO> findByNombre(String nombrecompleto) {
 		return entrevistaadoptanteserviceDto.findByNombre(nombrecompleto);
+	}
+
+	@Override
+	public List<EntrevistaAdoptanteDTO> getEntrevistaId_NombreAdoptante() {
+		return entrevistaadoptanteserviceDto.getEntrevistasId_NombreAdoptante();
 	}
 
 }

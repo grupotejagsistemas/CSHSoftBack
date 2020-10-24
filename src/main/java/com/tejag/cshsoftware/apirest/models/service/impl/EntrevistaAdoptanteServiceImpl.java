@@ -7,23 +7,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tejag.cshsoftware.apirest.models.dao.EntrevistaAdoptanteDAO;
-
 import com.tejag.cshsoftware.apirest.models.entity.EntrevistaAdoptante;
-
 import com.tejag.cshsoftware.apirest.models.service.EntrevistaAdoptanteService;
 
-
-
-
 @Service
-public class EntrevistaAdoptanteServiceImpl  implements EntrevistaAdoptanteService{
-	
-	private static final long IdAdoptante = 0;
-	@Autowired
-	private EntrevistaAdoptanteService entrevistaadoptanteservice;
+public class EntrevistaAdoptanteServiceImpl implements EntrevistaAdoptanteService {
+
 	@Autowired
 	private EntrevistaAdoptanteDAO entrevistaadoptanteDao;
-
 
 	@Override
 	@Transactional(readOnly = true)
@@ -48,9 +39,8 @@ public class EntrevistaAdoptanteServiceImpl  implements EntrevistaAdoptanteServi
 	public EntrevistaAdoptante update(EntrevistaAdoptante newEntrevistaadoptante) {
 		EntrevistaAdoptante entrevistaActual = new EntrevistaAdoptante();
 
-		entrevistaActual = entrevistaadoptanteDao.findById(newEntrevistaadoptante.getId_entrevista_adoptante()).get();
-		
-		
+		entrevistaActual = entrevistaadoptanteDao.findById(newEntrevistaadoptante.getId_entrevista_adoptante()).orElseThrow();
+
 		entrevistaActual.setRespuesta1(newEntrevistaadoptante.getRespuesta1());
 		entrevistaActual.setRespuesta2(newEntrevistaadoptante.getRespuesta2());
 		entrevistaActual.setRespuesta3(newEntrevistaadoptante.getRespuesta3());
@@ -73,7 +63,7 @@ public class EntrevistaAdoptanteServiceImpl  implements EntrevistaAdoptanteServi
 		entrevistaActual.setRespuesta20(newEntrevistaadoptante.getRespuesta20());
 		entrevistaActual.setRespuesta21(newEntrevistaadoptante.getRespuesta21());
 		entrevistaActual.setRespuesta22(newEntrevistaadoptante.getRespuesta22());
-		
+
 		return entrevistaadoptanteDao.save(entrevistaActual);
 	}
 
@@ -84,14 +74,12 @@ public class EntrevistaAdoptanteServiceImpl  implements EntrevistaAdoptanteServi
 
 	@Override
 	public List<EntrevistaAdoptante> findByNombre(String nombrecompleto) {
-		//return entrevistaadoptanteDao.findByNombreCompletoIgnoreCaseLike("%" + nombre + "%");	
-		return entrevistaadoptanteDao.findByNombre((long)IdAdoptante);
+		return entrevistaadoptanteDao.findByAdoptantesNombre_completo(nombrecompleto);
 	}
-				
 
 	@Override
 	public void deleteById(long id) {
-		entrevistaadoptanteservice.deleteById(id);
+		entrevistaadoptanteDao.deleteById(id);
 	}
 
 }

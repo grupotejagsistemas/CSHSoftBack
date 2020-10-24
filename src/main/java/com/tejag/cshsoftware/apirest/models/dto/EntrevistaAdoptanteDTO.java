@@ -1,11 +1,9 @@
 package com.tejag.cshsoftware.apirest.models.dto;
 
-import java.util.List;
-
 public class EntrevistaAdoptanteDTO {
-	
+
 	private Long id;
-	private List<AdoptanteDTO> adoptantes;
+	private String adoptante;
 	private String respuesta1;
 	private String respuesta2;
 	private String respuesta3;
@@ -28,10 +26,10 @@ public class EntrevistaAdoptanteDTO {
 	private String respuesta20;
 	private String respuesta21;
 	private String respuesta22;
-	
-	public EntrevistaAdoptanteDTO() {}
-	
-	
+
+	public EntrevistaAdoptanteDTO() {
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -40,17 +38,13 @@ public class EntrevistaAdoptanteDTO {
 		this.id = id;
 	}
 
-
-
-	public List<AdoptanteDTO> getAdoptantes() {
-		return adoptantes;
+	public String getAdoptante() {
+		return adoptante;
 	}
 
-
-	public void setAdoptantes(List<AdoptanteDTO> adoptantes) {
-		this.adoptantes = adoptantes;
+	public void setAdoptante(String adoptante) {
+		this.adoptante = adoptante;
 	}
-
 
 	public String getRespuesta1() {
 		return respuesta1;
@@ -227,6 +221,5 @@ public class EntrevistaAdoptanteDTO {
 	public void setRespuesta22(String respuesta22) {
 		this.respuesta22 = respuesta22;
 	}
-	
 
 }

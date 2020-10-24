@@ -20,21 +20,22 @@ public interface EntrevistaAdoptanteRestController {
 	@GetMapping("/entrevistaadoptantes")
 	public List<EntrevistaAdoptanteDTO> getEntrevistaAdoptantes();
 	
+	@GetMapping("/entrevistaadoptantes/id_nombre")
+	public List<EntrevistaAdoptanteDTO> getEntrevistaId_NombreAdoptante();
+	
 	@GetMapping("/entrevistaadoptantes/{id}")
 	public EntrevistaAdoptanteDTO show(@PathVariable Long id);
 	
-	@PostMapping("/entrevistaadoptante")
+	@PostMapping("/entrevistaadoptantes")
 	public void create(@RequestBody EntrevistaAdoptantePostDTO entrevistaadoptantePost);
 	
-	@PutMapping("/entrevistaadoptante/{id}")
+	@PutMapping("/entrevistaadoptantes/{id}")
 	public void update(@PathVariable Long id, @RequestBody EntrevistaAdoptantePostDTO entrevistaadoptantePut);
 	
-	@DeleteMapping("/entrevistaadoptante/{id}")
+	@DeleteMapping("/entrevistaadoptantes/{id}")
 	public void delete(@PathVariable Long id);
 	
-	@GetMapping("/entrevistaadoptante/filtrar")
+	@GetMapping("/entrevistaadoptantes/filtrar")
 	public List<EntrevistaAdoptanteDTO> findByNombre(@RequestParam("nombre") String nombre);
-
-	
 
 }

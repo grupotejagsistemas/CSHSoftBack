@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.util.List;
 
 import com.tejag.cshsoftware.apirest.models.dto.ContratoDTO;
+import com.tejag.cshsoftware.apirest.models.dto.ContratoPdfDTO;
 import com.tejag.cshsoftware.apirest.models.dto.ContratoPostDTO;
 
 public interface ContratoDTOService {
@@ -14,6 +15,8 @@ public interface ContratoDTOService {
 	
 	public List<ContratoDTO> getByNombreMascota(String nombre);
 	
-	public ByteArrayInputStream productsPDFReport(List<ContratoDTO> listaContratoDTO);
+	public ByteArrayInputStream productsPDFReport(ContratoPdfDTO contratoNew);
+	
+	public ContratoPdfDTO getContratoPdf(Long id);
 	
 }

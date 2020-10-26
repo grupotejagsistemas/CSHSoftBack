@@ -12,4 +12,6 @@ public interface ContratoService {
 	
 	public List<Contrato> findByNombreMascota(String nombre);
 	
+	public Contrato getContratoById(Long id);
+	
 }

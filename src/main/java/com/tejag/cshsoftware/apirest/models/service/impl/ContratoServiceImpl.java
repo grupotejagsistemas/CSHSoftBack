@@ -34,4 +34,10 @@ public class ContratoServiceImpl implements ContratoService {
 		return contratoDao.findByMascotasNombre(nombre);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public Contrato getContratoById(Long id) {
+		return contratoDao.findById(id).orElseThrow();
+	}
+
 }

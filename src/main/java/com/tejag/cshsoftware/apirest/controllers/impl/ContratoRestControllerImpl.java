@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tejag.cshsoftware.apirest.controllers.ContratoRestController;
 import com.tejag.cshsoftware.apirest.models.dto.ContratoDTO;
+import com.tejag.cshsoftware.apirest.models.dto.ContratoPdfDTO;
 import com.tejag.cshsoftware.apirest.models.dto.ContratoPostDTO;
 import com.tejag.cshsoftware.apirest.models.service.dto.ContratoDTOService;
 
@@ -40,10 +41,10 @@ public class ContratoRestControllerImpl implements ContratoRestController {
 	}
 
 	@Override
-	public ResponseEntity<InputStreamResource> exportPdf() {
-		List<ContratoDTO> listaContratoDTO = null;
-		listaContratoDTO = contratoDtoService.getContratos();
-		ByteArrayInputStream bais = contratoDtoService.productsPDFReport(listaContratoDTO);
+	public ResponseEntity<InputStreamResource> exportPdf(Long id) {
+		ContratoPdfDTO contrato = null;
+		contrato = contratoDtoService.getContratoPdf(id);
+		ByteArrayInputStream bais = contratoDtoService.productsPDFReport(contrato);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Disposition", "inline; filename=contrato.pdf");
 		return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(bais));

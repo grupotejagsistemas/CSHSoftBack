@@ -23,4 +23,13 @@ INSERT INTO tipo_movimientos (descripcion) VALUES ('Medicacion');
 INSERT INTO tipo_movimientos (descripcion) VALUES ('Alimento');
 INSERT INTO tipo_movimientos (descripcion) VALUES ('Egreso');
 INSERT INTO tipo_movimientos (descripcion) VALUES ('Ingreso');
+INSERT INTO usuarios (username, password, enabled, nombre, apellido, email) VALUES ('Gonzalo','$2a$10$lyOEnBiyAicf0PP4hBpG9eVPWXRp9L3/jBDqyKLMJWKpVj8iT7RAm',1, 'Gonzalo', 'Laime', 'gonzielxeneize@hotmail.com');
+INSERT INTO usuarios (username, password, enabled, nombre, apellido, email) VALUES ('admin','$2a$10$m6fjcNXy9pGq2qRsm.L9zOhxNsgQgtecdgE8xSzHMJvbbtYiVjlBK',1, 'Admin', 'Admin', 'admin@admin.com');
+
+INSERT INTO roles (nombre) VALUES ('ROLE_USER');
+INSERT INTO roles (nombre) VALUES ('ROLE_ADMIN');
+
+INSERT INTO usuarios_roles (usuario_id, role_id) VALUES (1,1);
+INSERT INTO usuarios_roles (usuario_id, role_id) VALUES (2,2);
+INSERT INTO usuarios_roles (usuario_id, role_id) VALUES (2,1);
 

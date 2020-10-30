@@ -38,13 +38,13 @@ public class Voluntario implements Serializable {
 	@Column(nullable = false, length = 50)
 	private String localidad;
 
-	@Column(nullable = false, length = 1)
+	@Column(nullable = false, length = 2)
 	private String transito;
 
-	@Column(nullable = false, length = 1)
+	@Column(nullable = false, length = 2)
 	private String traslado;
 
-	@Column(nullable = false, length = 1)
+	@Column(nullable = false, length = 2)
 	private String presencial;
 
 //	@OneToMany(mappedBy = "voluntarios", cascade = CascadeType.ALL)

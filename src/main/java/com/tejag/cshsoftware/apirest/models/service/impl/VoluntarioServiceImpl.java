@@ -63,11 +63,11 @@ public class VoluntarioServiceImpl implements VoluntarioService {
 	@Override
 	public List<Voluntario> findByVoluntarioppt(String filtro) {
 		if (filtro.contains("Transito") || filtro.contains("transito")) {
-			return voluntarioDao.filtrarTransito("s");
+			return voluntarioDao.filtrarTransito("SI");
 		} else if (filtro.contains("Traslado") || filtro.contains("traslado")) {
-			return voluntarioDao.filtrarTraslado("s");
+			return voluntarioDao.filtrarTraslado("SI");
 		} else if (filtro.contains("Presencial") || filtro.contains("presencial")) {
-			return voluntarioDao.filtrarPresencial("s");
+			return voluntarioDao.filtrarPresencial("SI");
 		} else {
 			return this.getVoluntarios();
 		}

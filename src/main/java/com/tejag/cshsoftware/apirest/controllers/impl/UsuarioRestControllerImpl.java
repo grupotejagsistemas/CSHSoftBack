@@ -1,6 +1,11 @@
 package com.tejag.cshsoftware.apirest.controllers.impl;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,8 +21,17 @@ public class UsuarioRestControllerImpl implements UsuarioRestController {
 	private UsuarioDTOService usuarioDtoService;
 
 	@Override
-	public void create(UsuarioPostDTO usuario) {
-		usuarioDtoService.create(usuario);
+	public ResponseEntity<?> create(UsuarioPostDTO usuario) throws Exception {
+		Map<String, Object> response = new HashMap<>();
+		try {
+			usuarioDtoService.create(usuario);
+			response.put("mensaje", "El usuario se creó con éxito.");
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+		} catch (Exception e) {
+			response.put("mensaje", e.getMessage());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
 	}
 
 }

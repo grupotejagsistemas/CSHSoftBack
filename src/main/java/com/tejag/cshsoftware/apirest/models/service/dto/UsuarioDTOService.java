@@ -5,6 +5,6 @@ import com.tejag.cshsoftware.apirest.models.dto.UsuarioPostDTO;
 
 public interface UsuarioDTOService {
 	
-	public UsuarioDTO create(UsuarioPostDTO usuario);
+	public UsuarioDTO create(UsuarioPostDTO usuario) throws Exception;
 	
 }

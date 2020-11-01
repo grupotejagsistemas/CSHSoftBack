@@ -58,13 +58,31 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
 
 	@Override
 	@Transactional
-	public Usuario create(Usuario usuario) {
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String password = usuario.getPassword();
-		String p = passwordEncoder.encode(password);
-		usuario.setPassword(p);
-		return usuarioDao.save(usuario);
+	public Usuario create(Usuario usuario) throws Exception {
+		if (usuario.getPassword().contains("1") == true || usuario.getPassword().contains("2") == true
+				|| usuario.getPassword().contains("3") == true || usuario.getPassword().contains("4") == true
+				|| usuario.getPassword().contains("5") == true || usuario.getPassword().contains("6") == true
+				|| usuario.getPassword().contains("7") == true || usuario.getPassword().contains("8") == true
+				|| usuario.getPassword().contains("9") == true) {
 
+			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			String password = usuario.getPassword();
+			String p = passwordEncoder.encode(password);
+			usuario.setPassword(p);
+			if (this.findByUsername(usuario.getUsername()) == null) {
+				return usuarioDao.save(usuario);
+			} else {
+				throw new Exception("El nombre de usuario ya existe.");
+			}
+		} else {
+			throw new Exception("La contraseña debe contener al menos un número.");
+		}
+
+	}
+
+	public Usuario validarUsername(String username) {
+		Usuario usuario = usuarioDao.findByUsername(username);
+		return usuario;
 	}
 
 }

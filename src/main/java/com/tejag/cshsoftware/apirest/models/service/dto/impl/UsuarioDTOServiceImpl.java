@@ -20,7 +20,7 @@ public class UsuarioDTOServiceImpl implements UsuarioDTOService {
 	private RoleUsuarioService roleUsuarioService;
 
 	@Override
-	public UsuarioDTO create(UsuarioPostDTO usuario) {
+	public UsuarioDTO create(UsuarioPostDTO usuario) throws Exception {
 
 		Usuario newUsuario = new Usuario();
 		newUsuario.setUsername(usuario.getNombreUsuario());
@@ -36,10 +36,11 @@ public class UsuarioDTOServiceImpl implements UsuarioDTOService {
 		newUsuario.setNombre(usuario.getNombre());
 		newUsuario.setApellido(usuario.getApellido());
 		newUsuario.setApellido(usuario.getApellido());
-		Usuario usuarioCreado = usuarioService.create(newUsuario);
-		if (usuarioCreado != null) {
-			roleUsuarioService.create(usuarioCreado.getId(), usuario.getIdRole());
-		}
+		Usuario usuarioCreado = null;
+			usuarioCreado = usuarioService.create(newUsuario);
+			if (usuarioCreado != null) {
+				roleUsuarioService.create(usuarioCreado.getId(), usuario.getIdRole());
+			}
 
 		return this.getUsuarioDTO(usuarioCreado);
 

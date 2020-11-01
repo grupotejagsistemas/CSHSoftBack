@@ -21,6 +21,7 @@ import com.tejag.cshsoftware.apirest.models.service.AdoptanteService;
 import com.tejag.cshsoftware.apirest.models.service.EstadoAdoptanteService;
 import com.tejag.cshsoftware.apirest.models.service.MascotaService;
 import com.tejag.cshsoftware.apirest.models.service.dto.AdoptanteDTOService;
+import com.tejag.cshsoftware.apirest.models.service.dto.IdVeterinariaDTO;
 import com.tejag.cshsoftware.apirest.models.service.dto.VeterinariaCercanaAdoptanteDTOService;
 
 @Service
@@ -61,12 +62,12 @@ public class AdoptanteDTOServiceImpl implements AdoptanteDTOService {
 
 		Adoptante adoptanteCreado = adoptanteService.save(newAdoptante);
 
-		List<Long> lista = adoptante.getIdVeterinaria();
+		List<IdVeterinariaDTO> lista = adoptante.getIdVeterinaria();
 
 		if (lista.isEmpty() == false || lista != null) {
-			for (Long num : lista) {
+			for (IdVeterinariaDTO idVet : lista) {
 				VeterinariaCercanaAdoptanteDTO vetCercana = new VeterinariaCercanaAdoptanteDTO();
-				vetCercana.setIdVeterinaria(num);
+				vetCercana.setIdVeterinaria(idVet.getId());
 				vetCercana.setIdAdoptante(adoptanteCreado.getId_adoptante());
 				serviceVet.create(vetCercana);
 			}
@@ -125,12 +126,12 @@ public class AdoptanteDTOServiceImpl implements AdoptanteDTOService {
 
 			serviceVet.deleteByIdAdoptante(id);
 
-			List<Long> lista = adoptante.getIdVeterinaria();
+			List<IdVeterinariaDTO> lista = adoptante.getIdVeterinaria();
 
 			if (lista.isEmpty() == false || lista != null) {
-				for (Long num : lista) {
+				for (IdVeterinariaDTO idVet : lista) {
 					VeterinariaCercanaAdoptanteDTO vetCercana = new VeterinariaCercanaAdoptanteDTO();
-					vetCercana.setIdVeterinaria(num);
+					vetCercana.setIdVeterinaria(idVet.getId());
 					vetCercana.setIdAdoptante(id);
 					serviceVet.create(vetCercana);
 				}

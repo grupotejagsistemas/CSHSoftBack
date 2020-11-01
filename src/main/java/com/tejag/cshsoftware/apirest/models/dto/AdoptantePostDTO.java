@@ -3,6 +3,8 @@ package com.tejag.cshsoftware.apirest.models.dto;
 import java.util.Date;
 import java.util.List;
 
+import com.tejag.cshsoftware.apirest.models.service.dto.IdVeterinariaDTO;
+
 public class AdoptantePostDTO {
 
 	private Long idMascota;
@@ -16,7 +18,7 @@ public class AdoptantePostDTO {
 	private String facebook;
 	private String instagram;
 	private String situacionLaboral;
-	private List<Long> idVeterinaria;
+	private List<IdVeterinariaDTO> idVeterinaria;
 	private String observaciones;
 	private int idEstadoAdoptante;
 
@@ -112,11 +114,11 @@ public class AdoptantePostDTO {
 		this.situacionLaboral = situacionLaboral;
 	}
 
-	public List<Long> getIdVeterinaria() {
+	public List<IdVeterinariaDTO> getIdVeterinaria() {
 		return idVeterinaria;
 	}
 
-	public void setIdVeterinaria(List<Long> idVeterinaria) {
+	public void setIdVeterinaria(List<IdVeterinariaDTO> idVeterinaria) {
 		this.idVeterinaria = idVeterinaria;
 	}
 

@@ -6,4 +6,6 @@ public interface UsuarioService {
 
 	public Usuario findByUsername(String username);
 	
+	public Usuario create(Usuario usuario);
+	
 }

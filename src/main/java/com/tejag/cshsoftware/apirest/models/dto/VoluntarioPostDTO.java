@@ -2,12 +2,14 @@ package com.tejag.cshsoftware.apirest.models.dto;
 
 import java.util.List;
 
+import com.tejag.cshsoftware.apirest.models.service.dto.IdVeterinariaDTO;
+
 public class VoluntarioPostDTO {
 
 	private String nombreCompleto;
 	private String telefono;
 	private String direccion;
-	private List<Long> idveterinarias;
+	private List<IdVeterinariaDTO> idveterinarias;
 	private String localidad;
 	private String transito;
 	private String traslado;
@@ -41,11 +43,11 @@ public class VoluntarioPostDTO {
 		this.direccion = direccion;
 	}
 
-	public List<Long> getIdveterinarias() {
+	public List<IdVeterinariaDTO> getIdveterinarias() {
 		return idveterinarias;
 	}
 
-	public void setIdveterinarias(List<Long> idveterinarias) {
+	public void setIdveterinarias(List<IdVeterinariaDTO> idveterinarias) {
 		this.idveterinarias = idveterinarias;
 	}
 

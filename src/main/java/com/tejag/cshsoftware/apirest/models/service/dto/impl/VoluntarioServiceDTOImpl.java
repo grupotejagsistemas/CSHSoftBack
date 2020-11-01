@@ -16,6 +16,7 @@ import com.tejag.cshsoftware.apirest.models.entity.VeterinariaCercana;
 import com.tejag.cshsoftware.apirest.models.entity.Voluntario;
 //import com.tejag.cshsoftware.apirest.models.entity.MascotaEstado;
 import com.tejag.cshsoftware.apirest.models.service.VoluntarioService;
+import com.tejag.cshsoftware.apirest.models.service.dto.IdVeterinariaDTO;
 import com.tejag.cshsoftware.apirest.models.service.dto.VeterinariaCercanaDTOService;
 import com.tejag.cshsoftware.apirest.models.service.dto.VoluntarioServiceDTO;
 
@@ -107,12 +108,12 @@ public class VoluntarioServiceDTOImpl implements VoluntarioServiceDTO {
 
 		Voluntario voluntarioCreado = service.save(newVoluntario);
 
-		List<Long> lista = voluntario.getIdveterinarias();
+		List<IdVeterinariaDTO> lista = voluntario.getIdveterinarias();
 
 		if (voluntario.getIdveterinarias().isEmpty() == false || voluntario.getIdveterinarias() != null) {
-			for (Long num : lista) {
+			for (IdVeterinariaDTO idVet : lista) {
 				VeterinariaCercanaDTO vetCercana = new VeterinariaCercanaDTO();
-				vetCercana.setIdVeterinaria(num);
+				vetCercana.setIdVeterinaria(idVet.getId());
 				vetCercana.setIdVoluntario(voluntarioCreado.getIdVoluntario());
 				serviceVet.create(vetCercana);
 			}
@@ -139,12 +140,12 @@ public class VoluntarioServiceDTOImpl implements VoluntarioServiceDTO {
 
 			serviceVet.deleteByIdVoluntario(idVoluntario);
 
-			List<Long> lista = voluntario.getIdveterinarias();
+			List<IdVeterinariaDTO> lista = voluntario.getIdveterinarias();
 
 			if (voluntario.getIdveterinarias().isEmpty() || voluntario.getIdveterinarias() != null) {
-				for (Long num : lista) {
+				for (IdVeterinariaDTO idVet : lista) {
 					VeterinariaCercanaDTO vetCercana = new VeterinariaCercanaDTO();
-					vetCercana.setIdVeterinaria(num);
+					vetCercana.setIdVeterinaria(idVet.getId());
 					vetCercana.setIdVoluntario(idVoluntario);
 					serviceVet.create(vetCercana);
 				}

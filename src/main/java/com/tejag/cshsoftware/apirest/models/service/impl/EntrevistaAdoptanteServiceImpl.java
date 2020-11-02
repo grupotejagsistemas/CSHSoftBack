@@ -39,7 +39,8 @@ public class EntrevistaAdoptanteServiceImpl implements EntrevistaAdoptanteServic
 	public EntrevistaAdoptante update(EntrevistaAdoptante newEntrevistaadoptante) {
 		EntrevistaAdoptante entrevistaActual = new EntrevistaAdoptante();
 
-		entrevistaActual = entrevistaadoptanteDao.findById(newEntrevistaadoptante.getId_entrevista_adoptante()).orElseThrow();
+		entrevistaActual = entrevistaadoptanteDao.findById(newEntrevistaadoptante.getId_entrevista_adoptante())
+				.orElseThrow();
 
 		entrevistaActual.setRespuesta1(newEntrevistaadoptante.getRespuesta1());
 		entrevistaActual.setRespuesta2(newEntrevistaadoptante.getRespuesta2());
@@ -62,7 +63,6 @@ public class EntrevistaAdoptanteServiceImpl implements EntrevistaAdoptanteServic
 		entrevistaActual.setRespuesta19(newEntrevistaadoptante.getRespuesta19());
 		entrevistaActual.setRespuesta20(newEntrevistaadoptante.getRespuesta20());
 		entrevistaActual.setRespuesta21(newEntrevistaadoptante.getRespuesta21());
-		entrevistaActual.setRespuesta22(newEntrevistaadoptante.getRespuesta22());
 
 		return entrevistaadoptanteDao.save(entrevistaActual);
 	}

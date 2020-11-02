@@ -49,7 +49,7 @@ public class EntrevistaAdoptanteDTOServiceImpl implements EntrevistaAdoptanteDTO
 			newentrevista.setRespuesta19(entity.getRespuesta19());
 			newentrevista.setRespuesta20(entity.getRespuesta20());
 			newentrevista.setRespuesta21(entity.getRespuesta21());
-			newentrevista.setRespuesta22(entity.getRespuesta22());
+
 		}
 		return newentrevista;
 
@@ -83,7 +83,6 @@ public class EntrevistaAdoptanteDTOServiceImpl implements EntrevistaAdoptanteDTO
 		newentrevista.setRespuesta19(entrevistaadoptante.getRespuesta19());
 		newentrevista.setRespuesta20(entrevistaadoptante.getRespuesta20());
 		newentrevista.setRespuesta21(entrevistaadoptante.getRespuesta21());
-		newentrevista.setRespuesta22(entrevistaadoptante.getRespuesta22());
 
 		entrevistaadoptanteservice.save(newentrevista);
 

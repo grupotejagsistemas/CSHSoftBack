@@ -2,9 +2,11 @@ package com.tejag.cshsoftware.apirest.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tejag.cshsoftware.apirest.models.dto.NuevaContrasenaDTO;
 import com.tejag.cshsoftware.apirest.models.dto.UsuarioPostDTO;
 
 @RequestMapping("/admin")
@@ -12,5 +14,7 @@ public interface UsuarioRestController {
 
 	@PostMapping("/usuario")
 	public ResponseEntity<?> create(@RequestBody UsuarioPostDTO usuario) throws Exception;
-	
+	  
+	@PutMapping("/usuario")
+	public ResponseEntity<?> updatePassword(@RequestBody NuevaContrasenaDTO nuevaContrasena) throws Exception;
 }

@@ -73,6 +73,7 @@ public class VoluntarioServiceDTOImpl implements VoluntarioServiceDTO {
 	public VeterinariaDTO getVeterinariaDTO(Veterinaria entity) {
 		VeterinariaDTO vete = new VeterinariaDTO();
 		if (entity != null) {
+			vete.setId(entity.getIdVeterinaria());
 			vete.setRazonSocial(entity.getRazonSocial());
 		}
 		return vete;

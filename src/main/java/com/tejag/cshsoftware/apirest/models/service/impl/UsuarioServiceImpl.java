@@ -63,7 +63,7 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
 				|| usuario.getPassword().contains("3") == true || usuario.getPassword().contains("4") == true
 				|| usuario.getPassword().contains("5") == true || usuario.getPassword().contains("6") == true
 				|| usuario.getPassword().contains("7") == true || usuario.getPassword().contains("8") == true
-				|| usuario.getPassword().contains("9") == true) {
+				|| usuario.getPassword().contains("9") == true && usuario.getPassword().contains("[a-zA-Z]+") == true) {
 
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 			String password = usuario.getPassword();
@@ -75,7 +75,7 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
 				throw new Exception("El nombre de usuario ya existe.");
 			}
 		} else {
-			throw new Exception("La contraseña debe contener al menos un número.");
+			throw new Exception("La contraseña debe contener letras y al menos un número.");
 		}
 
 	}
@@ -85,4 +85,27 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
 		return usuario;
 	}
 
+	@Override
+	@Transactional
+	public Usuario changePassword(String username, String newPass, String oldPass) throws Exception {
+		Usuario usuario = usuarioDao.findByUsername(username);
+		if (usuario != null && newPass.contains("1") == true || newPass.contains("2") == true
+				|| newPass.contains("3") == true || newPass.contains("4") == true || newPass.contains("5") == true
+				|| newPass.contains("6") == true || newPass.contains("7") == true || newPass.contains("8") == true
+				|| newPass.contains("9") == true && newPass.contains("[a-zA-Z]+") == true) {
+			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			String password = usuario.getPassword();
+			if (passwordEncoder.matches(oldPass, password) == true) {
+				usuario.setPassword(newPass);
+				return usuarioDao.save(usuario);
+			} else {
+				throw new Exception("La contraseña actual no coincide.");
+			}
+
+		} else if (usuario == null) {
+			logger.info(username.concat(" no existe."));
+			throw new Exception("Error al modificar la contraseña.");
+		} else
+			throw new Exception("Error al modificar la contraseña.");
+	}
 }

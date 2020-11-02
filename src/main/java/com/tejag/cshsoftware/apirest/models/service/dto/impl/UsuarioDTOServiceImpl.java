@@ -3,6 +3,7 @@ package com.tejag.cshsoftware.apirest.models.service.dto.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tejag.cshsoftware.apirest.models.dto.NuevaContrasenaDTO;
 import com.tejag.cshsoftware.apirest.models.dto.UsuarioDTO;
 import com.tejag.cshsoftware.apirest.models.dto.UsuarioPostDTO;
 import com.tejag.cshsoftware.apirest.models.entity.Usuario;
@@ -37,10 +38,10 @@ public class UsuarioDTOServiceImpl implements UsuarioDTOService {
 		newUsuario.setApellido(usuario.getApellido());
 		newUsuario.setApellido(usuario.getApellido());
 		Usuario usuarioCreado = null;
-			usuarioCreado = usuarioService.create(newUsuario);
-			if (usuarioCreado != null) {
-				roleUsuarioService.create(usuarioCreado.getId(), usuario.getIdRole());
-			}
+		usuarioCreado = usuarioService.create(newUsuario);
+		if (usuarioCreado != null) {
+			roleUsuarioService.create(usuarioCreado.getId(), usuario.getIdRole());
+		}
 
 		return this.getUsuarioDTO(usuarioCreado);
 
@@ -63,5 +64,11 @@ public class UsuarioDTOServiceImpl implements UsuarioDTOService {
 			usuarioDto.setApellido(entity.getApellido());
 		}
 		return usuarioDto;
+	}
+
+	@Override
+	public void updatePassword(NuevaContrasenaDTO newPass) throws Exception {
+		usuarioService.changePassword(newPass.getUsername(), newPass.getNewPass(), newPass.getOldPass());
+
 	}
 }

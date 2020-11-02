@@ -143,7 +143,6 @@ public class EntrevistaAdoptanteDTOServiceImpl implements EntrevistaAdoptanteDTO
 		newentrevista.setRespuesta19(entrevistaadoptantepost.getRespuesta19());
 		newentrevista.setRespuesta20(entrevistaadoptantepost.getRespuesta20());
 		newentrevista.setRespuesta21(entrevistaadoptantepost.getRespuesta21());
-		newentrevista.setRespuesta22(entrevistaadoptantepost.getRespuesta22());
 
 		entrevistaadoptanteservice.update(newentrevista);
 	}

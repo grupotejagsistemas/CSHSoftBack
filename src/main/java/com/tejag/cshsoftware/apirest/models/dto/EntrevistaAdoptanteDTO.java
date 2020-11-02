@@ -25,7 +25,6 @@ public class EntrevistaAdoptanteDTO {
 	private String respuesta19;
 	private String respuesta20;
 	private String respuesta21;
-	private String respuesta22;
 
 	public EntrevistaAdoptanteDTO() {
 	}
@@ -212,14 +211,6 @@ public class EntrevistaAdoptanteDTO {
 
 	public void setRespuesta21(String respuesta21) {
 		this.respuesta21 = respuesta21;
-	}
-
-	public String getRespuesta22() {
-		return respuesta22;
-	}
-
-	public void setRespuesta22(String respuesta22) {
-		this.respuesta22 = respuesta22;
 	}
 
 }

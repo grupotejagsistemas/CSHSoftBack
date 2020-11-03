@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.tejag.cshsoftware.apirest.models.dto.NuevaContrasenaDTO;
 import com.tejag.cshsoftware.apirest.models.dto.UsuarioDTO;
 import com.tejag.cshsoftware.apirest.models.dto.UsuarioPostDTO;
+import com.tejag.cshsoftware.apirest.models.dto.UsuarioPutDTO;
 import com.tejag.cshsoftware.apirest.models.entity.Usuario;
 import com.tejag.cshsoftware.apirest.models.service.RoleUsuarioService;
 import com.tejag.cshsoftware.apirest.models.service.UsuarioService;
@@ -36,7 +37,7 @@ public class UsuarioDTOServiceImpl implements UsuarioDTOService {
 		}
 		newUsuario.setNombre(usuario.getNombre());
 		newUsuario.setApellido(usuario.getApellido());
-		newUsuario.setApellido(usuario.getApellido());
+		newUsuario.setEmail(usuario.getEmail());
 		Usuario usuarioCreado = null;
 		usuarioCreado = usuarioService.create(newUsuario);
 		if (usuarioCreado != null) {
@@ -69,6 +70,22 @@ public class UsuarioDTOServiceImpl implements UsuarioDTOService {
 	@Override
 	public void updatePassword(NuevaContrasenaDTO newPass) throws Exception {
 		usuarioService.changePassword(newPass.getUsername(), newPass.getNewPass(), newPass.getOldPass());
+
+	}
+
+	@Override
+	public void deleteById(Long id) {
+		roleUsuarioService.deleteByIdUsuario(id);
+		usuarioService.deleteById(id);
+
+	}
+
+	@Override
+	public void updateRole(UsuarioPutDTO usuario) throws Exception {
+		Usuario usuarioCreado = usuarioService.findByUsername(usuario.getUsername());
+		if (usuarioCreado != null) {
+			roleUsuarioService.update(usuarioCreado.getId(), usuario.getIdRole());
+		}
 
 	}
 }

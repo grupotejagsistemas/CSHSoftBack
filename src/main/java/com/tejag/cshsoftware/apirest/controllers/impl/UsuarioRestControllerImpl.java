@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tejag.cshsoftware.apirest.controllers.UsuarioRestController;
 import com.tejag.cshsoftware.apirest.models.dto.NuevaContrasenaDTO;
 import com.tejag.cshsoftware.apirest.models.dto.UsuarioPostDTO;
+import com.tejag.cshsoftware.apirest.models.dto.UsuarioPutDTO;
 import com.tejag.cshsoftware.apirest.models.service.dto.UsuarioDTOService;
 
 @CrossOrigin(origins = { "http://localhost:4200" })
@@ -41,6 +42,26 @@ public class UsuarioRestControllerImpl implements UsuarioRestController {
 		try {
 			usuarioDtoService.updatePassword(nuevaContrasena);
 			response.put("mensaje", "La contraseña fue modificada de manera exitosa.");
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+		} catch (Exception e) {
+			response.put("mensaje", e.getMessage());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+	}
+
+	@Override
+	public void deleteById(Long id) {
+		usuarioDtoService.deleteById(id);
+
+	}
+
+	@Override
+	public ResponseEntity<?> updateRole(UsuarioPutDTO usuario) throws Exception {
+		Map<String, Object> response = new HashMap<>();
+		try {
+			usuarioDtoService.updateRole(usuario);
+			response.put("mensaje", "Se modificó al usuario de manera correcta.");
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 		} catch (Exception e) {
 			response.put("mensaje", e.getMessage());

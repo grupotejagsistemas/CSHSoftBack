@@ -24,4 +24,23 @@ public class RoleUsuarioServiceImpl implements RoleUsuarioService {
 		roleUsuarioDao.save(roleUser);
 	}
 
+	@Override
+	@Transactional
+	public void update(Long idUsuario, Long idRole) throws Exception {
+		RoleUsuario roleUser = roleUsuarioDao.findByUsuario_id(idUsuario);
+		if (roleUser != null) {
+			roleUsuarioDao.update(idRole, roleUser.getId());
+		} else {
+			throw new Exception("Error al actualizar los permisos.");
+		}
+
+	}
+
+	@Override
+	@Transactional
+	public void deleteByIdUsuario(Long id) {
+		roleUsuarioDao.deleteByIdUsuario(id);
+
+	}
+
 }

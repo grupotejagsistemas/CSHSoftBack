@@ -9,5 +9,8 @@ public interface UsuarioService {
 	public Usuario create(Usuario usuario) throws Exception;
 
 	public Usuario changePassword(String username, String newPass, String oldPass) throws Exception;
+	
+	public void deleteById(Long id);
+	
 
 }

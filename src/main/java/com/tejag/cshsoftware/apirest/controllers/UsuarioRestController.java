@@ -1,6 +1,8 @@
 package com.tejag.cshsoftware.apirest.controllers;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tejag.cshsoftware.apirest.models.dto.NuevaContrasenaDTO;
 import com.tejag.cshsoftware.apirest.models.dto.UsuarioPostDTO;
+import com.tejag.cshsoftware.apirest.models.dto.UsuarioPutDTO;
 
 @RequestMapping("/admin")
 public interface UsuarioRestController {
@@ -17,4 +20,10 @@ public interface UsuarioRestController {
 	  
 	@PutMapping("/usuario")
 	public ResponseEntity<?> updatePassword(@RequestBody NuevaContrasenaDTO nuevaContrasena) throws Exception;
+	
+	@DeleteMapping("/usuario/{id}")
+	public void deleteById(@PathVariable("id") Long id);
+	
+	@PutMapping("/usuario/put")
+	public ResponseEntity<?> updateRole(@RequestBody UsuarioPutDTO usuario) throws Exception;
 }

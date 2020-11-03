@@ -28,9 +28,6 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
 	@Autowired
 	private UsuarioDAO usuarioDao;
 
-//	@Autowired
-//	private BCryptPasswordEncoder encoder;
-
 	@Override
 	@Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -59,20 +56,25 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
 	@Override
 	@Transactional
 	public Usuario create(Usuario usuario) throws Exception {
-		if (usuario.getPassword().contains("1") == true || usuario.getPassword().contains("2") == true
-				|| usuario.getPassword().contains("3") == true || usuario.getPassword().contains("4") == true
-				|| usuario.getPassword().contains("5") == true || usuario.getPassword().contains("6") == true
-				|| usuario.getPassword().contains("7") == true || usuario.getPassword().contains("8") == true
-				|| usuario.getPassword().contains("9") == true && usuario.getPassword().contains("[a-zA-Z]+") == true) {
+		if (usuario.getPassword().matches(".*[a-z].*") == true) {
 
-			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-			String password = usuario.getPassword();
-			String p = passwordEncoder.encode(password);
-			usuario.setPassword(p);
-			if (this.findByUsername(usuario.getUsername()) == null) {
-				return usuarioDao.save(usuario);
+			if (usuario.getPassword().contains("1") == true || usuario.getPassword().contains("2") == true
+					|| usuario.getPassword().contains("3") == true || usuario.getPassword().contains("4") == true
+					|| usuario.getPassword().contains("5") == true || usuario.getPassword().contains("6") == true
+					|| usuario.getPassword().contains("7") == true || usuario.getPassword().contains("8") == true
+					|| usuario.getPassword().contains("9") == true) {
+
+				BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+				String password = usuario.getPassword();
+				String p = passwordEncoder.encode(password);
+				usuario.setPassword(p);
+				if (this.findByUsername(usuario.getUsername()) == null) {
+					return usuarioDao.save(usuario);
+				} else {
+					throw new Exception("El nombre de usuario ya existe.");
+				}
 			} else {
-				throw new Exception("El nombre de usuario ya existe.");
+				throw new Exception("La contraseña debe contener letras y al menos un número.");
 			}
 		} else {
 			throw new Exception("La contraseña debe contener letras y al menos un número.");
@@ -88,24 +90,40 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
 	@Override
 	@Transactional
 	public Usuario changePassword(String username, String newPass, String oldPass) throws Exception {
-		Usuario usuario = usuarioDao.findByUsername(username);
-		if (usuario != null && newPass.contains("1") == true || newPass.contains("2") == true
-				|| newPass.contains("3") == true || newPass.contains("4") == true || newPass.contains("5") == true
-				|| newPass.contains("6") == true || newPass.contains("7") == true || newPass.contains("8") == true
-				|| newPass.contains("9") == true && newPass.contains("[a-zA-Z]+") == true) {
-			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-			String password = usuario.getPassword();
-			if (passwordEncoder.matches(oldPass, password) == true) {
-				usuario.setPassword(newPass);
-				return usuarioDao.save(usuario);
-			} else {
-				throw new Exception("La contraseña actual no coincide.");
-			}
 
-		} else if (usuario == null) {
-			logger.info(username.concat(" no existe."));
-			throw new Exception("Error al modificar la contraseña.");
-		} else
-			throw new Exception("Error al modificar la contraseña.");
+		Usuario usuario = usuarioDao.findByUsername(username);
+		if (newPass.matches(".*[a-z].*") == true) {
+
+			if (usuario != null && newPass.contains("1") == true || newPass.contains("2") == true
+					|| newPass.contains("3") == true || newPass.contains("4") == true || newPass.contains("5") == true
+					|| newPass.contains("6") == true || newPass.contains("7") == true || newPass.contains("8") == true
+					|| newPass.contains("9") == true && newPass.matches(".*[a-z].*") == true) {
+
+				BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+				String password = usuario.getPassword();
+
+				if (passwordEncoder.matches(oldPass, password) == true) {
+					usuario.setPassword(newPass);
+					return usuarioDao.save(usuario);
+
+				} else if (passwordEncoder.matches(oldPass, password) == false) {
+					throw new Exception("La contraseñas actual no es correcta.");
+
+				} else {
+					throw new Exception("La contraseña debe contener letras y al menos un número.");
+				}
+			} else {
+				throw new Exception("La contraseña debe contener letras y al menos un número.");
+			}
+		} else {
+			throw new Exception("La contraseña debe contener letras y al menos un número.");
+		}
 	}
+
+	@Override
+	@Transactional
+	public void deleteById(Long id) {
+		usuarioDao.deleteById(id);
+	}
+
 }

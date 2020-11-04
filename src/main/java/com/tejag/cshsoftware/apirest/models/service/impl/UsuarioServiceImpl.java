@@ -97,13 +97,14 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
 			if (usuario != null && newPass.contains("1") == true || newPass.contains("2") == true
 					|| newPass.contains("3") == true || newPass.contains("4") == true || newPass.contains("5") == true
 					|| newPass.contains("6") == true || newPass.contains("7") == true || newPass.contains("8") == true
-					|| newPass.contains("9") == true && newPass.matches(".*[a-z].*") == true) {
+					|| newPass.contains("9") == true) {
 
 				BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 				String password = usuario.getPassword();
 
 				if (passwordEncoder.matches(oldPass, password) == true) {
-					usuario.setPassword(newPass);
+					String passCrypt = passwordEncoder.encode(newPass);
+					usuario.setPassword(passCrypt);
 					return usuarioDao.save(usuario);
 
 				} else if (passwordEncoder.matches(oldPass, password) == false) {

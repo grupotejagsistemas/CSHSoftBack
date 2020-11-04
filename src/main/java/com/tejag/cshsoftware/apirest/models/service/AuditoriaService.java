@@ -16,6 +16,6 @@ public interface AuditoriaService {
 
 	public Auditoria create(Auditoria newAuditoria);
 
-	public List<Auditoria> findByFiltroAccionDTO(String accion);
+	public List<Auditoria> findByAccion(String accion);
 
 }

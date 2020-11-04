@@ -47,8 +47,8 @@ public class AuditoriaServiceImpl implements AuditoriaService {
 	}
 
 	@Override
-	public List<Auditoria> findByFiltroAccionDTO(String accion) {
-		return auditoriaDao.findByFiltroAccionDTO(accion);
+	public List<Auditoria> findByAccion(String accion) {
+		return auditoriaDao.findByAccion(accion);
 	}
 	
 	

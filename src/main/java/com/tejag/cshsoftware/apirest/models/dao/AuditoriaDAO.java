@@ -13,7 +13,7 @@ public interface AuditoriaDAO extends CrudRepository<Auditoria, Long> {
 	@Query("from Auditoria a where a.usuario like %:usuario%")
 	public List<Auditoria> findByNombre(String usuario);
 	
-	public List<Auditoria> findByFiltroAccionDTO(String accion);
+	public List<Auditoria> findByAccion(String accion);
 
 
 	

@@ -1,10 +1,14 @@
 package com.tejag.cshsoftware.apirest.models.service.dto.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tejag.cshsoftware.apirest.models.dto.NuevaContrasenaDTO;
 import com.tejag.cshsoftware.apirest.models.dto.UsuarioDTO;
+import com.tejag.cshsoftware.apirest.models.dto.UsuarioGetDTO;
 import com.tejag.cshsoftware.apirest.models.dto.UsuarioPostDTO;
 import com.tejag.cshsoftware.apirest.models.dto.UsuarioPutDTO;
 import com.tejag.cshsoftware.apirest.models.entity.Usuario;
@@ -87,5 +91,38 @@ public class UsuarioDTOServiceImpl implements UsuarioDTOService {
 			roleUsuarioService.update(usuarioCreado.getId(), usuario.getIdRole());
 		}
 
+	}
+
+	@Override
+	public List<UsuarioGetDTO> getAll() {
+		return this.getUsuarioGetDTOList(usuarioService.getAll());
+	}
+
+	@Override
+	public UsuarioGetDTO getById(Long id) {
+		return this.getUsuarioGetDTO(usuarioService.getById(id));
+	}
+
+	public UsuarioGetDTO getUsuarioGetDTO(Usuario entity) {
+		UsuarioGetDTO usuario = new UsuarioGetDTO();
+		if (entity != null) {
+			usuario.setId(entity.getId());
+			usuario.setNombre(entity.getNombre());
+			usuario.setApellido(entity.getApellido());
+			usuario.setEmail(entity.getEmail());
+			usuario.setNombreUsuario(entity.getUsername());
+		}
+
+		return usuario;
+	}
+
+	public List<UsuarioGetDTO> getUsuarioGetDTOList(List<Usuario> listaUsuarios) {
+		List<UsuarioGetDTO> listaUsuarioDTO = new ArrayList<UsuarioGetDTO>();
+		if (listaUsuarios != null) {
+			for (Usuario user : listaUsuarios) {
+				listaUsuarioDTO.add(this.getUsuarioGetDTO(user));
+			}
+		}
+		return listaUsuarioDTO;
 	}
 }

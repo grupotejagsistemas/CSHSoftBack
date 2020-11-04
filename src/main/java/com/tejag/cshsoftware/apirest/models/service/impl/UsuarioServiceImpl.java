@@ -126,4 +126,16 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
 		usuarioDao.deleteById(id);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public Usuario getById(Long id) {
+		return usuarioDao.findById(id).orElseThrow();
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Usuario> getAll() {
+		return (List<Usuario>) usuarioDao.findAll();
+	}
+
 }

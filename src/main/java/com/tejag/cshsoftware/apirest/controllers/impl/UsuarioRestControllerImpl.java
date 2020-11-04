@@ -1,6 +1,7 @@
 package com.tejag.cshsoftware.apirest.controllers.impl;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tejag.cshsoftware.apirest.controllers.UsuarioRestController;
 import com.tejag.cshsoftware.apirest.models.dto.NuevaContrasenaDTO;
+import com.tejag.cshsoftware.apirest.models.dto.UsuarioGetDTO;
 import com.tejag.cshsoftware.apirest.models.dto.UsuarioPostDTO;
 import com.tejag.cshsoftware.apirest.models.dto.UsuarioPutDTO;
 import com.tejag.cshsoftware.apirest.models.service.dto.UsuarioDTOService;
@@ -68,6 +70,16 @@ public class UsuarioRestControllerImpl implements UsuarioRestController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
+	}
+
+	@Override
+	public List<UsuarioGetDTO> getAll() {
+		return usuarioDtoService.getAll();
+	}
+
+	@Override
+	public UsuarioGetDTO getById(Long id) {
+		return usuarioDtoService.getById(id);
 	}
 
 }

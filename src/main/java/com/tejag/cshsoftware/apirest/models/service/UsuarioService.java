@@ -1,5 +1,7 @@
 package com.tejag.cshsoftware.apirest.models.service;
 
+import java.util.List;
+
 import com.tejag.cshsoftware.apirest.models.entity.Usuario;
 
 public interface UsuarioService {
@@ -12,5 +14,8 @@ public interface UsuarioService {
 	
 	public void deleteById(Long id);
 	
+	public Usuario getById(Long id);
+	
+	public List<Usuario> getAll();
 
 }

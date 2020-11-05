@@ -30,12 +30,12 @@ public class FichaMedicaServiceImpl implements FichaMedicaService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public FichaMedica findById(long id) {
+	public FichaMedica findById(Long id) {
 		return fichaMedicaDao.findById(id).orElseThrow();
 	}
 
 	@Override
-	public void deleteById(long id) {
+	public void deleteById(Long id) {
 		fichaMedicaDao.deleteById(id);
 
 	}

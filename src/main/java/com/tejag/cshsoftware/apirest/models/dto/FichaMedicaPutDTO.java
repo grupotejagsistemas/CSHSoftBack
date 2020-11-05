@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class FichaMedicaPutDTO {
 
-	private int id;
+	private Long id;
 	private Date fecha;
 	private String desparasitacion;
 	private String nombreProducto;
@@ -20,11 +20,11 @@ public class FichaMedicaPutDTO {
 
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

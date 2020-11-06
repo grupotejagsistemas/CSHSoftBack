@@ -1,15 +1,13 @@
 package com.tejag.cshsoftware.apirest.models.dto;
 
-import java.util.Date;
-
 public class MascotaPostDTO {
 
 	private String nombre;
-	private Date fechaNacimiento;
+	private String fechaNacimiento;
 	private String particularidadesFisicas;
 	private String sexo;
 	private String fotoMascota;
-	private Date fechaRescate;
+	private String fechaRescate;
 	private String lugarRescate;
 	private String descripcionRescate;
 	private String especie;
@@ -27,12 +25,20 @@ public class MascotaPostDTO {
 		this.nombre = nombre;
 	}
 
-	public Date getFechaNacimiento() {
+	public String getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	public void setFechaNacimiento(Date fechaNacimiento) {
+	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
+	}
+
+	public String getFechaRescate() {
+		return fechaRescate;
+	}
+
+	public void setFechaRescate(String fechaRescate) {
+		this.fechaRescate = fechaRescate;
 	}
 
 	public String getParticularidadesFisicas() {
@@ -57,14 +63,6 @@ public class MascotaPostDTO {
 
 	public void setFotoMascota(String fotoMascota) {
 		this.fotoMascota = fotoMascota;
-	}
-
-	public Date getFechaRescate() {
-		return fechaRescate;
-	}
-
-	public void setFechaRescate(Date fechaRescate) {
-		this.fechaRescate = fechaRescate;
 	}
 
 	public String getLugarRescate() {

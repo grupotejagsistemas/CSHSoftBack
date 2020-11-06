@@ -1,6 +1,7 @@
 package com.tejag.cshsoftware.apirest.models.service.dto;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -33,8 +34,9 @@ public interface MascotaServiceDTO {
 	/**
 	 * Actualizar datos de mascota
 	 * @param mascota
+	 * @throws ParseException 
 	 */
-	public void update(Long id, MascotaPostDTO mascota);
+	public void update(Long id, MascotaPostDTO mascota) throws ParseException;
 	
 	/**
 	 * Eliminación por Id

@@ -1,6 +1,5 @@
 package com.tejag.cshsoftware.apirest.models.dto;
 
-import java.util.Date;
 import java.util.List;
 
 import com.tejag.cshsoftware.apirest.models.service.dto.IdVeterinariaDTO;
@@ -10,7 +9,7 @@ public class AdoptantePostDTO {
 	private Long idMascota;
 	private Long numeroFormulario;
 	private String nombreCompleto;
-	private Date fechaNacimiento;
+	private String fechaNacimiento;
 	private String domicilio;
 	private String barrio;
 	private String celular;
@@ -50,11 +49,11 @@ public class AdoptantePostDTO {
 		this.nombreCompleto = nombreCompleto;
 	}
 
-	public Date getFechaNacimiento() {
+	public String getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	public void setFechaNacimiento(Date fechaNacimiento) {
+	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 

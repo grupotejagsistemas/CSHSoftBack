@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -61,13 +64,18 @@ public class MascotaServiceDTOImpl implements MascotaServiceDTO {
 	@Override
 	public MascotaDTO save(MascotaPostDTO mascota) throws Exception {
 		Mascota newMascota = new Mascota();
-
 		newMascota.setNombre(mascota.getNombre());
-		newMascota.setFechaNacimieto(mascota.getFechaNacimiento());
+		String fechaNac = mascota.getFechaNacimiento();
+		String fechaRes = mascota.getFechaRescate();
+		String pattern = "yyyy-MM-dd";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		Date dateNacimiento = simpleDateFormat.parse(fechaNac);
+		Date dateRescate = simpleDateFormat.parse(fechaRes);
+		newMascota.setFechaNacimieto(dateNacimiento);
 		newMascota.setParticularidadesFisica(mascota.getParticularidadesFisicas());
 		newMascota.setSexo(mascota.getSexo());
 		newMascota.setFotoMascota(mascota.getFotoMascota());
-		newMascota.setFechaRescate(mascota.getFechaRescate());
+		newMascota.setFechaRescate(dateRescate);
 		newMascota.setLugarRescate(mascota.getLugarRescate());
 		newMascota.setDescripcionRescate(mascota.getDescripcionRescate());
 		newMascota.setEspecie(mascota.getEspecie());
@@ -111,16 +119,23 @@ public class MascotaServiceDTOImpl implements MascotaServiceDTO {
 	}
 
 	@Override
-	public void update(Long id, MascotaPostDTO mascota) {
+	public void update(Long id, MascotaPostDTO mascota) throws ParseException {
 		Mascota newMascota = new Mascota();
+
+		String fechaNac = mascota.getFechaNacimiento();
+		String fechaRes = mascota.getFechaRescate();
+		String pattern = "yyyy-MM-dd";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		Date dateNacimiento = simpleDateFormat.parse(fechaNac);
+		Date dateRescate = simpleDateFormat.parse(fechaRes);
 
 		newMascota.setId(id);
 		newMascota.setNombre(mascota.getNombre());
-		newMascota.setFechaNacimieto(mascota.getFechaNacimiento());
+		newMascota.setFechaNacimieto(dateNacimiento);
 		newMascota.setParticularidadesFisica(mascota.getParticularidadesFisicas());
 		newMascota.setSexo(mascota.getSexo());
 		newMascota.setFotoMascota(mascota.getFotoMascota());
-		newMascota.setFechaRescate(mascota.getFechaRescate());
+		newMascota.setFechaRescate(dateRescate);
 		newMascota.setLugarRescate(mascota.getLugarRescate());
 		newMascota.setDescripcionRescate(mascota.getDescripcionRescate());
 		newMascota.setEspecie(mascota.getEspecie());

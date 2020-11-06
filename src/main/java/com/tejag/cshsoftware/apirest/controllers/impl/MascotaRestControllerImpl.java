@@ -3,6 +3,7 @@ package com.tejag.cshsoftware.apirest.controllers.impl;
 import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,8 +49,16 @@ public class MascotaRestControllerImpl implements MascotaRestController {
 
 	@Override
 	@ResponseStatus(HttpStatus.CREATED)
-	public void update(Long id, MascotaPostDTO mascotaPut) {
-		serviceDto.update(id, mascotaPut);
+	public ResponseEntity<?> update(Long id, MascotaPostDTO mascotaPut) throws ParseException {
+		Map<String, Object> response = new HashMap<>();
+		try {
+			serviceDto.update(id, mascotaPut);
+			response.put("mensaje", "La mascota fue actualizada correctamente.");
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+		} catch (Exception e) {
+			response.put("mensaje", e.getMessage());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 
 	@Override

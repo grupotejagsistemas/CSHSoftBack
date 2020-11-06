@@ -1,6 +1,7 @@
 package com.tejag.cshsoftware.apirest.controllers;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.core.io.Resource;
@@ -36,7 +37,7 @@ public interface MascotaRestController {
 	
 	@Secured("ROLE_ADMIN")
 	@PutMapping("/mascotas/{id}")
-	public void update(@PathVariable Long id, @RequestBody MascotaPostDTO mascotaPut);
+	public ResponseEntity<?> update(@PathVariable Long id, @RequestBody MascotaPostDTO mascotaPut) throws ParseException;
 	
 	@Secured("ROLE_ADMIN")
 	@DeleteMapping("/mascotas/{id}")

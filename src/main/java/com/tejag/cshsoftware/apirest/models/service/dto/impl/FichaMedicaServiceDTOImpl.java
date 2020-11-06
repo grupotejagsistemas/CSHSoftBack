@@ -138,7 +138,9 @@ public class FichaMedicaServiceDTOImpl implements FichaMedicaServiceDTO {
 			ficha.setVacuna(entity.getVacuna());
 			ficha.setNombreVacuna(entity.getNombreVacuna());
 			ficha.setDiagnostico(entity.getDiagnostico());
+			ficha.setIdMascota(entity.getMascotas().getId().toString());
 			ficha.setMascota(entity.getMascotas().getNombre());
+			ficha.setIdVeterinaria(entity.getVeterinarias().getIdVeterinaria().toString());
 			ficha.setVeterinaria(entity.getVeterinarias().getRazonSocial());
 			ficha.setTratamiento(entity.getTratamiento());
 			ficha.setDescripcionTratamiento(entity.getDescripcionTratamiento());

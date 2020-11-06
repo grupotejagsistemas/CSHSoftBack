@@ -5,7 +5,7 @@ import java.util.List;
 public class VoluntarioDTO {
 
 	private Long id;
-	private String nombrecompleto;
+	private String nombreCompleto;
 	private String telefono;
 	private String direccion;
 	private List<VeterinariaDTO> veterinariaCercana;
@@ -27,12 +27,13 @@ public class VoluntarioDTO {
 		this.id = id;
 	}
 
-	public String getNombrecompleto() {
-		return nombrecompleto;
+
+	public String getNombreCompleto() {
+		return nombreCompleto;
 	}
 
-	public void setNombre(String nombrecompleto) {
-		this.nombrecompleto = nombrecompleto;
+	public void setNombreCompleto(String nombreCompleto) {
+		this.nombreCompleto = nombreCompleto;
 	}
 
 	public String getTelefono() {
@@ -57,10 +58,6 @@ public class VoluntarioDTO {
 
 	public void setVeterinariaCercana(List<VeterinariaDTO> veterinariaCercana) {
 		this.veterinariaCercana = veterinariaCercana;
-	}
-
-	public void setNombrecompleto(String nombrecompleto) {
-		this.nombrecompleto = nombrecompleto;
 	}
 
 	public void setTraslado(String traslado) {

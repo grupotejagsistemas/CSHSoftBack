@@ -27,7 +27,8 @@ public class EntrevistaAdoptanteDTOServiceImpl implements EntrevistaAdoptanteDTO
 		EntrevistaAdoptanteDTO newentrevista = new EntrevistaAdoptanteDTO();
 		if (entity != null) {
 			newentrevista.setAdoptante(entity.getAdoptantes().getNombre_completo());
-			newentrevista.setId(entity.getId_entrevista_adoptante());
+			newentrevista.setIdAdoptante(entity.getAdoptantes().getId_adoptante().toString());
+			newentrevista.setId(entity.getId_entrevista_adoptante());			
 			newentrevista.setRespuesta1(entity.getRespuesta1());
 			newentrevista.setRespuesta2(entity.getRespuesta2());
 			newentrevista.setRespuesta3(entity.getRespuesta3());

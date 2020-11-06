@@ -16,8 +16,10 @@ public class AdoptanteDTO {
 	private String facebook;
 	private String instagram;
 	private String situacionLaboral;
-	private List<VeterinariaDTO> veterinaria_cercana;
+	private List<VeterinariaDTO> idVeterinaria;
 	private String observaciones;
+	private String idEstadoAdoptante;
+	private String idMascota;
 	private String estado_adoptante;
 	private String mascotaInteresada;
 
@@ -113,12 +115,30 @@ public class AdoptanteDTO {
 		this.situacionLaboral = situacionLaboral;
 	}
 
-	public List<VeterinariaDTO> getVeterinaria_cercana() {
-		return veterinaria_cercana;
+	
+
+	public List<VeterinariaDTO> getIdVeterinaria() {
+		return idVeterinaria;
 	}
 
-	public void setVeterinaria_cercana(List<VeterinariaDTO> veterinaria_cercana) {
-		this.veterinaria_cercana = veterinaria_cercana;
+	public void setIdVeterinaria(List<VeterinariaDTO> idVeterinaria) {
+		this.idVeterinaria = idVeterinaria;
+	}
+
+	public String getIdEstadoAdoptante() {
+		return idEstadoAdoptante;
+	}
+
+	public void setIdEstadoAdoptante(String idEstadoAdoptante) {
+		this.idEstadoAdoptante = idEstadoAdoptante;
+	}
+
+	public String getIdMascota() {
+		return idMascota;
+	}
+
+	public void setIdMascota(String idMascota) {
+		this.idMascota = idMascota;
 	}
 
 	public String getObservaciones() {

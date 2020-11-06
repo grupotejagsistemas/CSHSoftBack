@@ -38,7 +38,7 @@ public class VoluntarioServiceDTOImpl implements VoluntarioServiceDTO {
 		VoluntarioDTO voluntarioDto = new VoluntarioDTO();
 		if (entity != null) {
 			voluntarioDto.setId(entity.getIdVoluntario());
-			voluntarioDto.setNombre(entity.getNombreCompleto());
+			voluntarioDto.setNombreCompleto(entity.getNombreCompleto());
 			voluntarioDto.setTelefono(entity.getTelefono());
 			voluntarioDto.setDireccion(entity.getDireccion());
 			voluntarioDto.setLocalidad(entity.getLocalidad());

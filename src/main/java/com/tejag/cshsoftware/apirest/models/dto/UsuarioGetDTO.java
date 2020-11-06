@@ -7,7 +7,9 @@ public class UsuarioGetDTO {
 	private String nombre;
 	private String apellido;
 	private String email;
-
+	private String idTipoUsuario;
+	private String tipoUsuario;
+	
 	public UsuarioGetDTO() {
 
 	}
@@ -51,5 +53,23 @@ public class UsuarioGetDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getIdTipoUsuario() {
+		return idTipoUsuario;
+	}
+
+	public void setIdTipoUsuario(String idTipoUsuario) {
+		this.idTipoUsuario = idTipoUsuario;
+	}
+
+	public String getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+	
+	
 
 }

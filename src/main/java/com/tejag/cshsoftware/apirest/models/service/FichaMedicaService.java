@@ -10,9 +10,9 @@ public interface FichaMedicaService {
 
 	public List<FichaMedica> getFichasMedicas();
 
-	public FichaMedica findById(long id);
+	public FichaMedica findById(Long id);
 
-	public void deleteById(long id);
+	public void deleteById(Long id);
 
 	public FichaMedica update(FichaMedica fichaMedica);
 }

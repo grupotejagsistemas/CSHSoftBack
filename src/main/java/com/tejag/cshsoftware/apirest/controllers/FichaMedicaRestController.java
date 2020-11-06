@@ -2,6 +2,8 @@ package com.tejag.cshsoftware.apirest.controllers;
 
 import java.util.List;
 
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,12 +26,15 @@ public interface FichaMedicaRestController {
 	public List<FichaMedicaDTO> getMascotas();
 	
 	@PutMapping("/fichasMedicas/{id}")
-	public void update(@PathVariable("id") int id, @RequestBody FichaMedicaPutDTO fichaMedicaPut);
+	public void update(@PathVariable("id") Long id, @RequestBody FichaMedicaPutDTO fichaMedicaPut);
 	
 	@DeleteMapping("/fichasMedicas/{id}")
-	public void deleteById(@PathVariable("id") int id);
+	public void deleteById(@PathVariable("id") Long id);
 	
 	@GetMapping("/fichasMedicas/{id}")
-	public FichaMedicaDTO findById(@PathVariable("id") int id);
+	public FichaMedicaDTO findById(@PathVariable("id") Long id);
+	
+	@GetMapping("/fichasMedicas/export/pdf/{id}")
+	public ResponseEntity<InputStreamResource> exportPdf(@PathVariable("id") Long id);
 	
 }

@@ -1,11 +1,21 @@
 package com.tejag.cshsoftware.apirest.models.service.dto.impl;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.tejag.cshsoftware.apirest.models.dto.FichaMedicaDTO;
 import com.tejag.cshsoftware.apirest.models.dto.FichaMedicaPostDTO;
 import com.tejag.cshsoftware.apirest.models.dto.FichaMedicaPutDTO;
@@ -78,21 +88,21 @@ public class FichaMedicaServiceDTOImpl implements FichaMedicaServiceDTO {
 	}
 
 	@Override
-	public FichaMedicaDTO findById(int id) {
-		return this.getFichaMedicaDTO(fichaMedicaService.findById((long) id));
+	public FichaMedicaDTO findById(Long id) {
+		return this.getFichaMedicaDTO(fichaMedicaService.findById(id));
 	}
 
 	@Override
-	public void deleteById(int id) {
-		fichaMedicaService.deleteById((long) id);
+	public void deleteById(Long id) {
+		fichaMedicaService.deleteById(id);
 	}
 
 	@Override
-	public void update(int id, FichaMedicaPutDTO fichaMedicaPut) {
+	public void update(Long id, FichaMedicaPutDTO fichaMedicaPut) {
 		FichaMedica newFicha = new FichaMedica();
-		newFicha = fichaMedicaService.findById((long) id);
+		newFicha = fichaMedicaService.findById(id);
 		if (newFicha != null) {
-			newFicha.setId((long) id);
+			newFicha.setId(id);
 			newFicha.setFecha(fichaMedicaPut.getFecha());
 			newFicha.setDesparasitacion(fichaMedicaPut.getDesparasitacion());
 			newFicha.setProductoDesparasitacion(fichaMedicaPut.getNombreProducto());
@@ -102,7 +112,7 @@ public class FichaMedicaServiceDTOImpl implements FichaMedicaServiceDTO {
 			newFicha.setTratamiento(fichaMedicaPut.getTratamiento());
 			newFicha.setDescripcionTratamiento(fichaMedicaPut.getDescripcionTratamiento());
 			newFicha.setMascotas(this.findMascotaById((long) fichaMedicaPut.getIdMascota()));
-			newFicha.setVeterinarias(this.findVeterinariaById((long) fichaMedicaPut.getIdVeterinaria()));
+			newFicha.setVeterinarias(this.findVeterinariaById(fichaMedicaPut.getIdVeterinaria()));
 		}
 		fichaMedicaService.update(newFicha);
 	}
@@ -155,6 +165,34 @@ public class FichaMedicaServiceDTOImpl implements FichaMedicaServiceDTO {
 		}
 
 		return listaFichasDto;
+	}
+
+	@Override
+	public ByteArrayInputStream productsPDFReport(FichaMedicaDTO ficha) {
+		Document document = new Document();
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
+		try {
+			PdfWriter.getInstance(document, out);
+			document.open();
+			com.itextpdf.text.Font titulo = FontFactory.getFont(FontFactory.COURIER_BOLD, 13, BaseColor.BLACK);
+			Paragraph renglonTitulo = new Paragraph("Ficha Medíca: " + ficha.getMascota() + "\r\n", titulo);
+			renglonTitulo.setAlignment(Element.ALIGN_CENTER);
+			document.add(renglonTitulo);
+			document.add(Chunk.NEWLINE);
+			com.itextpdf.text.Font fontMascota = FontFactory.getFont(FontFactory.COURIER_BOLD, 11, BaseColor.BLACK);
+			Paragraph descripcionFicha = new Paragraph("Fecha: " + ficha.getFecha() + "\r\n" + "Desparasitacion: "
+					+ ficha.getDesparasitacion() + "\r\n" + "Nombre producto: " + ficha.getNombreProducto() + "\r\n"
+					+ "Vacuna: " + ficha.getVacuna() + "\r\n" + "Nombre producto vacuna: " + ficha.getNombreVacuna()
+					+ "\r\n" + "Diagnóstico: " + ficha.getDiagnostico() + "\r\n" + "Veterinaria: "
+					+ ficha.getVeterinaria() + "\r\n" + "Tratamiento: " + ficha.getTratamiento() + "\r\n"
+					+ "Nombre producto: " + ficha.getDescripcionTratamiento(), fontMascota);
+			descripcionFicha.setAlignment(Element.ALIGN_LEFT);
+			document.add(descripcionFicha);
+			document.close();
+		} catch (DocumentException e) {
+			e.printStackTrace();
+		}
+		return new ByteArrayInputStream(out.toByteArray());
 	}
 
 }

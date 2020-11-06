@@ -51,6 +51,7 @@ public class AuditoriaDTOServiceImpl implements AuditoriaDTOService {
 		if (entity != null) {
 			newAuditoria.setId(entity.getId_accionusuario());
 			newAuditoria.setAccion(entity.getAccion());
+			newAuditoria.setUsuario(entity.getUsuario());
 			newAuditoria.setFecha(entity.getFecha());
 
 		}

@@ -1,5 +1,6 @@
 package com.tejag.cshsoftware.apirest.models.service.dto;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 import com.tejag.cshsoftware.apirest.models.dto.FichaMedicaDTO;
@@ -12,10 +13,12 @@ public interface FichaMedicaServiceDTO {
 	
 	public List<FichaMedicaDTO> getFichasMedicas();
 	
-	public FichaMedicaDTO findById(int id);
+	public FichaMedicaDTO findById(Long id);
 	
-	public void deleteById(int id);
+	public void deleteById(Long id);
 	
-	public void update(int id, FichaMedicaPutDTO fichaMedicaPut);
+	public void update(Long id, FichaMedicaPutDTO fichaMedicaPut);
+	
+	public ByteArrayInputStream productsPDFReport(FichaMedicaDTO ficha);
 	
 }

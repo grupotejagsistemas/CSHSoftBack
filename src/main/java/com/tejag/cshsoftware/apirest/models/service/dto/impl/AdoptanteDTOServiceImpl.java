@@ -44,7 +44,7 @@ public class AdoptanteDTOServiceImpl implements AdoptanteDTOService {
 		Adoptante newAdoptante = new Adoptante();
 		newAdoptante.setNumeroFormulario(adoptante.getNumeroFormulario());
 		newAdoptante.setNombre_completo(adoptante.getNombreCompleto());
-		newAdoptante.setFecha_nacimiento(adoptante.getFechaNacimiento());
+//		newAdoptante.setFecha_nacimiento(adoptante.getFechaNacimiento());
 		newAdoptante.setDomicilio(adoptante.getDomicilio());
 		newAdoptante.setBarrio(adoptante.getBarrio());
 		newAdoptante.setTelefono(adoptante.getCelular());
@@ -103,7 +103,7 @@ public class AdoptanteDTOServiceImpl implements AdoptanteDTOService {
 		newAdoptante.setId_adoptante(id);
 		newAdoptante.setNumeroFormulario(adoptante.getNumeroFormulario());
 		newAdoptante.setNombre_completo(adoptante.getNombreCompleto());
-		newAdoptante.setFecha_nacimiento(adoptante.getFechaNacimiento());
+//		newAdoptante.setFecha_nacimiento(adoptante.getFechaNacimiento());
 		newAdoptante.setDomicilio(adoptante.getDomicilio());
 		newAdoptante.setBarrio(adoptante.getBarrio());
 		newAdoptante.setTelefono(adoptante.getCelular());

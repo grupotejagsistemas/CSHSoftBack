@@ -76,12 +76,12 @@ public class VoluntarioMascotaDTOServiceImpl implements VoluntarioMascotaDTOServ
 	public void deleteById(Long id) {
 		voluntarioMascotaService.deleteById(id);
 	}
-	
+
 	@Override
 	public List<VoluntarioMascotaDTO> getByNombre(String nombre) {
 		return this.getListaVoluntarioMascotaDTO(voluntarioMascotaService.getByNombre(nombre));
 	}
-	
+
 	// ********************************************************************************************
 	// *************** Transformación Entity a DTO
 	// ************************************************
@@ -91,8 +91,10 @@ public class VoluntarioMascotaDTOServiceImpl implements VoluntarioMascotaDTOServ
 		if (entity != null) {
 			voluntarioMascotaDto.setId(entity.getIdVoluntarioMascota());
 			voluntarioMascotaDto.setFecha(entity.getFecha());
+			voluntarioMascotaDto.setIdMascota(entity.getMascotas().getId().toString());
 			voluntarioMascotaDto.setNombreMascota(entity.getMascotas().getNombre());
 			voluntarioMascotaDto.setNombreVoluntario(entity.getVoluntarios().getNombreCompleto());
+			voluntarioMascotaDto.setIdVoluntario(entity.getVoluntarios().getIdVoluntario().toString());
 			voluntarioMascotaDto.setDomicilioVoluntario(entity.getVoluntarios().getDireccion());
 		}
 		return voluntarioMascotaDto;

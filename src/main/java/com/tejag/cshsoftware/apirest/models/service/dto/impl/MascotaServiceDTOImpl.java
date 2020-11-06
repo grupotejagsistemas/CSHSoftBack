@@ -48,7 +48,9 @@ public class MascotaServiceDTOImpl implements MascotaServiceDTO {
 			mascotaDto.setLugarRescate(entity.getLugarRescate());
 			mascotaDto.setDescripcionRescate(entity.getDescripcionRescate());
 			mascotaDto.setEspecie(entity.getEspecie());
-			mascotaDto.setEstado(this.getEstadoMascotaDTO(entity.getEstado_mascota()));
+			mascotaDto.setEstado(entity.getEstado_mascota().getId().toString());
+			mascotaDto.setNombreEstado(entity.getEstado_mascota().getDescripcion());
+			//mascotaDto.setEstado(this.getEstadoMascotaDTO(entity.getEstado_mascota()));
 		}
 		return mascotaDto;
 	}
@@ -85,7 +87,7 @@ public class MascotaServiceDTOImpl implements MascotaServiceDTO {
 		this.validarTipo(archivo);
 		if (!archivo.isEmpty()) {
 			String nombreArchivo = UUID.randomUUID().toString() + "_" + archivo.getOriginalFilename().replace(" ", "");
-			Path rutaArchivo = Paths.get("C:\\Users\\Usuario\\Documents\\ImageSpring").resolve(nombreArchivo)
+			Path rutaArchivo = Paths.get("C:\\CSHSoftware\\Imagenes").resolve(nombreArchivo)
 					.toAbsolutePath();
 			Files.copy(archivo.getInputStream(), rutaArchivo);
 			Long idMascota = Long.parseLong(id);

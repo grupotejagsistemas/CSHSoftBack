@@ -5,13 +5,23 @@ import java.util.Date;
 public class VoluntarioMascotaDTO {
 
 	private Long id;
+	private String idVoluntario;
 	private String nombreVoluntario;
 	private String domicilioVoluntario;
+	private String idMascota;
 	private String nombreMascota;
 	private Date fecha;
 
 	public VoluntarioMascotaDTO() {
 
+	}
+
+	public String getNombreMascota() {
+		return nombreMascota;
+	}
+
+	public void setNombreMascota(String nombreMascota) {
+		this.nombreMascota = nombreMascota;
 	}
 
 	public Long getId() {
@@ -38,12 +48,12 @@ public class VoluntarioMascotaDTO {
 		this.domicilioVoluntario = domicilioVoluntario;
 	}
 
-	public String getNombreMascota() {
-		return nombreMascota;
+	public String getIdMascota() {
+		return idMascota;
 	}
 
-	public void setNombreMascota(String nombreMascota) {
-		this.nombreMascota = nombreMascota;
+	public void setIdMascota(String idMascota) {
+		this.idMascota = idMascota;
 	}
 
 	public Date getFecha() {
@@ -52,6 +62,14 @@ public class VoluntarioMascotaDTO {
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
+	}
+
+	public String getIdVoluntario() {
+		return idVoluntario;
+	}
+
+	public void setIdVoluntario(String idVoluntario) {
+		this.idVoluntario = idVoluntario;
 	}
 
 }

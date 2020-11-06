@@ -14,7 +14,10 @@ public class MascotaDTO {
 	private String lugarRescate;
 	private String descripcionRescate;
 	private String especie;
-	private MascotaEstadoDTO estado;
+	private String estado;
+	private String nombreEstado;
+	
+	//private MascotaEstadoDTO estado;
 
 	public MascotaDTO() {
 
@@ -99,13 +102,35 @@ public class MascotaDTO {
 	public void setEspecie(String especie) {
 		this.especie = especie;
 	}
+	
+	
 
-	public MascotaEstadoDTO getEstado() {
+
+
+	public String getEstado() {
 		return estado;
 	}
 
-	public void setEstado(MascotaEstadoDTO estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+
+	public String getNombreEstado() {
+		return nombreEstado;
+	}
+
+	public void setNombreEstado(String nombreEstado) {
+		this.nombreEstado = nombreEstado;
+	}
+
+	//public MascotaEstadoDTO getEstado() {
+	//	return estado;
+	//}
+
+	//public void setEstado(MascotaEstadoDTO estado) {
+	//	this.estado = estado;
+	//}
+	
+	
 
 }

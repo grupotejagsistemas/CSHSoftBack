@@ -11,7 +11,9 @@ public class FichaMedicaDTO {
 	private String vacuna;
 	private String nombreVacuna;
 	private String diagnostico;
+	private String idMascota;
 	private String mascota;
+	private String IdVeterinaria;
 	private String veterinaria;
 	private String tratamiento;
 	private String descripcionTratamiento;
@@ -92,12 +94,31 @@ public class FichaMedicaDTO {
 		this.descripcionTratamiento = descripcionTratamiento;
 	}
 
+	
+	
+	public String getIdMascota() {
+		return idMascota;
+	}
+
+	public void setIdMascota(String idMascota) {
+		this.idMascota = idMascota;
+	}
+
 	public String getMascota() {
 		return mascota;
 	}
 
 	public void setMascota(String mascota) {
 		this.mascota = mascota;
+	}
+
+	
+	public String getIdVeterinaria() {
+		return IdVeterinaria;
+	}
+
+	public void setIdVeterinaria(String idVeterinaria) {
+		IdVeterinaria = idVeterinaria;
 	}
 
 	public String getVeterinaria() {

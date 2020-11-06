@@ -159,7 +159,9 @@ public class AdoptanteDTOServiceImpl implements AdoptanteDTOService {
 			adoptante.setFacebook(entity.getFacebook());
 			adoptante.setInstagram(entity.getInstagram());
 			adoptante.setSituacionLaboral(entity.getSituacionLaboral());
+			adoptante.setIdMascota(entity.getMascotas().getId().toString());
 			adoptante.setMascotaInteresada(entity.getMascotas().getNombre());
+			adoptante.setIdEstadoAdoptante(entity.getEstado_adoptantes().getId_estado_adoptante().toString());
 			adoptante.setEstado_adoptante(entity.getEstado_adoptantes().getDescripcion());
 
 			List<VeterinariaCercanaAdoptante> listaVet = entity.getVeterinarias_cercanas_adoptantes();
@@ -169,7 +171,7 @@ public class AdoptanteDTOServiceImpl implements AdoptanteDTOService {
 					Veterinaria veterinaria = veterinariaCerca.getVeterinaria_cercana_adoptante();
 					listaVeterinarias.add(this.getVeterinariaDTO(veterinaria));
 				}
-				adoptante.setVeterinaria_cercana(listaVeterinarias);
+				adoptante.setIdVeterinaria(listaVeterinarias);
 			}
 
 			adoptante.setObservaciones(entity.getObservaciones());

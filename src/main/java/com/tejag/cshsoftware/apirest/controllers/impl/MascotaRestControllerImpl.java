@@ -80,7 +80,7 @@ public class MascotaRestControllerImpl implements MascotaRestController {
 	@Override
 	public ResponseEntity<Resource> verFoto(String nombreFoto) {
 
-		Path rutaArchivo = Paths.get("C:\\Users\\Usuario\\Documents\\ImageSpring").resolve(nombreFoto).toAbsolutePath();
+		Path rutaArchivo = Paths.get("C:\\CSHSoftware\\Imagenes").resolve(nombreFoto).toAbsolutePath();
 		Resource recurso = null;
 		try {
 			recurso = new UrlResource(rutaArchivo.toUri());

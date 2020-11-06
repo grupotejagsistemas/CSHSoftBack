@@ -64,7 +64,7 @@ public class MascotaServiceImpl implements MascotaService {
 		mascotaActual = mascotaDao.findById(id).orElseThrow();
 		String fotoAnterior = mascotaActual.getFotoMascota();
 		if (fotoAnterior != null && fotoAnterior.length() > 0) {
-			Path rutaFotoAnterior = Paths.get("C:\\Users\\Usuario\\Documents\\ImageSpring").resolve(fotoAnterior)
+			Path rutaFotoAnterior = Paths.get("C:\\CSHSoftware\\Imagenes").resolve(fotoAnterior)
 					.toAbsolutePath();
 			File archivoFotoAnterior = rutaFotoAnterior.toFile();
 			if (archivoFotoAnterior.exists() && archivoFotoAnterior.canRead()) {
@@ -91,7 +91,7 @@ public class MascotaServiceImpl implements MascotaService {
 		mascotaActual = mascotaDao.findById(id).orElseThrow();
 		String fotoAnterior = mascotaActual.getFotoMascota();
 		if (fotoAnterior != null && fotoAnterior.length() > 0) {
-			Path rutaFotoAnterior = Paths.get("C:\\Users\\Usuario\\Documents\\ImageSpring").resolve(fotoAnterior)
+			Path rutaFotoAnterior = Paths.get("C:\\CSHSoftware\\Imagenes").resolve(fotoAnterior)
 					.toAbsolutePath();
 			File archivoFotoAnterior = rutaFotoAnterior.toFile();
 			if (archivoFotoAnterior.exists() && archivoFotoAnterior.canRead()) {

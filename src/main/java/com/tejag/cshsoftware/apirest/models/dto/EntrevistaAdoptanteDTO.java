@@ -3,6 +3,7 @@ package com.tejag.cshsoftware.apirest.models.dto;
 public class EntrevistaAdoptanteDTO {
 
 	private Long id;
+	private String idAdoptante;
 	private String adoptante;
 	private String respuesta1;
 	private String respuesta2;
@@ -44,6 +45,18 @@ public class EntrevistaAdoptanteDTO {
 	public void setAdoptante(String adoptante) {
 		this.adoptante = adoptante;
 	}
+
+	
+	
+	public String getIdAdoptante() {
+		return idAdoptante;
+	}
+
+	public void setIdAdoptante(String idAdoptante) {
+		this.idAdoptante = idAdoptante;
+	}
+	
+	
 
 	public String getRespuesta1() {
 		return respuesta1;

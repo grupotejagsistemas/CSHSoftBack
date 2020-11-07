@@ -1,7 +1,10 @@
 package com.tejag.cshsoftware.apirest.controllers.impl;
 
 import java.io.ByteArrayInputStream;
+import java.text.ParseException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -28,8 +31,16 @@ public class FichaMedicaRestControllerImpl implements FichaMedicaRestController 
 
 	@Override
 	@ResponseStatus(HttpStatus.CREATED)
-	public void create(FichaMedicaPostDTO fichaMedicaPost) {
-		fichaMedicaServiceDto.save(fichaMedicaPost);
+	public ResponseEntity<?> create(FichaMedicaPostDTO fichaMedicaPost) {
+		Map<String, Object> response = new HashMap<>();
+		try {
+			fichaMedicaServiceDto.save(fichaMedicaPost);
+			response.put("mensaje", "Creación exitosa.");
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+		} catch (Exception e) {
+			response.put("mensaje", e.getMessage());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 
 	@Override
@@ -40,8 +51,16 @@ public class FichaMedicaRestControllerImpl implements FichaMedicaRestController 
 
 	@Override
 	@ResponseStatus(HttpStatus.CREATED)
-	public void update(Long id, FichaMedicaPutDTO fichaMedicaPut) {
-		fichaMedicaServiceDto.update(id, fichaMedicaPut);
+	public ResponseEntity<?> update(Long id, FichaMedicaPutDTO fichaMedicaPut) {
+		Map<String, Object> response = new HashMap<>();
+		try {
+			fichaMedicaServiceDto.update(id, fichaMedicaPut);
+			response.put("mensaje", "Modificación exitosa.");
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+		} catch (Exception e) {
+			response.put("mensaje", e.getMessage());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 		
 	}
 

@@ -20,13 +20,13 @@ import com.tejag.cshsoftware.apirest.models.dto.FichaMedicaPutDTO;
 public interface FichaMedicaRestController {
 
 	@PostMapping("/fichasMedicas")
-	public void create(@RequestBody FichaMedicaPostDTO fichaMedicaPost);
+	public ResponseEntity<?> create(@RequestBody FichaMedicaPostDTO fichaMedicaPost);
 	
 	@GetMapping("/fichasMedicas")
 	public List<FichaMedicaDTO> getMascotas();
 	
 	@PutMapping("/fichasMedicas/{id}")
-	public void update(@PathVariable("id") Long id, @RequestBody FichaMedicaPutDTO fichaMedicaPut);
+	public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody FichaMedicaPutDTO fichaMedicaPut);
 	
 	@DeleteMapping("/fichasMedicas/{id}")
 	public void deleteById(@PathVariable("id") Long id);

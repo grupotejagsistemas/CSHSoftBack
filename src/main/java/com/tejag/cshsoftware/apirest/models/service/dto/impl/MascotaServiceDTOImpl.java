@@ -95,7 +95,7 @@ public class MascotaServiceDTOImpl implements MascotaServiceDTO {
 		this.validarTipo(archivo);
 		if (!archivo.isEmpty()) {
 			String nombreArchivo = UUID.randomUUID().toString() + "_" + archivo.getOriginalFilename().replace(" ", "");
-			Path rutaArchivo = Paths.get("C:\\CSHSoftware\\Imagenes").resolve(nombreArchivo)
+			Path rutaArchivo = Paths.get("C:\\Users\\Usuario\\Documents\\ImageSpring").resolve(nombreArchivo)
 					.toAbsolutePath();
 			Files.copy(archivo.getInputStream(), rutaArchivo);
 			Long idMascota = Long.parseLong(id);

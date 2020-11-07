@@ -1,8 +1,13 @@
 package com.tejag.cshsoftware.apirest.controllers.impl;
 
+import java.text.ParseException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +24,7 @@ public class AdoptanteRestControllerImpl implements AdoptanteRestController {
 	AdoptanteDTOService adoptanteDtoService;
 	
 	@Override
-	public void create(AdoptantePostDTO adoptantePost) {
+	public void create(AdoptantePostDTO adoptantePost) throws ParseException {
 		adoptanteDtoService.create(adoptantePost);
 	}
 
@@ -44,8 +49,16 @@ public class AdoptanteRestControllerImpl implements AdoptanteRestController {
 	}
 
 	@Override
-	public void update(Long id, AdoptantePostDTO adoptante) {
-		adoptanteDtoService.update(id, adoptante);
+	public ResponseEntity<?> update(Long id, AdoptantePostDTO adoptante) {
+		Map<String, Object> response = new HashMap<>();
+		try {
+			adoptanteDtoService.update(id, adoptante);
+			response.put("mensaje", "Modificación exitosa.");
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+		} catch (Exception e) {
+			response.put("mensaje", e.getMessage());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 		
 	}
 

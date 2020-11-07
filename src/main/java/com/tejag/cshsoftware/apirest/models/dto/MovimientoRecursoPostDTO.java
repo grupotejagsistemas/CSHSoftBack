@@ -1,23 +1,21 @@
 package com.tejag.cshsoftware.apirest.models.dto;
 
-import java.util.Date;
-
 public class MovimientoRecursoPostDTO {
 
 	private String descripcion;
 	private String donante;
 	private String cantidad;
 	private Long idTipoMovimiento;
-	private Date fecha;
+	private String fecha;
 
 	public MovimientoRecursoPostDTO() {
 	}
 
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 

@@ -2,7 +2,10 @@ package com.tejag.cshsoftware.apirest.models.service.dto.impl;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,10 +43,14 @@ public class FichaMedicaServiceDTOImpl implements FichaMedicaServiceDTO {
 	private VeterinariaService veterinariaService;
 
 	@Override
-	public void save(FichaMedicaPostDTO fichaMedica) {
+	public void save(FichaMedicaPostDTO fichaMedica) throws ParseException {
 		FichaMedica newFicha = new FichaMedica();
 
-		newFicha.setFecha(fichaMedica.getFecha());
+		String fecha = fichaMedica.getFecha();
+		String pattern = "yyyy-MM-dd";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		Date date = simpleDateFormat.parse(fecha);
+		newFicha.setFecha(date);
 		newFicha.setDesparasitacion(fichaMedica.getDesparasitacion());
 		newFicha.setProductoDesparasitacion(fichaMedica.getNombreProducto());
 		newFicha.setVacuna(fichaMedica.getVacuna());
@@ -98,12 +105,16 @@ public class FichaMedicaServiceDTOImpl implements FichaMedicaServiceDTO {
 	}
 
 	@Override
-	public void update(Long id, FichaMedicaPutDTO fichaMedicaPut) {
+	public void update(Long id, FichaMedicaPutDTO fichaMedicaPut) throws ParseException {
 		FichaMedica newFicha = new FichaMedica();
 		newFicha = fichaMedicaService.findById(id);
 		if (newFicha != null) {
 			newFicha.setId(id);
-			newFicha.setFecha(fichaMedicaPut.getFecha());
+			String fecha = fichaMedicaPut.getFecha();
+			String pattern = "yyyy-MM-dd";
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+			Date date = simpleDateFormat.parse(fecha);
+			newFicha.setFecha(date);
 			newFicha.setDesparasitacion(fichaMedicaPut.getDesparasitacion());
 			newFicha.setProductoDesparasitacion(fichaMedicaPut.getNombreProducto());
 			newFicha.setVacuna(fichaMedicaPut.getVacuna());

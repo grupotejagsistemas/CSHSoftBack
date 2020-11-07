@@ -1,7 +1,9 @@
 package com.tejag.cshsoftware.apirest.controllers;
 
+import java.text.ParseException;
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +19,7 @@ import com.tejag.cshsoftware.apirest.models.dto.AdoptantePostDTO;
 public interface AdoptanteRestController {
 
 	@PostMapping("/adoptante")
-	public void create(@RequestBody AdoptantePostDTO adoptantePost);
+	public void create(@RequestBody AdoptantePostDTO adoptantePost) throws ParseException;
 	
 	@GetMapping("/adoptante/{id}")
 	public AdoptanteDTO getById(@PathVariable("id") Long id);
@@ -32,5 +34,5 @@ public interface AdoptanteRestController {
 	public List<AdoptanteDTO> getByEstado(@RequestParam("estado") String estado);
 	
 	@PutMapping("/adoptante/{id}")
-	public void update(@PathVariable("id") Long id, @RequestBody AdoptantePostDTO adoptante);
+	public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody AdoptantePostDTO adoptante);
 }

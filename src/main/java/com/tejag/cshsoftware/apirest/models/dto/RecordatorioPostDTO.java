@@ -1,11 +1,9 @@
 package com.tejag.cshsoftware.apirest.models.dto;
 
-import java.util.Date;
-
 public class RecordatorioPostDTO {
 
 	private String descripcionRecordatorio;
-	private Date fecha;
+	private String fecha;
 
 	public RecordatorioPostDTO() {
 
@@ -19,11 +17,11 @@ public class RecordatorioPostDTO {
 		this.descripcionRecordatorio = descripcionRecordatorio;
 	}
 
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 

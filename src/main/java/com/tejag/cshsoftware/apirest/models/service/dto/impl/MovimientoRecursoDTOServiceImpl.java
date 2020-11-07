@@ -1,6 +1,9 @@
 package com.tejag.cshsoftware.apirest.models.service.dto.impl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,10 +52,14 @@ public class MovimientoRecursoDTOServiceImpl implements MovimientoRecursoService
 		return listaMovimientorecursosDto;
 	}
 
-	public void save(MovimientoRecursoPostDTO movimientorecurso) {
+	public void save(MovimientoRecursoPostDTO movimientorecurso) throws ParseException {
 		MovimientoRecurso newmovimientorecurso = new MovimientoRecurso();
 
-		newmovimientorecurso.setFecha(movimientorecurso.getFecha());
+		String fecha = movimientorecurso.getFecha();
+		String pattern = "yyyy-MM-dd";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		Date date = simpleDateFormat.parse(fecha);
+		newmovimientorecurso.setFecha(date);
 		newmovimientorecurso.setDonante(movimientorecurso.getDonante());
 		newmovimientorecurso.setDescripcion(movimientorecurso.getDescripcion());
 		newmovimientorecurso.setCantidad(movimientorecurso.getCantidad());

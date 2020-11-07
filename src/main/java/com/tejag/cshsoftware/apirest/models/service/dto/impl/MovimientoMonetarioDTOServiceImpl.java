@@ -1,6 +1,9 @@
 package com.tejag.cshsoftware.apirest.models.service.dto.impl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,12 +54,16 @@ public class MovimientoMonetarioDTOServiceImpl implements MovimientoMonetarioDTO
 		return listaMovimientoMonetariosDto;
 	}
 
-	public void save(MovimientoMonetarioPostDTO movimientomonetario) {
+	public void save(MovimientoMonetarioPostDTO movimientomonetario) throws ParseException {
 		MovimientoMonetario newmovimiento = new MovimientoMonetario();
 
 		newmovimiento.setMonto(movimientomonetario.getMonto());
 		newmovimiento.setMedio(movimientomonetario.getMedio());
-		newmovimiento.setFecha(movimientomonetario.getFecha());
+		String fecha = movimientomonetario.getFecha();
+		String pattern = "yyyy-MM-dd";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		Date date = simpleDateFormat.parse(fecha);
+		newmovimiento.setFecha(date);
 		newmovimiento.setAutor(movimientomonetario.getAutor());
 		
 		TipoMovimiento tipoMov = new TipoMovimiento();

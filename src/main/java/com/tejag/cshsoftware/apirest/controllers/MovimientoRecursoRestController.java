@@ -2,6 +2,7 @@ package com.tejag.cshsoftware.apirest.controllers;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +22,6 @@ public interface MovimientoRecursoRestController {
 	public MovimientoRecursoDTO show(@PathVariable Long id);
 
 	@PostMapping("/movimientorecursos")
-	public void create(@RequestBody MovimientoRecursoPostDTO movimientorecursoPost);
+	public ResponseEntity<?> create(@RequestBody MovimientoRecursoPostDTO movimientorecursoPost);
 
 }

@@ -1,6 +1,9 @@
 package com.tejag.cshsoftware.apirest.models.service.dto.impl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,20 +27,28 @@ public class RecordatorioDTOServiceImpl implements RecordatorioDTOService {
 	}
 
 	@Override
-	public void create(RecordatorioPostDTO recordatorio) {
+	public void create(RecordatorioPostDTO recordatorio) throws ParseException {
 		Recordatorio newRecordatorio = new Recordatorio();
 		newRecordatorio.setDescripcion_recordatorio(recordatorio.getDescripcionRecordatorio());
-		newRecordatorio.setFecha(recordatorio.getFecha());
+		String fecha = recordatorio.getFecha();
+		String pattern = "yyyy-MM-dd";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		Date date = simpleDateFormat.parse(fecha);
+		newRecordatorio.setFecha(date);
 
 		service.create(newRecordatorio);
 	}
 
 	@Override
-	public void update(RecordatorioPostDTO recordatorio, Long id) {
+	public void update(RecordatorioPostDTO recordatorio, Long id) throws ParseException {
 		Recordatorio newRecordatorio = new Recordatorio();
 		newRecordatorio.setId_recordatorio(id);
 		newRecordatorio.setDescripcion_recordatorio(recordatorio.getDescripcionRecordatorio());
-		newRecordatorio.setFecha(recordatorio.getFecha());
+		String fecha = recordatorio.getFecha();
+		String pattern = "yyyy-MM-dd";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		Date date = simpleDateFormat.parse(fecha);
+		newRecordatorio.setFecha(date);
 
 		service.update(newRecordatorio);
 

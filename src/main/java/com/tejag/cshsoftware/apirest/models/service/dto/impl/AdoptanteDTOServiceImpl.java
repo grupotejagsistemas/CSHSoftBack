@@ -1,6 +1,9 @@
 package com.tejag.cshsoftware.apirest.models.service.dto.impl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,11 +43,15 @@ public class AdoptanteDTOServiceImpl implements AdoptanteDTOService {
 	private MascotaService mascotaService;
 
 	@Override
-	public void create(AdoptantePostDTO adoptante) {
+	public void create(AdoptantePostDTO adoptante) throws ParseException {
 		Adoptante newAdoptante = new Adoptante();
 		newAdoptante.setNumeroFormulario(adoptante.getNumeroFormulario());
 		newAdoptante.setNombre_completo(adoptante.getNombreCompleto());
-//		newAdoptante.setFecha_nacimiento(adoptante.getFechaNacimiento());
+		String fechaNac = adoptante.getFechaNacimiento();
+		String pattern = "yyyy-MM-dd";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		Date dateNacimiento = simpleDateFormat.parse(fechaNac);
+		newAdoptante.setFecha_nacimiento(dateNacimiento);
 		newAdoptante.setDomicilio(adoptante.getDomicilio());
 		newAdoptante.setBarrio(adoptante.getBarrio());
 		newAdoptante.setTelefono(adoptante.getCelular());
@@ -96,14 +103,18 @@ public class AdoptanteDTOServiceImpl implements AdoptanteDTOService {
 	}
 
 	@Override
-	public void update(Long id, AdoptantePostDTO adoptante) {
+	public void update(Long id, AdoptantePostDTO adoptante) throws ParseException {
 
 		Adoptante newAdoptante = new Adoptante();
 
 		newAdoptante.setId_adoptante(id);
 		newAdoptante.setNumeroFormulario(adoptante.getNumeroFormulario());
 		newAdoptante.setNombre_completo(adoptante.getNombreCompleto());
-//		newAdoptante.setFecha_nacimiento(adoptante.getFechaNacimiento());
+		String fechaNac = adoptante.getFechaNacimiento();
+		String pattern = "yyyy-MM-dd";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		Date dateNacimiento = simpleDateFormat.parse(fechaNac);
+		newAdoptante.setFecha_nacimiento(dateNacimiento);
 		newAdoptante.setDomicilio(adoptante.getDomicilio());
 		newAdoptante.setBarrio(adoptante.getBarrio());
 		newAdoptante.setTelefono(adoptante.getCelular());

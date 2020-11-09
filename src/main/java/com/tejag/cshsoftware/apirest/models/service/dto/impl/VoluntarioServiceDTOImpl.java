@@ -53,7 +53,7 @@ public class VoluntarioServiceDTOImpl implements VoluntarioServiceDTO {
 					Veterinaria veterinaria = veterinariaCerca.getVeterinaria_cercana();
 					listaVeterinarias.add(this.getVeterinariaDTO(veterinaria));
 				}
-				voluntarioDto.setVeterinariaCercana(listaVeterinarias);
+				voluntarioDto.setIdveterinarias(listaVeterinarias);
 			}
 
 		}

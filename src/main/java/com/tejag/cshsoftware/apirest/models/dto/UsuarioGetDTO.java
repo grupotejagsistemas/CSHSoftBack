@@ -3,11 +3,11 @@ package com.tejag.cshsoftware.apirest.models.dto;
 public class UsuarioGetDTO {
 
 	private Long id;
-	private String nombreUsuario;
+	private String username;
 	private String nombre;
 	private String apellido;
 	private String email;
-	private String idTipoUsuario;
+	private String idRole;
 	private String tipoUsuario;
 	
 	public UsuarioGetDTO() {
@@ -22,12 +22,21 @@ public class UsuarioGetDTO {
 		this.id = id;
 	}
 
-	public String getNombreUsuario() {
-		return nombreUsuario;
+	
+	//public String getNombreUsuario() {
+	//	return nombreUsuario;
+	//}
+
+	//public void setNombreUsuario(String nombreUsuario) {
+	//	this.nombreUsuario = nombreUsuario;
+	//}
+
+	public String getUsername() {
+		return username;
 	}
 
-	public void setNombreUsuario(String nombreUsuario) {
-		this.nombreUsuario = nombreUsuario;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getNombre() {
@@ -54,12 +63,21 @@ public class UsuarioGetDTO {
 		this.email = email;
 	}
 
-	public String getIdTipoUsuario() {
-		return idTipoUsuario;
+	
+	//public String getIdTipoUsuario() {
+	//	return idTipoUsuario;
+	//}
+
+	//public void setIdTipoUsuario(String idTipoUsuario) {
+	//	this.idTipoUsuario = idTipoUsuario;
+	//}
+
+	public String getIdRole() {
+		return idRole;
 	}
 
-	public void setIdTipoUsuario(String idTipoUsuario) {
-		this.idTipoUsuario = idTipoUsuario;
+	public void setIdRole(String idRole) {
+		this.idRole = idRole;
 	}
 
 	public String getTipoUsuario() {

@@ -2,6 +2,7 @@ package com.tejag.cshsoftware.apirest.models.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "usuarios_roles")
+@Table(name = "roleusuario")
 public class RoleUsuario implements Serializable {
 
 	/**
@@ -19,10 +20,13 @@ public class RoleUsuario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
 	private Long id;
 
+	@Column(name = "ID_USUARIO")
 	private Long usuario_id;
 
+	@Column(name = "ID_ROLE")
 	private Long role_id;
 
 	public RoleUsuario() {

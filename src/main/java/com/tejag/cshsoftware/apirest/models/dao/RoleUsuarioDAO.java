@@ -16,7 +16,7 @@ public interface RoleUsuarioDAO extends CrudRepository<RoleUsuario, Long> {
 	public Integer deleteByIdUsuario(Long id);
 	
 	@Modifying
-	@Query(nativeQuery = true, value = "UPDATE usuarios_roles SET role_id = :idr WHERE ID = :id")
+	@Query(nativeQuery = true, value = "UPDATE roleusuario SET ID_ROLE = :idr WHERE ID = :id")
 	public Integer update(Long idr, Long id);
 
 }

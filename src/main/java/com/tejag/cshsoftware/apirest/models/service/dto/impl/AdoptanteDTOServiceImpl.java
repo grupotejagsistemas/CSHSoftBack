@@ -75,7 +75,7 @@ public class AdoptanteDTOServiceImpl implements AdoptanteDTOService {
 			for (IdVeterinariaDTO idVet : lista) {
 				VeterinariaCercanaAdoptanteDTO vetCercana = new VeterinariaCercanaAdoptanteDTO();
 				vetCercana.setIdVeterinaria(idVet.getId());
-				vetCercana.setIdAdoptante(adoptanteCreado.getId_adoptante());
+				vetCercana.setIdAdoptante(adoptanteCreado.getId());
 				serviceVet.create(vetCercana);
 			}
 		}
@@ -107,7 +107,7 @@ public class AdoptanteDTOServiceImpl implements AdoptanteDTOService {
 
 		Adoptante newAdoptante = new Adoptante();
 
-		newAdoptante.setId_adoptante(id);
+		newAdoptante.setId(id);
 		newAdoptante.setNumeroFormulario(adoptante.getNumeroFormulario());
 		newAdoptante.setNombre_completo(adoptante.getNombreCompleto());
 		String fechaNac = adoptante.getFechaNacimiento();
@@ -133,7 +133,7 @@ public class AdoptanteDTOServiceImpl implements AdoptanteDTOService {
 
 		Adoptante adoptanteModificado = new Adoptante();
 		adoptanteModificado = adoptanteService.update(newAdoptante);
-		if (adoptanteModificado.getId_adoptante() != null) {
+		if (adoptanteModificado.getId() != null) {
 
 			serviceVet.deleteByIdAdoptante(id);
 
@@ -159,7 +159,7 @@ public class AdoptanteDTOServiceImpl implements AdoptanteDTOService {
 	public AdoptanteDTO getAdoptanteDTO(Adoptante entity) {
 		AdoptanteDTO adoptante = new AdoptanteDTO();
 		if (entity != null) {
-			adoptante.setId(entity.getId_adoptante());
+			adoptante.setId(entity.getId());
 			adoptante.setNumeroFormulario(entity.getNumeroFormulario());
 			adoptante.setNombreCompleto(entity.getNombre_completo());
 			adoptante.setFechaNacimiento(entity.getFecha_nacimiento());

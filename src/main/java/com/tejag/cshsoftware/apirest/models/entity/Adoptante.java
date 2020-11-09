@@ -19,7 +19,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "adoptantes")
+@Table(name = "adoptante")
 public class Adoptante implements Serializable {
 
 	/**
@@ -29,50 +29,51 @@ public class Adoptante implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_adoptante;
+	@Column(name = "ID_ADOPTANTE")
+	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "mascotas_id")
+	@JoinColumn(name = "ID_MASCOTA")
 	private Mascota mascotas;
 
-	@Column(name = "numero_formulario", nullable = false)
+	@Column(name = "NUMERO_FORMULARIO", nullable = false)
 	private Long numeroFormulario;
 
-	@Column(nullable = false, length = 50)
+	@Column(name = "NOMBRE_COMPLETO", nullable = false, length = 50)
 	private String nombre_completo;
 
-	@Column(name = "fecha_nacimiento", nullable = false)
+	@Column(name = "FECHA_NACIMIENTO", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date fecha_nacimiento;
 
-	@Column(nullable = false, length = 50)
+	@Column(name = "DOMICILIO", nullable = false, length = 50)
 	private String domicilio;
 
-	@Column(nullable = false, length = 50)
+	@Column(name = "BARRIO", nullable = false, length = 50)
 	private String barrio;
 
-	@Column(nullable = false, length = 50)
+	@Column(name = "CELULAR", nullable = false, length = 50)
 	private String telefono;
 
-	@Column(nullable = false, length = 50)
+	@Column(name = "EMAIL", nullable = false, length = 50)
 	private String email;
 
-	@Column(nullable = false, length = 50)
+	@Column(name = "FACEBOOK", nullable = false, length = 50)
 	private String facebook;
 
-	@Column(nullable = false, length = 50)
+	@Column(name = "INSTAGRAM", nullable = false, length = 50)
 	private String instagram;
 
-	@Column(nullable = false, length = 100)
+	@Column(name = "SITUACION_LABORAL", nullable = false, length = 100)
 	private String situacionLaboral;
 
-	@Column(nullable = false, length = 100)
+	@Column(name = "OBSERVACIONES", nullable = false, length = 100)
 	private String observaciones;
 
 	@ManyToOne
-	@JoinColumn(name = "estado_adoptantes_id")
+	@JoinColumn(name = "ID_ESTADO_ADOPTANTE")
 	private EstadoAdoptante estado_adoptantes;
-	
+
 	@OneToMany(mappedBy = "adoptantes", cascade = CascadeType.ALL)
 	private List<VeterinariaCercanaAdoptante> veterinarias_cercanas_adoptantes = new ArrayList<>();
 
@@ -80,12 +81,12 @@ public class Adoptante implements Serializable {
 
 	}
 
-	public Long getId_adoptante() {
-		return id_adoptante;
+	public Long getId() {
+		return id;
 	}
 
-	public void setId_adoptante(Long id_adoptante) {
-		this.id_adoptante = id_adoptante;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Mascota getMascotas() {
@@ -196,10 +197,9 @@ public class Adoptante implements Serializable {
 		return veterinarias_cercanas_adoptantes;
 	}
 
-	public void setVeterinarias_cercanas_adoptantes(List<VeterinariaCercanaAdoptante> veterinarias_cercanas_adoptantes) {
+	public void setVeterinarias_cercanas_adoptantes(
+			List<VeterinariaCercanaAdoptante> veterinarias_cercanas_adoptantes) {
 		this.veterinarias_cercanas_adoptantes = veterinarias_cercanas_adoptantes;
 	}
-	
-	
 
 }

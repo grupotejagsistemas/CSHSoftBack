@@ -2,6 +2,7 @@ package com.tejag.cshsoftware.apirest.models.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,21 +13,22 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "veterinaria_cercana")
+@Table(name = "veterinariacercana")
 public class VeterinariaCercana implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID_VETERINARIA_CERCANA")
 	private Long idVeterinariaCercana;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "veterinarias_id")
+	@JoinColumn(name = "ID_VETERINARIA")
 	private Veterinaria veterinaria_cercana;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "voluntarios_id")
+	@JoinColumn(name = "ID_VOLUNTARIO")
 	private Voluntario voluntarios;
 
 	public VeterinariaCercana() {

@@ -20,55 +20,52 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "mascotas")
+@Table(name = "mascota")
 public class Mascota implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID_MASCOTA")
 	private Long id;
 
-	@Column(nullable = false, length = 50)
+	@Column(name = "NOMBRE", nullable = false, length = 50)
 	private String nombre;
 
-	@Column(name = "fecha_nacimiento", nullable = false)
+	@Column(name = "FECHA_NACIMIENTO", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date fechaNacimiento;
 
-	@Column(name = "particularidad_fisica", nullable = false, length = 255)
+	@Column(name = "PARTICULARIDADES_FISICAS", nullable = false, length = 255)
 	private String particularidadesFisica;
 
-	@Column(nullable = false, length = 7)
-	// macho o hembra
+	@Column(name = "SEXO", nullable = false, length = 7)
 	private String sexo;
 
-	@Column(name = "foto_mascota", nullable = false, length = 255)
+	@Column(name = "FOTO_MASCOTA", nullable = false, length = 255)
 	private String fotoMascota;
 
-	@Column(name = "fecha_rescate", nullable = false)
+	@Column(name = "FECHA_RESCATE", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date fechaRescate;
 
-	@Column(name = "lugar_rescate", nullable = false, length = 50)
+	@Column(name = "LUGAR_RESCATE", nullable = false, length = 50)
 	private String lugarRescate;
 
-	@Column(name = "descripcion_rescate", nullable = false, length = 50)
+	@Column(name = "DESCRIPCION_RESCATE", nullable = false, length = 50)
 	private String descripcionRescate;
 
-	@Column(nullable = false, length = 50)
+	@Column(name = "ESPECIE", nullable = false, length = 50)
 	// canino o felino
 	private String especie;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "estado_mascota_id")
+	@JoinColumn(name = "IdEstadoMascota")
 	private MascotaEstado estado_mascota;
 
 	@OneToMany(mappedBy = "mascotas", cascade = CascadeType.ALL)
 	private List<FichaMedica> fichas_medicas = new ArrayList<>();
-
-//	@OneToMany(mappedBy = "mascotas", cascade = CascadeType.ALL)
-//	private List<VoluntarioMascota> voluntarios_mascotas = new ArrayList<>();
 
 	public Mascota() {
 
@@ -169,13 +166,5 @@ public class Mascota implements Serializable {
 	public void setFichas_medicas(List<FichaMedica> fichas_medicas) {
 		this.fichas_medicas = fichas_medicas;
 	}
-
-//	public List<VoluntarioMascota> getVoluntarios_mascotas() {
-//		return voluntarios_mascotas;
-//	}
-//
-//	public void setVoluntarios_mascotas(List<VoluntarioMascota> voluntarios_mascotas) {
-//		this.voluntarios_mascotas = voluntarios_mascotas;
-//	}
 
 }

@@ -16,24 +16,25 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "voluntarios_mascotas")
+@Table(name = "voluntariomascota")
 public class VoluntarioMascota implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID_VOLUNTARIO_MASCOTA")
 	private Long idVoluntarioMascota;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "mascotas_id")
+	@JoinColumn(name = "ID_MASCOTA")
 	private Mascota mascotas;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "voluntarios_id")
+	@JoinColumn(name = "ID_VOLUNTARIO")
 	private Voluntario voluntarios;
 
-	@Column(name = "fecha", nullable = false)
+	@Column(name = "Fecha", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
 

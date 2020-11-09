@@ -16,46 +16,47 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "ficha_medica")
+@Table(name = "fichamedica")
 public class FichaMedica implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID_FICHA_MEDICA")
 	private Long id;
 
-	@Column(nullable = false)
+	@Column(name = "FECHA", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
 
-	@Column(nullable = false, length = 2)
+	@Column(name = "DESPARASITACION", nullable = false, length = 2)
 	private String desparasitacion;
 
-	@Column(nullable = true, length = 50)
+	@Column(name = "PRODUCTO_DESPARASITACION", nullable = true, length = 50)
 	private String productoDesparasitacion;
 
-	@Column(nullable = false, length = 2)
+	@Column(name = "VACUNA", nullable = false, length = 2)
 	private String vacuna;
 
-	@Column(nullable = true, length = 50)
+	@Column(name = "NOMBRE_VACUNA", nullable = true, length = 50)
 	private String nombreVacuna;
 
-	@Column(nullable = false, length = 255)
+	@Column(name = "DIAGNOSTICO", nullable = false, length = 255)
 	private String diagnostico;
 
-	@Column(nullable = false, length = 2)
+	@Column(name = "TRATAMIENTO", nullable = false, length = 2)
 	private String tratamiento;
 
-	@Column(nullable = true, length = 50)
+	@Column(name = "DESCRIPCION_TRATAMIENTO", nullable = true, length = 50)
 	private String descripcionTratamiento;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "mascotas_id")
+	@JoinColumn(name = "ID_MASCOTA")
 	private Mascota mascotas;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "veterinarias_id")
+	@JoinColumn(name = "ID_VETERINARIA")
 	private Veterinaria veterinarias;
 
 	public FichaMedica() {

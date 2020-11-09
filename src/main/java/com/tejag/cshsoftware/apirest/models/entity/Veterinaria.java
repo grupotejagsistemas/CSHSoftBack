@@ -10,35 +10,30 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "veterinarias")
+@Table(name = "veterinaria")
 public class Veterinaria implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID_VETERINARIA")
 	private Long idVeterinaria;
 
-	@Column(nullable = false, length = 50)
+	@Column(name = "RAZON_SOCIAL", nullable = false, length = 50)
 	private String razonSocial;
 
-	@Column(nullable = false, length = 50)
+	@Column(name = "HORARIO_ATENCION", nullable = false, length = 50)
 	private String horarioAtencion;
 
-	@Column(nullable = false, length = 50)
+	@Column(name = "DIRECCION", nullable = false, length = 50)
 	private String direccion;
 
-	@Column(nullable = false, length = 2)
+	@Column(name = "INTERNACION", nullable = false, length = 2)
 	private String internacion;
 
-	@Column(nullable = true, length = 50)
+	@Column(name = "OBSERVACIONES", nullable = true, length = 50)
 	private String observaciones;
-
-//	@OneToMany(mappedBy = "veterinarias", cascade = CascadeType.ALL)
-//	private List<FichaMedica> fichas_medicas = new ArrayList<>();
-
-//	@OneToMany(mappedBy = "veterinaria_cercana", cascade = CascadeType.ALL)
-//	private List<VeterinariaCercana> veterinarias_cercanas = new ArrayList<>();
 
 	public Veterinaria() {
 
@@ -91,21 +86,5 @@ public class Veterinaria implements Serializable {
 	public void setObservaciones(String observaciones) {
 		this.observaciones = observaciones;
 	}
-
-//	public List<FichaMedica> getFichas_medicas() {
-//		return fichas_medicas;
-//	}
-//
-//	public void setFichas_medicas(List<FichaMedica> fichas_medicas) {
-//		this.fichas_medicas = fichas_medicas;
-//	}
-
-//	public List<VeterinariaCercana> getVeterinarias_cercanas() {
-//		return veterinarias_cercanas;
-//	}
-//
-//	public void setVeterinarias_cercanas(List<VeterinariaCercana> veterinarias_cercanas) {
-//		this.veterinarias_cercanas = veterinarias_cercanas;
-//	}
 
 }

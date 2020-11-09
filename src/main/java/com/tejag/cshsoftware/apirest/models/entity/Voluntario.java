@@ -14,41 +14,40 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "voluntarios")
+@Table(name = "voluntario")
 public class Voluntario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID_VOLUNTARIO")
 	private Long idVoluntario;
 
-	@Column(nullable = false, length = 50)
+	@Column(name = "NOMBRE_COMPLETO", nullable = false, length = 50)
 	private String nombreCompleto;
 
-	@Column(nullable = false, length = 50)
+	@Column(name = "TELEFONO", nullable = false, length = 50)
 	private String telefono;
 
-	@Column(nullable = false, length = 50)
+	@Column(name = "DIRECCION", nullable = false, length = 50)
 	private String direccion;
 
 	@OneToMany(mappedBy = "voluntarios", cascade = CascadeType.ALL)
 	private List<VeterinariaCercana> veterinarias_cercanas = new ArrayList<>();
 
-	@Column(nullable = false, length = 50)
+	@Column(name = "ZONA", nullable = false, length = 50)
 	private String localidad;
 
-	@Column(nullable = false, length = 2)
+	@Column(name = "TRANSITO", nullable = false, length = 2)
 	private String transito;
 
-	@Column(nullable = false, length = 2)
+	@Column(name = "TRASLADO", nullable = false, length = 2)
 	private String traslado;
 
-	@Column(nullable = false, length = 2)
+	@Column(name = "PRESENCIAL", nullable = false, length = 2)
 	private String presencial;
 
-//	@OneToMany(mappedBy = "voluntarios", cascade = CascadeType.ALL)
-//	private List<VoluntarioMascota> voluntarios_mascotas = new ArrayList<>();
 
 	public Voluntario() {
 
@@ -128,13 +127,5 @@ public class Voluntario implements Serializable {
 	public void setPresencial(String presencial) {
 		this.presencial = presencial;
 	}
-
-//	public List<VoluntarioMascota> getVoluntarios_mascotas() {
-//		return voluntarios_mascotas;
-//	}
-//
-//	public void setVoluntarios_mascotas(List<VoluntarioMascota> voluntarios_mascotas) {
-//		this.voluntarios_mascotas = voluntarios_mascotas;
-//	}
 
 }

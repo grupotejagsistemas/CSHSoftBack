@@ -58,7 +58,7 @@ public class AdoptanteServiceImpl implements AdoptanteService {
 	public Adoptante update(Adoptante adoptante) {
 		Adoptante adoptanteActual = new Adoptante();
 
-		adoptanteActual = adoptanteDao.findById(adoptante.getId_adoptante()).get();
+		adoptanteActual = adoptanteDao.findById(adoptante.getId()).get();
 		if (adoptanteActual != null) {
 			adoptanteActual.setNumeroFormulario(adoptante.getNumeroFormulario());
 			adoptanteActual.setNombre_completo(adoptante.getNombre_completo());

@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "usuario")
 public class Usuario implements Serializable {
 
 	/**
@@ -27,26 +27,30 @@ public class Usuario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID_USUARIO")
 	private Long id;
 
-	@Column(unique = true, length = 10)
+	@Column(name = "NOMBRE_USUARIO", unique = true)
 	private String username;
 
-	@Column(length = 100)
+	@Column(name = "CONTRASENA")
 	private String password;
 
-	private Boolean enabled;
-
-	private String nombre;
-
-	private String apellido;
-
-	@Column(unique = true)
+	@Column(name = "EMAIL", unique = true)
 	private String email;
 
+	@Column(name = "ACTIVO")
+	private Boolean enabled;
+
+	@Column(name = "NOMBRE")
+	private String nombre;
+
+	@Column(name = "APELLIDO")
+	private String apellido;
+
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "role_id"), uniqueConstraints = {
-			@UniqueConstraint(columnNames = { "usuario_id", "role_id" }) })
+	@JoinTable(name = "roleusuario", joinColumns = @JoinColumn(name = "ID_USUARIO"), inverseJoinColumns = @JoinColumn(name = "ID_ROLE"), uniqueConstraints = {
+			@UniqueConstraint(columnNames = { "ID_USUARIO", "ID_ROLE" }) })
 	private List<Role> roles;
 
 	public Usuario() {

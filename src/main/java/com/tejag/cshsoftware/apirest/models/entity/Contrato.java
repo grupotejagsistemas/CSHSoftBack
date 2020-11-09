@@ -12,7 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "contratos")
+@Table(name = "contrato")
 public class Contrato implements Serializable {
 
 	/**
@@ -22,17 +22,18 @@ public class Contrato implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID_CONTRATO")
 	private Long id_contrato;
 
 	@OneToOne
-	@JoinColumn(name = "adoptantes_id")
+	@JoinColumn(name = "ID_ADOPTANTE")
 	private Adoptante adoptantes;
 
 	@OneToOne
-	@JoinColumn(name = "mascotas_id")
+	@JoinColumn(name = "ID_MASCOTA")
 	private Mascota mascotas;
 
-	@Column(nullable = false, length = 50)
+	@Column(name = "NUEVO_NOMBRE", nullable = false, length = 50)
 	private String nuevo_nombre;
 
 	public Contrato() {

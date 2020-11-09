@@ -13,7 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "auditorias")
+@Table(name = "auditoria")
 public class Auditoria implements Serializable {
 
 	/**
@@ -23,15 +23,16 @@ public class Auditoria implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID_ACCION_USUARIO")
 	private Long id_accionusuario;
 	
-	@Column(nullable = false, length = 50)
+	@Column(name = "ACCION", nullable = false, length = 50)
 	private String accion;
 	
-	@Column(nullable = false, length = 50)
+	@Column(name = "USUARIO",nullable = false, length = 50)
 	private String usuario;
 	
-	@Column(name = "fecha", nullable = false)
+	@Column(name = "FECHA", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
 	

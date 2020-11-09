@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "preguntas")
+@Table(name = "pregunta")
 public class Pregunta implements Serializable {
 
 	/**
@@ -20,9 +20,10 @@ public class Pregunta implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID_PREGUNTA")
 	private Long id_pregunta;
 	
-	@Column(name = "pregunta", nullable = false, length = 255)
+	@Column(name = "PREGUNTA", nullable = false, length = 255)
 	private String pregunta;
 
 	public Pregunta() {

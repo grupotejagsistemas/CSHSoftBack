@@ -9,7 +9,7 @@ import com.tejag.cshsoftware.apirest.models.entity.VeterinariaCercana;
 public interface VeterinariaCercanaDAO extends CrudRepository<VeterinariaCercana, Long> {
 
 	@Modifying
-	@Query(nativeQuery = true, value = "delete from veterinaria_cercana where voluntarios_id=:idVoluntario")
+	@Query(nativeQuery = true, value = "delete from veterinariacercana where ID_VOLUNTARIO=:idVoluntario")
 	public void deleteByIdVoluntario(Long idVoluntario);
 	
 }

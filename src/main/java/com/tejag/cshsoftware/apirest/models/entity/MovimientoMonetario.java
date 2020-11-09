@@ -16,7 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "movimientos_monetarios")
+@Table(name = "movimientomonetario")
 public class MovimientoMonetario implements Serializable {
 
 	/**
@@ -26,24 +26,25 @@ public class MovimientoMonetario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID_MOVIMIENTO_MONETARIO")
 	private Long id_movimiento_monetario;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "tipo_movimientos_id")
-	private TipoMovimiento tipo_movimientos;
-
-	@Column(nullable = false)
+	@Column(name = "MONTO", nullable = false)
 	private Double monto;
 
-	@Column(nullable = false, length = 50)
+	@Column(name = "MEDIO", nullable = false, length = 50)
 	private String medio;
 
-	@Column(nullable = false, length = 50)
+	@Column(name = "FECHA", nullable = false, length = 50)
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
 
-	@Column(nullable = false, length = 20)
+	@Column(name = "AUTOR", nullable = false, length = 20)
 	private String autor;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID_TIPO_MOVIMIENTO")
+	private TipoMovimiento tipo_movimientos;
 
 	public MovimientoMonetario() {
 
@@ -96,8 +97,5 @@ public class MovimientoMonetario implements Serializable {
 	public void setAutor(String autor) {
 		this.autor = autor;
 	}
-
-	
-	
 
 }

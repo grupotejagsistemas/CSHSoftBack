@@ -16,7 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "movimientos_recursos")
+@Table(name = "movimientorecurso")
 public class MovimientoRecurso implements Serializable {
 
 	/**
@@ -26,23 +26,24 @@ public class MovimientoRecurso implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID_MOVIMIENTO_RECURSO")
 	private Long id_movimiento_recurso;
 
-	@Column(name = "fecha", nullable = false)
+	@Column(name = "FECHA", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
 
-	@Column(name = "donante", nullable = false)
+	@Column(name = "DONANTE", nullable = false)
 	private String donante;
 
-	@Column(name = "descripcion", nullable = false)
+	@Column(name = "DESCRIPCION", nullable = false)
 	private String descripcion;
 
-	@Column(name = "cantidad", nullable = false)
+	@Column(name = "CANTIDAD", nullable = false)
 	private String cantidad;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "tipo_movimientos_id")
+	@JoinColumn(name = "ID_TIPO_MOVIMIENTO")
 	private TipoMovimiento tipoMovimiento;
 
 	public MovimientoRecurso() {

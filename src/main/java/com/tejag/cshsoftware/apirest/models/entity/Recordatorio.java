@@ -13,7 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "recordatorios")
+@Table(name = "recordatorio")
 public class Recordatorio implements Serializable {
 
 	/**
@@ -23,12 +23,13 @@ public class Recordatorio implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID_RECORDATORIO")
 	private Long id_recordatorio;
 	
-	@Column(name = "descripcion_recordatorio", nullable = false, length = 50)
+	@Column(name = "Descripcion", nullable = false, length = 50)
 	private String descripcion_recordatorio;
 	
-	@Column(name = "fecha", nullable = false, length = 50)
+	@Column(name = "Fecha", nullable = false, length = 50)
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
 	

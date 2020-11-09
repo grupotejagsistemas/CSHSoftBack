@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tipo_movimientos")
+@Table(name = "tipomovimiento")
 public class TipoMovimiento implements Serializable {
 
 	/**
@@ -20,9 +20,10 @@ public class TipoMovimiento implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID_TIPO_MOVIMIENTO")
 	private Long id_tipo_movimiento;
 	
-	@Column(name = "descripcion", nullable = false)
+	@Column(name = "Descripcion", nullable = false)
 	private String descripcion;
 
 	public TipoMovimiento() {

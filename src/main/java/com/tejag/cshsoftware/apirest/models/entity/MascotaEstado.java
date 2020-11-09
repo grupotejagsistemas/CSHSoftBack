@@ -10,20 +10,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "estado_mascota")
+@Table(name = "estadomascota")
 public class MascotaEstado implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID_ESTADO_MASCOTA")
 	private Long id;
 
-	@Column(nullable = false, length = 22)
+	@Column(name = "DESCRIPCION", nullable = false, length = 22)
 	private String descripcion;
-
-//	@OneToMany(mappedBy = "estado_mascota", cascade = CascadeType.ALL)
-//	private List<Mascota> mascotas = new ArrayList<>();
 
 	public MascotaEstado() {
 
@@ -44,13 +42,5 @@ public class MascotaEstado implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-//	public List<Mascota> getMascotas() {
-//		return mascotas;
-//	}
-//
-//	public void setMascotas(List<Mascota> mascotas) {
-//		this.mascotas = mascotas;
-//	}
 
 }

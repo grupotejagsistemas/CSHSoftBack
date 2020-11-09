@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "entrevista_adoptantes")
+@Table(name = "entrevistaadoptante")
 public class EntrevistaAdoptante implements Serializable {
 
 	/**
@@ -23,73 +23,74 @@ public class EntrevistaAdoptante implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID_ENTREVISTA_ADOPTANTE")
 	private Long id_entrevista_adoptante;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "adoptantes_id")
+	@JoinColumn(name = "ID_ADOPTANTE")
 	private Adoptante adoptantes;
 
-	@Column(nullable = false, length = 255)
+	@Column(name = "RESPUESTA1", nullable = false, length = 255)
 	private String respuesta1;
 
-	@Column(nullable = false, length = 255)
+	@Column(name = "RESPUESTA2", nullable = false, length = 255)
 	private String respuesta2;
 
-	@Column(nullable = false, length = 255)
+	@Column(name = "RESPUESTA3", nullable = false, length = 255)
 	private String respuesta3;
 
-	@Column(nullable = false, length = 255)
+	@Column(name = "RESPUESTA4", nullable = false, length = 255)
 	private String respuesta4;
 
-	@Column(nullable = false, length = 255)
+	@Column(name = "RESPUESTA5", nullable = false, length = 255)
 	private String respuesta5;
 
-	@Column(nullable = false, length = 255)
+	@Column(name = "RESPUESTA6", nullable = false, length = 255)
 	private String respuesta6;
 
-	@Column(nullable = false, length = 255)
+	@Column(name = "RESPUESTA7", nullable = false, length = 255)
 	private String respuesta7;
 
-	@Column(nullable = false, length = 255)
+	@Column(name = "RESPUESTA8", nullable = false, length = 255)
 	private String respuesta8;
 
-	@Column(nullable = false, length = 255)
+	@Column(name = "RESPUESTA9", nullable = false, length = 255)
 	private String respuesta9;
 
-	@Column(nullable = false, length = 255)
+	@Column(name = "RESPUESTA10", nullable = false, length = 255)
 	private String respuesta10;
 
-	@Column(nullable = false, length = 255)
+	@Column(name = "RESPUESTA11", nullable = false, length = 255)
 	private String respuesta11;
 
-	@Column(nullable = false, length = 255)
+	@Column(name = "RESPUESTA12", nullable = false, length = 255)
 	private String respuesta12;
 
-	@Column(nullable = false, length = 255)
+	@Column(name = "RESPUESTA13", nullable = false, length = 255)
 	private String respuesta13;
 
-	@Column(nullable = false, length = 255)
+	@Column(name = "RESPUESTA14", nullable = false, length = 255)
 	private String respuesta14;
 
-	@Column(nullable = false, length = 255)
+	@Column(name = "RESPUESTA15", nullable = false, length = 255)
 	private String respuesta15;
 
-	@Column(nullable = false, length = 255)
+	@Column(name = "RESPUESTA16", nullable = false, length = 255)
 	private String respuesta16;
 
-	@Column(nullable = false, length = 255)
+	@Column(name = "RESPUESTA17", nullable = false, length = 255)
 	private String respuesta17;
 
-	@Column(nullable = false, length = 255)
+	@Column(name = "RESPUESTA18", nullable = false, length = 255)
 	private String respuesta18;
 
-	@Column(nullable = false, length = 255)
+	@Column(name = "RESPUESTA19", nullable = false, length = 255)
 	private String respuesta19;
 
-	@Column(nullable = false, length = 255)
+	@Column(name = "RESPUESTA20", nullable = false, length = 255)
 	private String respuesta20;
 
-	@Column(nullable = false, length = 255)
+	@Column(name = "RESPUESTA21", nullable = false, length = 255)
 	private String respuesta21;
 
 

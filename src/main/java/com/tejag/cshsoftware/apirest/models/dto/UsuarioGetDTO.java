@@ -9,7 +9,7 @@ public class UsuarioGetDTO {
 	private String email;
 	private String idRole;
 	private String tipoUsuario;
-	
+
 	public UsuarioGetDTO() {
 
 	}
@@ -21,15 +21,6 @@ public class UsuarioGetDTO {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	
-	//public String getNombreUsuario() {
-	//	return nombreUsuario;
-	//}
-
-	//public void setNombreUsuario(String nombreUsuario) {
-	//	this.nombreUsuario = nombreUsuario;
-	//}
 
 	public String getUsername() {
 		return username;
@@ -63,15 +54,6 @@ public class UsuarioGetDTO {
 		this.email = email;
 	}
 
-	
-	//public String getIdTipoUsuario() {
-	//	return idTipoUsuario;
-	//}
-
-	//public void setIdTipoUsuario(String idTipoUsuario) {
-	//	this.idTipoUsuario = idTipoUsuario;
-	//}
-
 	public String getIdRole() {
 		return idRole;
 	}
@@ -87,7 +69,5 @@ public class UsuarioGetDTO {
 	public void setTipoUsuario(String tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
-	
-	
 
 }

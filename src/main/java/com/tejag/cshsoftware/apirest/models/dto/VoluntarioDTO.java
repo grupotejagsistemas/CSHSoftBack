@@ -13,7 +13,6 @@ public class VoluntarioDTO {
 	private String transito;
 	private String traslado;
 	private String presencial;
-	// private MascotaEstadoDTO estado;
 
 	public VoluntarioDTO() {
 
@@ -26,7 +25,6 @@ public class VoluntarioDTO {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 	public String getNombreCompleto() {
 		return nombreCompleto;
@@ -51,15 +49,6 @@ public class VoluntarioDTO {
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
-
-	
-	//public List<VeterinariaDTO> getVeterinariaCercana() {
-	//	return veterinariaCercana;
-	//}
-
-	//public void setVeterinariaCercana(List<VeterinariaDTO> veterinariaCercana) {
-	//	this.veterinariaCercana = veterinariaCercana;
-	//}
 
 	public List<VeterinariaDTO> getIdveterinarias() {
 		return idveterinarias;

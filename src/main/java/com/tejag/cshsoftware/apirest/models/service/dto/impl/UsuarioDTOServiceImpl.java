@@ -111,9 +111,7 @@ public class UsuarioDTOServiceImpl implements UsuarioDTOService {
 			usuario.setApellido(entity.getApellido());
 			usuario.setEmail(entity.getEmail());
 			usuario.setUsername(entity.getUsername());
-			//usuario.setNombreUsuario(entity.getUsername());
 			usuario.setIdRole(entity.getRoles().get(0).getId().toString());
-			//usuario.setIdTipoUsuario(entity.getRoles().get(0).getId().toString());
 			usuario.setTipoUsuario(entity.getRoles().get(0).getNombre());
 		}
 

@@ -1,10 +1,7 @@
 package com.tejag.cshsoftware.apirest.models.service.dto;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
-
-import org.springframework.web.multipart.MultipartFile;
 
 import com.tejag.cshsoftware.apirest.models.dto.MascotaDTO;
 import com.tejag.cshsoftware.apirest.models.dto.MascotaPostDTO;
@@ -56,10 +53,7 @@ public interface MascotaServiceDTO {
 	 */
 	public List<MascotaDTO> findBySexo(String sexo);
 	
-	/**
-	 * Insertar imagen de mascota
-	 * @throws Exception 
-	 */
-	public MascotaDTO insertarImagen(MultipartFile file, String id) throws IOException, Exception;
+//	public MascotaDTO insertarImagen(MultipartFile file, String id) throws IOException, Exception;
+	
 	
 }

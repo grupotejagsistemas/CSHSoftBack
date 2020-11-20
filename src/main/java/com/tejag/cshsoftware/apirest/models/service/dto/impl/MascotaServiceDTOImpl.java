@@ -1,19 +1,13 @@
 package com.tejag.cshsoftware.apirest.models.service.dto.impl;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.tejag.cshsoftware.apirest.models.dto.MascotaDTO;
 import com.tejag.cshsoftware.apirest.models.dto.MascotaEstadoDTO;
@@ -90,35 +84,35 @@ public class MascotaServiceDTOImpl implements MascotaServiceDTO {
 
 	}
 
-	@Override
-	public MascotaDTO insertarImagen(MultipartFile archivo, String id) throws Exception {
-		this.validarTipo(archivo);
-		if (!archivo.isEmpty()) {
-			String nombreArchivo = UUID.randomUUID().toString() + "_" + archivo.getOriginalFilename().replace(" ", "");
-			Path rutaArchivo = Paths.get("C:\\Users\\Usuario\\Documents\\ImageSpring").resolve(nombreArchivo)
-					.toAbsolutePath();
-			Files.copy(archivo.getInputStream(), rutaArchivo);
-			Long idMascota = Long.parseLong(id);
-			return this.getMascotaDto(service.updatePath(idMascota, nombreArchivo));
-		} else {
-			throw new Exception("Error al guardar la imagen");
-		}
-	}
+//	@Override
+//	public MascotaDTO insertarImagen(MultipartFile archivo, String id) throws Exception {
+//		this.validarTipo(archivo);
+//		if (!archivo.isEmpty()) {
+//			String nombreArchivo = UUID.randomUUID().toString() + "_" + archivo.getOriginalFilename().replace(" ", "");
+//			Path rutaArchivo = Paths.get("C:\\Users\\Usuario\\Documents\\ImageSpring").resolve(nombreArchivo)
+//					.toAbsolutePath();
+//			Files.copy(archivo.getInputStream(), rutaArchivo);
+//			Long idMascota = Long.parseLong(id);
+//			return this.getMascotaDto(service.updatePath(idMascota, nombreArchivo));
+//		} else {
+//			throw new Exception("Error al guardar la imagen");
+//		}
+//	}
 
-	public void validarTipo(MultipartFile archivo) throws Exception {
-		// Validacion
-		try {
-			String tipodeArchivo;
-			tipodeArchivo = archivo.getContentType();
-			String[] tipos = { "image/png", "image/jpg", "image/jpeg" };
-			if (!tipodeArchivo.toString().equals(tipos[0]) && !tipodeArchivo.toString().equals(tipos[1])
-					&& !tipodeArchivo.toString().equals(tipos[2])) {
-				throw new Exception("Formato de archivo no valido solo se acepta PNG, JPG y JPEG");
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+//	public void validarTipo(MultipartFile archivo) throws Exception {
+//		// Validacion
+//		try {
+//			String tipodeArchivo;
+//			tipodeArchivo = archivo.getContentType();
+//			String[] tipos = { "image/png", "image/jpg", "image/jpeg" };
+//			if (!tipodeArchivo.toString().equals(tipos[0]) && !tipodeArchivo.toString().equals(tipos[1])
+//					&& !tipodeArchivo.toString().equals(tipos[2])) {
+//				throw new Exception("Formato de archivo no valido solo se acepta PNG, JPG y JPEG");
+//			}
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 	@Override
 	public void update(Long id, MascotaPostDTO mascota) throws ParseException {
@@ -165,6 +159,7 @@ public class MascotaServiceDTOImpl implements MascotaServiceDTO {
 		return this.getListaMascotaDTO(service.findBySexo(sexo));
 	}
 
+	
 	// *******************************************************************************
 	// ***************** Transfomración Entity a DTO
 	// *********************************
@@ -195,4 +190,5 @@ public class MascotaServiceDTOImpl implements MascotaServiceDTO {
 		}
 		return estadoDto;
 	}
+
 }

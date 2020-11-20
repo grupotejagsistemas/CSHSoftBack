@@ -43,7 +43,7 @@ public class Mascota implements Serializable {
 	@Column(name = "SEXO", nullable = false, length = 7)
 	private String sexo;
 
-	@Column(name = "FOTO_MASCOTA", nullable = false, length = 255)
+	@Column(name = "FOTO_MASCOTA", length = 255)
 	private String fotoMascota;
 
 	@Column(name = "FECHA_RESCATE", nullable = false)

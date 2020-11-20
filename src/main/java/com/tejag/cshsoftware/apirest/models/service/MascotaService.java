@@ -51,5 +51,4 @@ public interface MascotaService {
 	 */
 	public List<Mascota> findBySexo(String sexo);
 	
-	public Mascota updatePath(Long id, String nuevaRuta);
 }

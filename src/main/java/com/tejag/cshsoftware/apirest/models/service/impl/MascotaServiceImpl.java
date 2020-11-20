@@ -84,24 +84,23 @@ public class MascotaServiceImpl implements MascotaService {
 		return mascotaDao.findBySexo(sexo);
 	}
 
-	@Override
-	public Mascota updatePath(Long id, String nuevaRuta) {
-		Mascota mascotaActual = new Mascota();
+//	@Override
+//	public void updatePath(String path, Long id) {
+//		Mascota mascotaActual = new Mascota();
+//
+//		mascotaActual = mascotaDao.findById(id).orElseThrow();
+//		mascotaActual.setFotoMascota(path);
+//		mascotaDao.save(mascotaActual);
 
-		mascotaActual = mascotaDao.findById(id).orElseThrow();
-		String fotoAnterior = mascotaActual.getFotoMascota();
-		if (fotoAnterior != null && fotoAnterior.length() > 0) {
-			Path rutaFotoAnterior = Paths.get("C:\\Users\\Usuario\\Documents\\ImageSpring").resolve(fotoAnterior)
-					.toAbsolutePath();
-			File archivoFotoAnterior = rutaFotoAnterior.toFile();
-			if (archivoFotoAnterior.exists() && archivoFotoAnterior.canRead()) {
-				archivoFotoAnterior.delete();
-			}
-		}
-		mascotaActual.setFotoMascota(nuevaRuta);
+//		if (fotoAnterior != null && fotoAnterior.length() > 0) {
+//			Path rutaFotoAnterior = Paths.get("C:\\Users\\Usuario\\Documents\\ImageSpring").resolve(fotoAnterior)
+//					.toAbsolutePath();
+//			File archivoFotoAnterior = rutaFotoAnterior.toFile();
+//			if (archivoFotoAnterior.exists() && archivoFotoAnterior.canRead()) {
+//				archivoFotoAnterior.delete();
+//			}
+//		}
 
-		return mascotaDao.save(mascotaActual);
-
-	}
+//	}
 
 }

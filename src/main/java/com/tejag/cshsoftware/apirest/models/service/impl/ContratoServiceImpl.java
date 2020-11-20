@@ -31,7 +31,7 @@ public class ContratoServiceImpl implements ContratoService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Contrato> findByNombreMascota(String nombre) {
-		return contratoDao.findByMascotasNombre(nombre);
+		return contratoDao.findByMascotasNombreContainingIgnoreCase(nombre);
 	}
 
 	@Override

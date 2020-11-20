@@ -8,6 +8,6 @@ import com.tejag.cshsoftware.apirest.models.entity.Contrato;
 
 public interface ContratoDAO extends CrudRepository<Contrato, Long> {
 
-	public List<Contrato> findByMascotasNombre(String nombre);
+	public List<Contrato> findByMascotasNombreContainingIgnoreCase(String nombre);
 	
 }

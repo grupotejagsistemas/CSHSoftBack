@@ -47,7 +47,14 @@ public class AdoptanteServiceImpl implements AdoptanteService {
 		
 		if(estado.contains("No")) {
 			idEstado = 2;
-		}else {
+		}else if(estado.contains("En Proceso")) {
+			idEstado = 3;
+		}else if(estado.contains("Rechazado")) {
+			idEstado = 4;
+		}else if(estado.contains("Finalizado")) {
+			idEstado = 5;
+		}
+		else {
 			idEstado = 1;
 		}
 		return adoptanteDao.findByEstado((long)idEstado);

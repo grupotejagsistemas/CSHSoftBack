@@ -42,6 +42,7 @@ public class EntrevistaAdoptanteServiceImpl implements EntrevistaAdoptanteServic
 		entrevistaActual = entrevistaadoptanteDao.findById(newEntrevistaadoptante.getId_entrevista_adoptante())
 				.orElseThrow();
 
+		entrevistaActual.setAdoptantes(newEntrevistaadoptante.getAdoptantes());
 		entrevistaActual.setRespuesta1(newEntrevistaadoptante.getRespuesta1());
 		entrevistaActual.setRespuesta2(newEntrevistaadoptante.getRespuesta2());
 		entrevistaActual.setRespuesta3(newEntrevistaadoptante.getRespuesta3());

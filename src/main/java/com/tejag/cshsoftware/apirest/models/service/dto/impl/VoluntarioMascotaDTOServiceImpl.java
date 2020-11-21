@@ -1,6 +1,9 @@
 package com.tejag.cshsoftware.apirest.models.service.dto.impl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +32,14 @@ public class VoluntarioMascotaDTOServiceImpl implements VoluntarioMascotaDTOServ
 	private VoluntarioService voluntarioService;
 
 	@Override
-	public void create(VoluntarioMascotaPostDTO historial) {
+	public void create(VoluntarioMascotaPostDTO historial) throws ParseException {
 		VoluntarioMascota newVoluntarioMascota = new VoluntarioMascota();
-		newVoluntarioMascota.setFecha(historial.getFecha());
-
+		
+		String fecha = historial.getFecha();
+		String pattern = "yyyy-MM-dd";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		Date date = simpleDateFormat.parse(fecha);
+		newVoluntarioMascota.setFecha(date);
 		Mascota mascota = new Mascota();
 		mascota = mascotaService.findById(historial.getIdMascota());
 		newVoluntarioMascota.setMascotas(mascota);
@@ -45,10 +52,14 @@ public class VoluntarioMascotaDTOServiceImpl implements VoluntarioMascotaDTOServ
 	}
 
 	@Override
-	public void update(VoluntarioMascotaPostDTO historial, Long id) {
+	public void update(VoluntarioMascotaPostDTO historial, Long id) throws ParseException {
 		VoluntarioMascota newVoluntarioMascota = new VoluntarioMascota();
 		newVoluntarioMascota.setIdVoluntarioMascota(id);
-		newVoluntarioMascota.setFecha(historial.getFecha());
+		String fecha = historial.getFecha();
+		String pattern = "yyyy-MM-dd";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		Date date = simpleDateFormat.parse(fecha);
+		newVoluntarioMascota.setFecha(date);
 
 		Mascota mascota = new Mascota();
 		mascota = mascotaService.findById(historial.getIdMascota());

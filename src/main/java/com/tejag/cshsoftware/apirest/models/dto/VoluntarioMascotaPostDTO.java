@@ -1,12 +1,10 @@
 package com.tejag.cshsoftware.apirest.models.dto;
 
-import java.util.Date;
-
 public class VoluntarioMascotaPostDTO {
 
 	private Long idVoluntario;
 	private Long idMascota;
-	private Date fecha;
+	private String fecha;
 
 	public VoluntarioMascotaPostDTO() {
 
@@ -28,11 +26,11 @@ public class VoluntarioMascotaPostDTO {
 		this.idMascota = idMascota;
 	}
 
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 
